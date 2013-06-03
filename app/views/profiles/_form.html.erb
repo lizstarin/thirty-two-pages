@@ -18,7 +18,6 @@
   <div><%= f.label :bio %><br />
   <%= f.text_area :bio %></div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+  <div><%= f.submit "Update profile", :method => "get" %></div>
 
-<%= render "devise/shared/links" %>
+<% end %>
