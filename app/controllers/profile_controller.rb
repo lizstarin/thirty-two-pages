@@ -1,15 +1,15 @@
 class ProfileController < ApplicationController
 
-  def new
-    @profile = current_user.build_profile
+  def edit
+    @profile = Profile.find(params[:id])
   end
 
-  def create
-    @profile = current_user.build_profile(params[:profile])
-    if @profile.save
-      redirect_to root_url
+  def update
+    @profile = Profile.find(params[:id])
+    if @profile.update_attributes
+      redirect_to profile_url(@profile)
     else
-      render :new
+      render :edit
     end
   end
 
