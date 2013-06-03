@@ -1,9 +1,9 @@
 ThirtyTwoPages::Application.routes.draw do
-  devise_for :users
-
   root :to => "home#index"
 
+  devise_for :users
+
   resources :users do
-    resources :profiles
+    resources :profile
   end
 end

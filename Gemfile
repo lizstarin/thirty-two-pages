@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 gem 'pry-rails'
 gem 'devise'
+gem 'better_errors'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
