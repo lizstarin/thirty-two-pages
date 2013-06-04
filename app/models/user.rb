@@ -11,4 +11,10 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_one :profile
+
+  def full_name
+    name = "#{self.profile.first_name} #{self.profile.last_name}"
+    name == "\s" ? "anonymous" : name
+  end
+
 end
