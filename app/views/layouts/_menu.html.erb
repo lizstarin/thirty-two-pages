@@ -1,19 +1,17 @@
-<nav>
-	<ul>
-		<% home_link = user_url(current_user) || root_url %>
-		<li><%= link_to "Home", home_link %></li>
-		<% if current_user %>
-			<li><%= link_to "Edit profile", "/users/#{current_user.id}/profile/edit" %>
-		<% end%>
-		<li>	
-			<% if signed_in? %>
-			  <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
-			<% else%>
-				<%= button_to "SIGN IN", "/users/sign_in" %>
-			<% end %>
-		</li>
-		<li>
-			
-		</li>
-	</ul>
-</nav>
+<ul>
+	<% home_link = user_url(current_user) || root_url %>
+	<li><%= link_to "Home", home_link %></li>
+	<% if current_user %>
+		<li><%= link_to "Edit profile", "/users/#{current_user.id}/profile/edit" %>
+	<% end%>
+	<li>
+		<%= render :partial => "user_searches/form" %>
+	</li>
+	<li>	
+		<% if signed_in? %>
+		  <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
+		<% else%>
+			<%= button_to "SIGN IN", "/users/sign_in" %>
+		<% end %>
+	</li>
+</ul>

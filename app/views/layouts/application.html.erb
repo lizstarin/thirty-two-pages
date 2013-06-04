@@ -12,23 +12,7 @@
   <p class="alert"><%= alert %></p>
 	
 	<nav>
-		<ul>
-			<% home_link = user_url(current_user) || root_url %>
-			<li><%= link_to "Home", home_link %></li>
-			<% if current_user %>
-				<li><%= link_to "Edit profile", "/users/#{current_user.id}/profile/edit" %>
-			<% end%>
-			<li>
-				<%= link_to "Find user", new_user_search_path %>
-			</li>
-			<li>	
-				<% if signed_in? %>
-				  <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
-				<% else%>
-					<%= button_to "SIGN IN", "/users/sign_in" %>
-				<% end %>
-			</li>
-		</ul>
+		<%= render :partial => "layouts/menu" %>
 	</nav>
 
 <%= yield %>
