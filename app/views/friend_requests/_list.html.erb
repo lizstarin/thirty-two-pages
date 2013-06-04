@@ -1,10 +1,13 @@
-<% if user.sent_requests %>
+<% if !user.rec_requests.empty? %>
   <h3>friend requests</h3>
   You have friend requests from:
-  <%= user.sent_requests.each do |req| %>
-    <% user = User.find(req.sender_id) %>
-    <%= link_to req.user.full_name, user_url(user) %>
-    <%= button_to "Accept", user_friend_request_url, {:status => "accepted"} %>
-    <%= button_to "Reject", user_friend_request_url, {:status => "rejected"} %>
+  <ul>
+  <% user.rec_requests.each do |req| %>
+    <li>
+      <%= link_to req.sender.full_name, user_url(req.sender) %>
+      <%= button_to "Accept", user_friend_request_url(req), :method => :put, :status => "accepted" %>
+      <%= button_to "Reject", user_friend_request_url(req), :method => :put, :status => "rejected" %>
+    </li>
   <% end %>
+  </ul>
 <% end %>

@@ -1,5 +1,12 @@
+class AuthConstraint
+  def matches?(request)
+    request.session['user_id'].present?
+  end
+end
+
 ThirtyTwoPages::Application.routes.draw do
-  root :to => "home#index"
+
+  root :to => 'users#show(current_user)'
 
   devise_for :users
 

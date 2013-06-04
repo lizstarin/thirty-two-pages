@@ -21,8 +21,8 @@ class FriendRequestsController < ApplicationController
 
   def update
     @friend_request = FriendRequest.where(
-            :sender_id => current_user.id
-            :recipient_id => params[:user_id]
+            :sender_id => current_user.id,
+            :recipient_id => params[:user_id],
             :status => "made"
             )
   end

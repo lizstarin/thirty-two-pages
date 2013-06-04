@@ -1,7 +1,7 @@
-<% if user_friends(current_user).include?(@user) %>
+<% if current_user.friends.include?(user) %>
   <span class="friend">Friends!</span>
-<% elsif %>
-  <span class="requested">You have made a friend request for <%= @user.full_name %>.</span>
+<% elsif !current_user.sent_requests.where(:recipient_id => user.id, :status => "made").empty? %>
+  <span class="requested">Friend request for <%= user.full_name %> is pending.</span>
 <% else %>
-  <%= button_to "Make friend request", "/users/#{@user.id}/friend_requests" %>
+  <%= button_to "Make friend request", "/users/#{user.id}/friend_requests" %>
 <% end %>

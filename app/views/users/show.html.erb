@@ -1,7 +1,9 @@
 <header>
 	<h2><%= @user.full_name %></h2>
     <div class=friend_request>
-      <%= render :partial => "friend_requests/form" %>
+      <% if @user != current_user %>
+        <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
+      <% end %>
     </div>
     <div>
 			<%= "#{@profile.city}" %>
@@ -28,7 +30,9 @@
       </ul>
     </section>
     <section class="friend_requests">
-      <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
+      <% if @user == current_user %>
+        <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
+      <% end %>
     </section>
 		<div>
       <% if @user == current_user %>

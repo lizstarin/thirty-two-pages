@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :sent_requests, :class_name => "FriendRequest", :foreign_key => "sender_id"
   has_many :rec_requests, :class_name => "FriendRequest", :foreign_key => "recipient_id"
-  # has_many :friends, :class_name => "User", :through => :friendships
+  has_many :friends, :through => :friendships, :class_name => "User"
+  has_many :friendships
+  #belongs_to :friend, :class_name => "User"
 
   def full_name
     name = "#{self.profile.first_name} #{self.profile.last_name}"
