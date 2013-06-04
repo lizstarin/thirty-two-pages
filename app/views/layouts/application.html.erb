@@ -18,20 +18,15 @@
 			<% if current_user %>
 				<li><%= link_to "Edit profile", "/users/#{current_user.id}/profile/edit" %>
 			<% end%>
+			<li>
+				<%= link_to "Find user", new_user_search_path %>
+			</li>
 			<li>	
 				<% if signed_in? %>
 				  <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
 				<% else%>
 					<%= button_to "SIGN IN", "/users/sign_in" %>
 				<% end %>
-			</li>
-				<%= form_for @user_search do |f| %>
-				  <%= f.label :input %>
-				  <%= f.text_field :input %>
-					<%= f.submit "FIND USER" %>
-				<% end %>
-			<li>
-				
 			</li>
 		</ul>
 	</nav>
