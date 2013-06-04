@@ -1,6 +1,8 @@
 <h2><%= @user.first_name if @user.first_name %></h2>
+
 <h3>Your profile</h3>
 
 <div>
-  <%= link_to "Edit your profile", edit_user_profile_url %>
+  <% @profile = @user.profile %>
+  <%= link_to "Edit your profile", "/users/#{@user.id}/profile/#{@profile.id}/edit" %>
 </div>
