@@ -10,12 +10,35 @@
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+	
+	<nav>
+		<ul>
+			<% home_link = user_url(current_user) || root_url %>
+			<li><%= link_to "Home", home_link %></li>
+			<% if current_user %>
+				<li><%= link_to "Edit profile", "/users/#{current_user.id}/profile/edit" %>
+			<% end%>
+			<li>	
+				<% if signed_in? %>
+				  <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
+				<% else%>
+					<%= button_to "SIGN IN", "/users/sign_in" %>
+				<% end %>
+			</li>
+				<%= form_for @user_search do |f| %>
+				  <%= f.label :input %>
+				  <%= f.text_field :input %>
+					<%= f.submit "FIND USER" %>
+				<% end %>
+			<li>
+				
+			</li>
+		</ul>
+	</nav>
 
 <%= yield %>
 
-<% if signed_in? %>
-  <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
-<% end %>
+
 
 </body>
 </html>

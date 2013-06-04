@@ -4,6 +4,8 @@ ThirtyTwoPages::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :profile
+    resource :profile
   end
+	
+	resources :user_searches, :only => [:new, :create, :show]
 end

@@ -1,8 +1,21 @@
-<h2><%= @user.first_name if @user.first_name %></h2>
-
-<h3>Your profile</h3>
-
-<div>
-  <% @profile = @user.profile %>
-  <%= link_to "Edit your profile", "/users/#{@user.id}/profile/#{@profile.id}/edit" %>
-</div>
+<header>
+	<h2><%= "#{@profile.first_name} #{@profile.last_name}" %></h2>
+		<div>
+			<%= "#{@profile.city}" %>
+		</div>
+		<div>
+			<%= "#{@profile.state}" %>
+		</div>
+		<div>
+			<%= "#{@profile.country}" %>
+		</div>
+		<section class="bio">
+			<div>
+				<%= "#{@profile.bio}" %>
+			</div>
+		</section>
+		<div>
+		  <% @profile = @user.profile %>
+		  <%= link_to "Edit your profile", "/users/#{@user.id}/profile/edit" %>
+		</div>
+</header>
