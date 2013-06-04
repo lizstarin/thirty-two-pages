@@ -5,7 +5,8 @@ ThirtyTwoPages::Application.routes.draw do
 
   resources :users do
     resource :profile
+    resources :friend_requests, :only => [:index, :new, :create, :update]
   end
-	
+
 	resources :user_searches, :only => [:new, :create, :show]
 end

@@ -1,0 +1,7 @@
+<% if user_friends(current_user).include?(@user) %>
+  <span class="friend">Friends!</span>
+<% elsif %>
+  <span class="requested">You have made a friend request for <%= @user.full_name %>.</span>
+<% else %>
+  <%= button_to "Make friend request", "/users/#{@user.id}/friend_requests" %>
+<% end %>
