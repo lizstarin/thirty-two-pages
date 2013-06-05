@@ -1,0 +1,21 @@
+<%= link_to "Compose a message", new_user_message_url(current_user) %>
+
+<section class="rec-messages">
+  <h2>Inbox</h2>
+  <% @rec_messages.each do |m| %>
+    <div class="rec-message">
+      <span class="rec-message-sender"><%= link_to m.sender.full_name, user_url(m.sender) %></span>
+      <span class="rec-message-subject"><%= link_to m.subject, message_url(m) %></span>
+    </div>
+  <% end %>
+</section>
+
+<section class="sent-messages">
+  <h2>Sent</h2>
+  <% @sent_messages.each do |m| %>
+    <div class="sent-message">
+      <span class="sent-message-sender"><%= link_to m.recipient.full_name, user_url(m.recipient) %></span>
+      <span class="sent-message-subject"><%= link_to m.subject, message_url(m) %></span>
+    </div>
+  <% end %>
+</section>

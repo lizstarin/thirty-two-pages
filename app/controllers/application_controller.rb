@@ -3,4 +3,7 @@ class ApplicationController < ActionController::Base
 
   include FriendshipsHelper
   include UsersHelper
+
+  before_filter :authenticate_user!
+
 end

@@ -1,40 +1,23 @@
 <header>
 	<h2><%= @user.full_name %></h2>
-    <div class=friend_request>
+    <section class=user-friend-request>
       <% if @user != current_user %>
         <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
       <% end %>
-    </div>
-    <div>
-			<%= "#{@profile.city}" %>
-		</div>
-		<div>
-			<%= "#{@profile.state}" %>
-		</div>
-		<div>
-			<%= "#{@profile.country}" %>
-		</div>
-		<section class="bio">
-			<div>
-				<%= "#{@profile.bio}" %>
-			</div>
-		</section>
-    <section class="friends">
-      <h3>friends</h3>
-      <ul>
-        <% @user.friends.each do |friend| %>
-          <li>
-            <%= link_to friend.full_name, user_url(friend) %>
-          </li>
-        <% end %>
-      </ul>
     </section>
-    <section class="friend_requests">
+    <section class="user-about">
+      <%= render :partial => "bio", :locals => {:profile => @user.profile} %>
+    </section>
+    <section class="user-friends">
+      <h3>friends</h3>
+      <%= render :partial => "list", :locals => {:users => @user.friends} %>
+    </section>
+    <section class="user-friend-requests">
       <% if @user == current_user %>
         <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
       <% end %>
     </section>
-    <section class="timeline">
+    <section class="user-timeline">
       <% if @user == current_user %>
         <%= render :partial => "posts/form" %>
       <% end %>
