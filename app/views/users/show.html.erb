@@ -22,9 +22,9 @@
     <section class="friends">
       <h3>friends</h3>
       <ul>
-        <% user_friends(@user).each do |friend| %>
+        <% @user.friends.each do |friend| %>
           <li>
-            <%= link_to user.full_name, user_url(user) %>
+            <%= link_to friend.full_name, user_url(friend) %>
           </li>
         <% end %>
       </ul>
