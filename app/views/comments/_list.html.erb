@@ -1,0 +1,8 @@
+<ul>
+  <% comments.each do |c| %>
+    <li>
+      <div class="comment-content"><%= c.content %></div>
+      <div class="comment-date"><em><%= c.user.full_name %> commented <%= time_ago_in_words(c.created_at) %> ago</em></div>
+    </li>
+  <% end %>
+</ul>

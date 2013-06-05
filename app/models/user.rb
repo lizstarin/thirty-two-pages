@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships, :class_name => "User"
   has_many :friendships
   has_many :posts
+  has_many :comments
   #belongs_to :friend, :class_name => "User"
 
   def full_name

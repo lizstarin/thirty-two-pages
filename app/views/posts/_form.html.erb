@@ -1,6 +1,6 @@
 <h2>What's on your mind?</h2>
 
-<%= form_for Post.new, :url => "/users/#{current_user.id}/posts" do |f| %>
+<%= form_for Post.new do |f| %>
 
   <div>
   <%= f.label :title %><br>

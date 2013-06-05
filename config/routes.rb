@@ -14,7 +14,10 @@ ThirtyTwoPages::Application.routes.draw do
     resource :profile
     resources :friend_requests, :only => [:index, :new, :create, :update]
     resources :friendships, :only => [:new, :create, :destroy]
-    resources :posts
+  end
+
+  resources :posts do
+    resources :comments
   end
 
 	resources :user_searches, :only => [:new, :create, :show]

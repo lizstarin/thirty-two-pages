@@ -1,0 +1,14 @@
+<h2>Add your two cents:</h2>
+
+<%= form_for Comment.new do |f| %>
+
+  <div>
+  <%= f.label :content %><br>
+  <%= f.text_area :content %>
+  </div>
+
+  <div>
+  <%= f.submit "SUBMIT COMMENT" %>
+  </div>
+
+<% end %>
