@@ -1,13 +1,12 @@
-<% if !user.rec_requests.empty? %>
+<% if !user.pending_requests.empty? %>
   <h3>friend requests</h3>
   You have friend requests from:
   <ul>
-  <% user.rec_requests.each do |req| %>
+  <% user.pending_requests.each do |req| %>
     <li>
       <%= link_to req.sender.full_name, user_url(req.sender) %>
-			<% update_link = "/users/#{req.sender_id}/friend_requests/#{req.id}" %>
-      <%= button_to "Accept", update_link, {:method => :put, :sender_id => req.sender_id, :status => "accepted"} %>
-      <%= button_to "Reject", update_link, {:method => :put, :sender_id => req.sender_id, :status => "rejected"} %>
+      <%= button_to "Accept", user_friend_request_url(req.sender_id, req.id, :status => "accepted"), :method => :put %>
+      <%= button_to "Reject", user_friend_request_url(req.sender_id, req.id, :status => "rejected"), :method => :put %>
     </li>
   <% end %>
   </ul>

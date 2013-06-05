@@ -21,9 +21,9 @@ class FriendRequestsController < ApplicationController
 
   def update
     @friend_request = FriendRequest.where(
-            :sender_id => params[:sender_id],
-            :recipient_id => current_user.id,
-            :status => "pending"
+            :sender_id => params[:user_id],
+            :recipient_id => current_user.id# ,
+#             :status => "pending"
     )[0]
 		@friend_request.update_attributes(:status => params[:status])
 		@friend_request.save

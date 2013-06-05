@@ -19,4 +19,7 @@ class User < ActiveRecord::Base
     name == "\s" ? "Anonymous" : name
   end
 
+  def pending_requests
+    self.rec_requests.where(:status => "pending")
+  end
 end
