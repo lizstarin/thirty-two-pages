@@ -34,9 +34,4 @@
         <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
       <% end %>
     </section>
-		<div>
-      <% if @user == current_user %>
-		    <%= link_to "Edit your profile", "/users/#{@user.id}/profile/edit" %>
-      <% end %>
-		</div>
 </header>
