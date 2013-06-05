@@ -1,15 +1,18 @@
 class CommentsController < ApplicationController
 
   def new
-    @comment = Comment.new
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build #(:user_id => current_user.id)
+    # @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new(params[:comment])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(params[:comment], :user_id => current_user.id)
     @comment.update_attributes(:user_id => current_user.id)
 
     if @comment.save
-      redirect_to :back
+      redirect_to user_url(current_user)
     else
       render :new
     end

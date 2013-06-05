@@ -1,6 +1,6 @@
 <h3>Add your two cents:</h3>
 
-<%= form_for @comment, :url => post_comments_url(@comment) do |f| %>
+<%= form_for @comment, :url => "/posts/#{@post.id}/comments" do |f| %>
 
   <div>
   <%= f.label :content %><br>
