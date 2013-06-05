@@ -1,0 +1,59 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Gentium Book Basic";
+	background-color: #DDD;
+}
+
+.container {
+	margin: 0px auto;
+	width: 700px;
+	padding: 0px 40px;
+	background-color: white;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav {
+	color: white;
+	background-color: black;
+	height: 40px;
+	margin: 0;
+  line-height: 40px;
+}
+
+nav div {
+
+}
+
+nav a {
+	color: white;
+}
+
+nav li {
+	float: left;
+	list-style-type: none;
+	margin: 0px 10px 0px 0px;
+}
+
+nav button {
+	background-color: blue;
+}
+
+h2 {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+h3 {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+
+.logo {
+	font-family: "Arvo";
+	font-size: 30px;
+}
+
