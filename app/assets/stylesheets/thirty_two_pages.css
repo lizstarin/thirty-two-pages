@@ -50,6 +50,10 @@ nav li {
 	margin: 0px 10px 0px 0px;
 }
 
+.button_to {
+  color: red;
+}
+
 h2 {
 	text-transform: uppercase;
 	letter-spacing: 2px;
