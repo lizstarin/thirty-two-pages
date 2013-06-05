@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment.update_attributes(:user_id => current_user.id)
 
     if @comment.save
-      redirect_to user_url(current_user)
+      redirect_to user_url(@comment.post.user)
     else
       render :new
     end

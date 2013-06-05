@@ -18,6 +18,7 @@ ThirtyTwoPages::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :likes
   end
 
 	resources :user_searches, :only => [:new, :create, :show]

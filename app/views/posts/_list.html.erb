@@ -1,13 +1,13 @@
-<h3>Timeline</h3>
-
 <ul>
   <% posts.each do |p| %>
     <li>
       <div class="post-title"><strong><%= p.title %></strong></div>
       <div class="post-content"><%= p.content %></div>
-      <div class="post-date"><em>posted <%= time_ago_in_words(p.created_at) %> ago</em></div>
+      <div class="post-date"><em><%= p.user.full_name %> posted <%= time_ago_in_words(p.created_at) %> ago</em></div>
       <div class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => p.comments } %></div>
     </li>
     <div class="post-add-comment"><%= link_to "COMMENT", new_post_comment_url(p) %></div>
+    <div class="post-add-like"><% unless current_user.likes?(p) %><%= link_to "LIKE", post_likes_url(p), :method => :post %><% end %></div>
+    <div class="post-likes"><% unless p.likes.length == 0 %><%= p.likes.length %> people like this post<% end %></div>
   <% end %>
 </ul>

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :friendships
   has_many :posts
   has_many :comments
+  has_many :likes
   #belongs_to :friend, :class_name => "User"
 
   def full_name
@@ -23,5 +24,9 @@ class User < ActiveRecord::Base
 
   def pending_requests
     self.rec_requests.where(:status => "pending")
+  end
+
+  def likes?(post)
+    Like.where(:user_id => self.id, :post_id => post.id).length == 1
   end
 end

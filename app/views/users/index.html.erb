@@ -1,2 +1,5 @@
 <h2>All users</h2>
 <%= render :partial => "users/list", :locals => { :users => @users } %>
+
+<h3>Newsfeed</h3>
+<%= render :partial => "posts/list", :locals => { :posts => current_user.friends.map { |f| f.posts }.flatten } %>
