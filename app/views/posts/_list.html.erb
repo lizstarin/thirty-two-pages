@@ -1,0 +1,11 @@
+<h3>Timeline</h3>
+
+<ul>
+  <% posts.each do |p| %>
+    <li>
+      <div class="post-title"><strong><%= p.title %></strong></div>
+      <div class="post-content"><%= p.content %></div>
+      <div class="post-date"><em>posted <%= time_ago_in_words(p.created_at) %> ago</em></div>
+    </li>
+  <% end %>
+</ul>

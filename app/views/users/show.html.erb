@@ -34,4 +34,10 @@
         <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
       <% end %>
     </section>
+    <section class="timeline">
+      <% if @user == current_user %>
+        <%= render :partial => "posts/form" %>
+      <% end %>
+      <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
+    </section>
 </header>

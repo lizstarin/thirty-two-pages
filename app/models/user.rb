@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :rec_requests, :class_name => "FriendRequest", :foreign_key => "recipient_id"
   has_many :friends, :through => :friendships, :class_name => "User"
   has_many :friendships
+  has_many :posts
   #belongs_to :friend, :class_name => "User"
 
   def full_name
