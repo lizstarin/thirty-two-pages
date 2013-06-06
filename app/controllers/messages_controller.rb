@@ -1,8 +1,8 @@
 class MessagesController < ApplicationController
 
   def index
-    @sent_messages = current_user.sent_messages
-    @rec_messages = current_user.rec_messages
+    @sent_messages = current_user.sent_messages.order("id DESC")
+    @rec_messages = current_user.rec_messages("id DESC")
   end
 
   def new
