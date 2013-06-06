@@ -16,6 +16,7 @@ ThirtyTwoPages::Application.routes.draw do
     resources :friendships, :only => [:new, :create, :destroy]
     resources :messages
     resources :notifications
+    resources :photos
   end
 
   resources :posts do
