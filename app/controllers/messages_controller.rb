@@ -12,8 +12,14 @@ class MessagesController < ApplicationController
 
   def create
     @message = current_user.sent_messages.build(params[:message])
+    @message.read = false
 
     if @message.save
+      notif = @message.recipient.notifications.build(
+                          :content => "#{@message.sender.full_name} has sent you a message.",
+                          :read => false
+                          )
+                          notif.save
       redirect_to user_message_url(@message.sender, @message)
     else
       render :new
@@ -22,6 +28,8 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    @message.read = true if @message.recipient_id == current_user.id
+    @message.save
   end
 
   def edit

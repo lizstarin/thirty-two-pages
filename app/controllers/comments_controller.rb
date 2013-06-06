@@ -12,6 +12,11 @@ class CommentsController < ApplicationController
     @comment.update_attributes(:user_id => current_user.id)
 
     if @comment.save
+      notif = @post.user.notifications.build(
+                      :content => "#{current_user.full_name} has commented on your post #{@post.title}.",
+                      :read => false
+                      )
+                      notif.save
       redirect_to user_url(@comment.post.user)
     else
       render :new

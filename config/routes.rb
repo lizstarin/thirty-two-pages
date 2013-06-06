@@ -15,6 +15,7 @@ ThirtyTwoPages::Application.routes.draw do
     resources :friend_requests, :only => [:index, :new, :create, :update]
     resources :friendships, :only => [:new, :create, :destroy]
     resources :messages
+    resources :notifications
   end
 
   resources :posts do

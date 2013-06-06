@@ -12,8 +12,12 @@ class FriendRequestsController < ApplicationController
             :status => "pending"
     )
     if @friend_request.save
-      user = User.find(params[:user_id])
-      redirect_to user_url(user)
+      notif = @friend_request.recipient.notifications.build(
+                      :content => "#{current_user.full_name} has sent you a friend request.",
+                      :read => false
+                      )
+                      notif.save
+      redirect_to user_url(current_user)
     else
       render :back
     end
@@ -24,11 +28,15 @@ class FriendRequestsController < ApplicationController
             :sender_id => params[:user_id],
             :recipient_id => current_user.id,
             :status => "pending"
-    # @friend_request = current_user.pending_requests.where(:sender_id => params[:user_id])[0]
     )[0]
 		@friend_request.update_attributes(:status => params[:status])
 		@friend_request.save
 		if @friend_request.status == "accepted"
+      notif = @friend_request.sender.notifications.build(
+                                :content => "#{current_user.full_name} has accepted your friend request!",
+                                :read => false
+                                )
+                                notif.save
       make_friendship(params[:user_id])
     else
       redirect_to user_url(current_user)

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :sent_messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :rec_messages, :class_name => "Message", :foreign_key => "recipient_id"
+  has_many :notifications
   #belongs_to :friend, :class_name => "User"
 
   def full_name
@@ -30,5 +31,13 @@ class User < ActiveRecord::Base
 
   def likes?(post)
     Like.where(:user_id => self.id, :post_id => post.id).length == 1
+  end
+
+  def unread_messages
+    Message.where(:recipient_id => self.id, :read => false)
+  end
+
+  def unread_notifications
+    Notification.where(:user_id => self.id, :read => false)
   end
 end

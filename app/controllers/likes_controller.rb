@@ -4,7 +4,13 @@ class LikesController < ApplicationController
     # @like = current_user.like.build(params[:like])
     @like = current_user.likes.build(:post_id => params[:post_id])
 
-    @like.save
+    if @like.save
+      notif = @like.post.user.notifications.build(
+                      :content => "#{current_user.full_name} likes your post #{@like.post.title}.",
+                      :read => false
+                      )
+                      notif.save
+    end
     redirect_to :back
   end
 
