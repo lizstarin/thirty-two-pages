@@ -1,0 +1,28 @@
+<%= form_for @user, :url => user_path(@user), :method => :put do |f| %>
+
+  <div><%= f.label :first_name %><br>
+  <%= f.text_field :first_name %></div>
+
+  <div><%= f.label :last_name %><br>
+  <%= f.text_field :last_name %></div>
+
+  <%= f.fields_for(:profile) do |p_form| %>
+    <div><%= p_form.label :city %><br>
+    <%= p_form.text_field :city %></div>
+
+    <div><%= p_form.label :state %><br>
+    <%= p_form.text_field :state %></div>
+
+    <div><%= p_form.label :country %><br>
+    <%= p_form.text_field :country %></div>
+
+    <div><%= p_form.label :bio %><br>
+    <%= p_form.text_area :bio %></div>
+  <% end %>
+
+  <div><%= f.file_field :avatar %></div>
+
+  <div><%= f.submit "Update your profile" %></div>
+
+<% end %>
+

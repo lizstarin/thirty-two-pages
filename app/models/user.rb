@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
+  # Paperclip stff
+  attr_accessible :avatar
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, # :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -21,9 +24,11 @@ class User < ActiveRecord::Base
   has_many :rec_messages, :class_name => "Message", :foreign_key => "recipient_id"
   has_many :notifications
   #belongs_to :friend, :class_name => "User"
+  accepts_nested_attributes_for :profile
+  attr_accessible :profile_attributes
 
   def full_name
-    name = "#{self.profile.first_name} #{self.profile.last_name}"
+    name = "#{self.first_name} #{self.last_name}"
     name == "\s" ? "Anonymous" : name
   end
 

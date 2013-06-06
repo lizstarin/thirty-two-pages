@@ -4,6 +4,7 @@
     <li>
       <div class="post-header">
         <span class="post-title"><%= p.title %></span>
+        <span class="post-avatar"><%= image_tag p.user.avatar.url(:thumb) %></span>
         <span class="post-date"><%= p.user.full_name %> posted <%= time_ago_in_words(p.created_at) %> ago</span>
       </div>
       <div class="post-content"><%= p.content %></div>

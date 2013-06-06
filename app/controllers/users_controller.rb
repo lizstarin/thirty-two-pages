@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_filter :authenticate_user!, :only => [:new, :create]
 
   def index
     @users = User.all
@@ -21,15 +22,30 @@ class UsersController < ApplicationController
   end
 
   def show
-     if params[:id]
+    if params[:id]
       @user = User.find(params[:id])
-     else
+    else
       @user = current_user
-     end
+    end
 
     @users = User.all
     @profile = @user.profile
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    # @profile = @user.profile
+
+    if @user.update_attributes(params[:user])
+      # @profile.update_attributes()
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
+  end
 
 end

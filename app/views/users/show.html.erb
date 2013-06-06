@@ -1,7 +1,7 @@
 <header>
 	<h2><%= @user.full_name %></h2>
     <section class=user-avater>
-      <%= image_tag @user.profile.avatar.url %>
+      <%= image_tag @user.avatar.url(:medium) %>
     </section>
     <section class=user-friend-request>
       <% if @user != current_user %>
