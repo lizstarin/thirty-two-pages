@@ -1,20 +1,18 @@
-<ul class="posts">
+<section class="posts">
   <% posts.each do |p| %>
-    <div class="post">
-    <li>
-      <div class="post-header">
-        <span class="post-title"><%= p.title %></span>
-        <span class="post-avatar"><%= image_tag p.user.avatar.url(:thumb) %></span>
-        <span class="post-date"><%= p.user.full_name %> posted <%= time_ago_in_words(p.created_at) %> ago</span>
+    <article class="post">
+      <div class="post-main">
+        <div class="post-avatar"><%= image_tag p.user.avatar.url(:thumb) %></div>
+        <span class="post-user"><%= p.user.full_name %></span>
+        <span class="post-date"><%= time_ago_in_words(p.created_at) %> ago</span>
+        <div class="post-content"><%= p.content %></div>
       </div>
-      <div class="post-content"><%= p.content %></div>
       <div class="footer">
         <span class="post-add-comment"><%= link_to "COMMENT", new_post_comment_url(p) %></span>
         <span class="post-add-like"><% unless current_user.likes?(p) %><%= link_to "LIKE", post_likes_url(p), :method => :post %><% end %></span>
         <span class="post-likes"><% unless p.likes.length == 0 %><%= p.likes.length %> people like this post<% end %></span>
       </div>
-      <div class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => p.comments } %></div>
-    </li>
-    </div>
+    </article>
+    <article class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => p.comments } %></article>
   <% end %>
-</ul>
+</section>

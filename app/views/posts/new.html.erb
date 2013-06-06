@@ -1,13 +1,11 @@
-<h2>What's on your mind?</h2>
+<div class="post-new">
+  <h2>What's on your mind?</h2>
 
-<%= form_for @post do |f| %>
+  <%= form_for @post do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+    <%= f.textarea :content %>
 
-  <%= f.label :content %>
-  <%= f.textarea :content %>
+    <%= f.submit "SUBMIT POST" %>
 
-  <%= f.submit "SUBMIT POST" %>
-
-<% end %>
+  <% end %>
+</div>
