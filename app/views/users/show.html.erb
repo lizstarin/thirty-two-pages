@@ -1,5 +1,8 @@
 <header>
 	<h2><%= @user.full_name %></h2>
+    <section class=user-avater>
+      <%= image_tag @user.profile.avatar.url %>
+    </section>
     <section class=user-friend-request>
       <% if @user != current_user %>
         <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>

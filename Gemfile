@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'devise'
 gem 'better_errors'
+gem "paperclip", "~> 3.0"
 
 group :production do
   gem 'pg'
