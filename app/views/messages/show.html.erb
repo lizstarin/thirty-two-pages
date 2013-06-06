@@ -1,0 +1,4 @@
+<h2>Subject: <%= @message.subject %></h2>
+<h3>From: <%= link_to @message.sender.full_name, user_url(@message.sender) %></h3>
+
+<%= @message.content %>

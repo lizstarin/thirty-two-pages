@@ -7,21 +7,21 @@ class MessagesController < ApplicationController
 
   def new
     @message = current_user.sent_messages.build
-    @users = User.all.map { |user| [user.full_name, user.id] }
+    @users = current_user.friends.map { |user| [user.full_name, user.id] }
   end
 
   def create
     @message = current_user.sent_messages.build(params[:message])
 
     if @message.save
-      redirect_to user_message_url(current_user)
+      redirect_to user_message_url(@message.sender, @message)
     else
       render :new
     end
   end
 
   def show
-    @message = Message.find(params[:message])
+    @message = Message.find(params[:id])
   end
 
   def edit
