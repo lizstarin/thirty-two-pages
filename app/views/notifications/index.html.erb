@@ -1,6 +1,6 @@
 <section class="notifications">
   <h2>Notifications</h2>
-  <% current_user.notifications.each do |n| %>
+  <% @notifications.each do |n| %>
     <article class="notification"><%= n.content %></article>
   <% end %>
 </section>
