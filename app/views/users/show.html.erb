@@ -1,15 +1,15 @@
 <header>
-	<h2><%= @user.full_name %></h2>
-    <section class=user-avater>
+    <section class="user-avatar">
       <%= image_tag @user.avatar.url(:medium) %>
     </section>
-    <section class=user-friend-request>
+    <section class="user-about">
+      <h2><%= @user.full_name %></h2>
+			<%= render :partial => "bio", :locals => {:profile => @user.profile} %>
+    </section>
+    <section class="user-friend-request">
       <% if @user != current_user %>
         <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
       <% end %>
-    </section>
-    <section class="user-about">
-      <%= render :partial => "bio", :locals => {:profile => @user.profile} %>
     </section>
     <section class="user-friends">
       <h3>friends</h3>

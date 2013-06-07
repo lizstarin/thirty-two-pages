@@ -2,6 +2,7 @@ class PhotosController < ApplicationController
 
   def index
     @photos = Photo.where(:user_id => current_user.id)
+		@photo = current_user.photos.build
   end
 
   def new
@@ -19,7 +20,7 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = current_user.photos.find(params[:id])
   end
 
 end

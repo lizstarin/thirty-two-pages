@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Arvo:700|Gentium+Book+Basic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Rokkitt' rel='stylesheet' type='text/css'>
 
   <title>ThirtyTwoPages</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -10,17 +10,14 @@
 </head>
 <body>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <!-- <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p> -->
 
-  <!-- <header><span class="logo">Thirty-two pages</span></header> -->
-	<nav>
-		<div>
-    	<% if signed_in? %>
-		  	<%= render :partial => "layouts/menu" %>
-    	<% end %>
-		</div>
-	</nav>
+	<header class="nav group">
+  	<% if signed_in? %>
+	  	<%= render :partial => "layouts/menu" %>
+  	<% end %>
+	</header>
 
 	<div class="container">
 		<%= yield %>

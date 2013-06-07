@@ -4,7 +4,8 @@
   <li><%= link_to "All users", users_url %></li>
   <li><%= link_to "Mailbox (#{current_user.unread_messages.length})", user_messages_url(current_user) %></li>
   <li><%= link_to "Notifications (#{current_user.unread_notifications.length})", user_notifications_url(current_user) %></li>
+	<li><%= link_to "Photos", user_photos_url(current_user) %></li>
   <li>
-    <%= button_to "SIGN OUT", "/users/sign_out", :method => "delete" %>
+    <%= link_to "Sign out", destroy_user_session_url, :method => "delete" %>
 	</li>
 </ul>

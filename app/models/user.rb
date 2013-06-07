@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :sent_messages, :class_name => "Message", :foreign_key => "sender_id"
   has_many :rec_messages, :class_name => "Message", :foreign_key => "recipient_id"
   has_many :notifications
+	has_many :photos
   #belongs_to :friend, :class_name => "User"
   accepts_nested_attributes_for :profile
   attr_accessible :profile_attributes

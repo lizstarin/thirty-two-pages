@@ -1,14 +1,8 @@
 <section class="about-user">
-  <article class="about-user-city">
-  	<%= "#{profile.city}" %>
-  </article>
-  <article class="about-user-state">
-  	<%= "#{profile.state}" %>
-  </article>
-  <article class="about-user-country">
-  	<%= "#{profile.country}" %>
+  <article class="about-user-location">
+  	<%= profile.city %> <%= profile.state %> <%= profile.country %>
   </article>
   <article class="about-user-bio">
-  	<%= "#{profile.bio}" %>
+  	<%= profile.bio %>
   </article>
 </section>

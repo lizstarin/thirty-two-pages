@@ -1,0 +1,17 @@
+<section class="photos">
+	<h2>Your photos</h2>
+
+	<% photos.each do |p| %>
+	<a href="<%= user_photo_url(current_user, p) %>">
+		<figure class="photo">
+			<%= image_tag p.file.url(:medium) %>
+			<figcaption class="photo-caption">
+				<%= p.caption %>
+			</figcaption>
+		</figure>
+	</a>
+	<% end %>
+</section>
+
+
+	<%#= link_to image_tag p.file.url(:medium), {:url => user_photo_url(current_user, p)} %>

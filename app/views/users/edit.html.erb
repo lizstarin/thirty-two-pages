@@ -21,8 +21,9 @@
   <% end %>
 
   <div><%= f.file_field :avatar %></div>
+	<%= image_tag @user.avatar.url(:thumb) %>
 
-  <div><%= f.submit "Update your profile" %></div>
+  <div class="button"><%= f.submit "Update your profile" %></div>
 
 <% end %>
 

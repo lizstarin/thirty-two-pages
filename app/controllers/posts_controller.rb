@@ -9,8 +9,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params[:post])
-    @post.update_attributes(:user_id => current_user.id)
+    @post = current_user.posts.build(params[:post])
+    # @post.update_attributes(:user_id => current_user.id)
 
     if @post.save
       redirect_to user_url(current_user)
