@@ -1,11 +1,13 @@
 <div class="user-show">
-  <section class="user-avatar">
-    <%= image_tag @user.avatar.url(:medium) %>
-  </section>
-  <section class="user-about">
-    <h1 class="user-name"><%= @user.full_name %></h1>
-		<%= render :partial => "bio", :locals => {:profile => @user.profile} %>
-  </section>
+  <div class="top">
+    <section class="user-avatar">
+      <%= image_tag @user.avatar.url(:medium) %>
+    </section>
+    <section class="user-about">
+      <h1 class="user-name"><%= @user.full_name %></h1>
+  		<%= render :partial => "bio", :locals => {:profile => @user.profile} %>
+    </section>
+  </div>
 
 	<div class="left">
     <section class="user-timeline">
@@ -15,7 +17,7 @@
       <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
     </section>
 	</div>
-	
+
 	<div class="right">
     <section class="user-friend-request">
       <% if @user != current_user %>

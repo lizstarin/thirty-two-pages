@@ -13,6 +13,7 @@
   <!-- <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p> -->
 
+<div class="content">
 	<header class="nav group">
 		<a href="<%= root_url %>"><span id="logo">Thirty-two pages</span></a>
   	<% if signed_in? %>
@@ -25,6 +26,7 @@
 	<div class="container">
 		<%= yield %>
 	</div>
+</div>
 
 
 </body>

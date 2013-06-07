@@ -2,8 +2,9 @@
   <% comments.each do |c| %>
     <li class="comment">
       <div class="comment-avatar"><a href="<%= user_url(c.user) %>"><%= image_tag c.user.avatar.url(:bitty) %></a></div>
+      <span class="comment-user"><%= c.user.full_name %></span>
+      <span class="comment-date"><%= time_ago_in_words(c.created_at) %> ago</span>
       <div class="comment-content"><%= c.content %></div>
-      <div class="comment-date"><em><%= c.user.full_name %> commented <%= time_ago_in_words(c.created_at) %> ago</em></div>
     </li>
   <% end %>
 </ul>

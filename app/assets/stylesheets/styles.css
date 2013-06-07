@@ -10,7 +10,16 @@ html, body, div, nav, a, h1, h2, h3, p, ul, li, form, button, input, textarea, s
 body {
 	font-family: Futura;
 	color: #333;
-/*	background-color: #eee;*/
+  background-image: url("ricepaper2.png");
+/*  background-color: #eee;*/
+}
+
+.content {
+  background-color: white;
+  width: 1000px;
+  margin: auto;
+  padding-bottom: 50px;
+  box-shadow: 0px 0px 30px #ccc;
 }
 
 a {
@@ -39,7 +48,7 @@ h2 {
 }
 
 .container {
-	background-color: white;
+/*  background-color: white;*/
 	width: 900px;
 	margin: 40px auto;
 }
@@ -137,6 +146,10 @@ textarea {
 
 /* user show */
 
+.user-show {
+  background-color: red;
+}
+
 .user-avatar {
 	float: left;
 	margin: 0px 40px 20px 0px;
@@ -190,12 +203,14 @@ section .user-about {
 	width: 500px;
 	float: left;
 	margin: 40px 70px 20px 0px;
+  background-color: yellow;
 }
 
 .user-show > .right {
 	width: 200px;
 	float: left;
 	margin: 40px 0px 20px 0px;
+  background-color: blue;
 }
 
 /* users list */
@@ -222,13 +237,35 @@ section .user-about {
   clear: both;
 }
 */
+.post {
+  margin: 25px 0px;
+}
+
 .post-avatar {
   float: left;
-  margin: 0px 15px 0px 0px;
+  margin: 4px 15px 0px 0px;
+}
+
+.post-user {
+  font-size: 18px;
+}
+
+.post-date {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.post-content {
+  font-size: 14px;
 }
 
 .post-comments {
   margin-left: 50px;
+}
+
+.post > .footer {
+  font-size: 12px;
+  line-height: 30px;
 }
 
 /* comments */
@@ -239,12 +276,29 @@ section .user-about {
 
 .comments {
   list-style: none;
-  margin: 10px 0px 10px 0px;
+  margin: 0px 0px 0px 0px;
+}
+
+.comment {
+  margin-top: 5px;
 }
 
 .comment-avatar {
   float: left;
-  margin: 0px 15px 0px 0px;
+  margin: 4px 15px 0px 0px;
+}
+
+.comment-user {
+  font-size: 18px;
+}
+
+.comment-date {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.comment-content {
+  font-size: 14px;
 }
 
 .comment:after {

@@ -12,7 +12,7 @@
         <span class="post-add-like"><% unless current_user.likes?(p) %><%= link_to "LIKE", post_likes_url(p), :method => :post %><% end %></span>
         <span class="post-likes"><% unless p.likes.length == 0 %><%= p.likes.length %> people like this post<% end %></span>
       </div>
+      <article class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => p.comments } %></article>
     </article>
-    <article class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => p.comments } %></article>
   <% end %>
 </section>
