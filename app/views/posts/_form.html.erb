@@ -1,13 +1,15 @@
-<h2>What's on your mind?</h2>
+<section class="new-post-form">
+  <h2>What's on your mind?</h2>
 
-<%= form_for Post.new do |f| %>
+  <%= form_for Post.new do |f| %>
 
-  <div>
-  <%= f.text_area :content %>
-  </div>
+    <div>
+    <%= f.text_area :content %>
+    </div>
 
-  <div>
-  <%= f.submit "BE HEARD" %>
-  </div>
+    <div class="button">
+    <%= f.submit "BE HEARD" %>
+    </div>
 
-<% end %>
+  <% end %>
+</section>

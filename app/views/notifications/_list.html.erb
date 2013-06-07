@@ -1,0 +1,5 @@
+<% current_user.notifications.each do |n| %>
+<li>
+  <article class="notification"><%= link_to n.content, user_notifications_url(current_user) %></article>
+</li>
+<% end %>
