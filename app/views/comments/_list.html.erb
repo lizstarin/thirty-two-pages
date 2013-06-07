@@ -1,7 +1,7 @@
 <ul class="comments">
   <% comments.each do |c| %>
-    <li>
-      <div class="comment-avatar"><%= image_tag c.user.avatar.url(:thumb) %></div>
+    <li class="comment">
+      <div class="comment-avatar"><a href="<%= user_url(c.user) %>"><%= image_tag c.user.avatar.url(:bitty) %></a></div>
       <div class="comment-content"><%= c.content %></div>
       <div class="comment-date"><em><%= c.user.full_name %> commented <%= time_ago_in_words(c.created_at) %> ago</em></div>
     </li>

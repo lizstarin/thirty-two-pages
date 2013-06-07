@@ -2,7 +2,7 @@
   <% posts.each do |p| %>
     <article class="post">
       <div class="post-main">
-        <div class="post-avatar"><%= image_tag p.user.avatar.url(:thumb) %></div>
+        <div class="post-avatar"><a href="<%= user_url(p.user) %>"><%= image_tag p.user.avatar.url(:bitty) %></a></div>
         <span class="post-user"><%= p.user.full_name %></span>
         <span class="post-date"><%= time_ago_in_words(p.created_at) %> ago</span>
         <div class="post-content"><%= p.content %></div>
