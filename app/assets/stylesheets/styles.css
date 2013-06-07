@@ -146,6 +146,10 @@ textarea {
 
 /* user show */
 
+.user-list ul {
+  list-style: none;
+}
+
 .user-show {
   background-color: red;
 }
@@ -153,6 +157,11 @@ textarea {
 .user-avatar {
 	float: left;
 	margin: 0px 40px 20px 0px;
+}
+
+.user-thumb {
+  float: left;
+  margin: 10px;
 }
 
 section .user-about {
