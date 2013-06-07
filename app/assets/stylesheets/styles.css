@@ -59,18 +59,20 @@ h2 {
 }
 
 .nav #logo {
-	font-size: 102px;
+/*	font-size: 102px;
 	font-family: Rokkitt;
 	color: #ccc;
 	margin: auto;
 	overflow: visible;
   white-space: nowrap;
-/*	float: right;*/
-	line-height: 110px;
+	float: right;
+	line-height: 110px;*/
+	float: left;
+	font-weight: bold;
 }
 
 .nav #logo:hover {
-	background-color: white;
+/*	background-color: white;*/
 }
 
 .nav ul {
@@ -81,7 +83,7 @@ h2 {
 
 .nav li {
 	float: left;
-	margin: 0px 0px 0px 30px;
+	margin: 0px 0px 0px 25px;
 /*	padding: 5px 0px;*/
 }
 
