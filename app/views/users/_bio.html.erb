@@ -1,8 +1,8 @@
 <section class="user-about">
   <article class="user-about-location">
-  	<span id="user-city"><%= profile.city %></span>
-		<span id="user-state"><%= profile.state %></span>
-		<span id="user-country"><%= profile.country %></span>
+  	<% if profile.city != "" || nil %><span id="user-city"><%= profile.city %>, </span><% end %>
+		<% if profile.state != "" || nil %><span id="user-state"><%= profile.state %>, </span><% end %>
+		<% if profile.country != "" || nil %><span id="user-country"><%= profile.country %></span><% end %>
   </article>
   <article class="user-about-bio">
   	<%= profile.bio %>

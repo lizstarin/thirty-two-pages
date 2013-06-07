@@ -13,6 +13,8 @@
     <section class="user-timeline">
       <% if @user == current_user %>
         <%= render :partial => "posts/form" %>
+      <% else %>
+        <h2>Timeline</h2>
       <% end %>
       <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
     </section>

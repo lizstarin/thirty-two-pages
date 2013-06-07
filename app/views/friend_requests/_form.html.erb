@@ -1,5 +1,5 @@
 <% if current_user.friends.include?(user) %>
-  <span class="friend">Friends!</span>
+  <!-- <span class="friend">Friends!</span> -->
 <% elsif !current_user.sent_requests.where(:recipient_id => user.id, :status => "pending").empty? %>
   <span class="requested">Friend request for <%= user.full_name %> is pending.</span>
 <% else %>

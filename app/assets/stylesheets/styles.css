@@ -10,7 +10,7 @@ html, body, div, nav, a, h1, h2, h3, p, ul, li, form, button, input, textarea, s
 body {
 	font-family: Futura;
 	color: #333;
-  background-image: url("ricepaper2.png");
+/*  background-image: url("ricepaper2.png");*/
 /*  background-color: #eee;*/
 }
 
@@ -19,7 +19,7 @@ body {
   width: 1000px;
   margin: auto;
   padding-bottom: 50px;
-  box-shadow: 0px 0px 30px #ccc;
+/*  box-shadow: 0px 0px 30px #ccc;*/
 }
 
 a {
@@ -112,6 +112,7 @@ h2 {
   border: 1px solid #aaa;
   width: 250px;
   text-transform: none;
+  background-color: white;
 }
 
 .drop-down > li {
@@ -151,7 +152,7 @@ textarea {
 }
 
 .user-show {
-  background-color: red;
+  background-color: white;
 }
 
 .user-avatar {
@@ -175,14 +176,14 @@ section .user-about {
 	line-height: 36px;
 }
 
-#user-city:after {
-	content: ", ";
+/*#user-city:after {
+  content: ", ";
 }
 
 #user-state:after {
-	content: ", ";
+  content: ", ";
 }
-
+*/
 .user-name {
 	line-height: 30px;
 }
@@ -212,14 +213,32 @@ section .user-about {
 	width: 500px;
 	float: left;
 	margin: 40px 70px 20px 0px;
-  background-color: yellow;
+  background-color: white;
 }
 
 .user-show > .right {
 	width: 200px;
 	float: left;
 	margin: 40px 0px 20px 0px;
-  background-color: blue;
+  background-color: white;
+}
+
+.user-edit label {
+  font-size: 12px;
+  line-height: 26px;
+  text-transform: uppercase;
+}
+
+.user-edit input {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.user-edit textarea {
+  padding: 5px;
+  margin-bottom: 15px;
+  padding: 5px;
 }
 
 /* users list */
@@ -246,8 +265,13 @@ section .user-about {
   clear: both;
 }
 */
+.posts {
+
+  margin-top: 10px;
+}
+
 .post {
-  margin: 25px 0px;
+  margin: 0px 0px 25px 0px;
 }
 
 .post-avatar {

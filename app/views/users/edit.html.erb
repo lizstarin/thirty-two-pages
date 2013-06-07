@@ -1,3 +1,6 @@
+<section class="user-edit">
+
+<h2>your profile</h2>
 <%= form_for @user, :url => user_path(@user), :method => :put do |f| %>
 
   <div><%= f.label :first_name %><br>
@@ -20,10 +23,13 @@
     <%= p_form.text_area :bio %></div>
   <% end %>
 
-  <div><%= f.file_field :avatar %></div>
-	<%= image_tag @user.avatar.url(:thumb) %>
+  <div><%= f.label :avatar %><br>
+  <%= image_tag @user.avatar.url(:thumb) %><br>
+  <%= f.file_field :avatar %></div>
+
 
   <div class="button"><%= f.submit "Update your profile" %></div>
 
 <% end %>
+</div>
 
