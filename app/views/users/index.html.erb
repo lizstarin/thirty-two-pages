@@ -1,5 +1,9 @@
+<div class="user-list">
 <h2>All users</h2>
 <%= render :partial => "users/list", :locals => { :users => @users } %>
+</div>
 
-<h3>Newsfeed</h3>
+<div class="user-news">
+<h2>Newsfeed</h2>
 <%= render :partial => "posts/list", :locals => { :posts => current_user.friends.map { |f| f.posts }.flatten } %>
+</div>

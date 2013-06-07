@@ -129,8 +129,12 @@ h2 {
 /* forms */
 
 input {
-	background-color: white;
+  background-color: white;
   border: 1px solid #ccc;
+
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 textarea {
@@ -138,17 +142,55 @@ textarea {
 	height: 100px;
 	border: 1px solid #aaa;
 	border-radius: 10px;
+
+  padding: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
 }
 
-#new_post .button {
-  border: 0;
-  color: red;
+label {
+  font-size: 12px;
+  line-height: 26px;
+  text-transform: uppercase;
+}
+
+input[type="submit"] {
+  background-color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+  background-color: yellow;
 }
 
 /* user show */
 
+.user-list {
+  margin-bottom: 20px;
+}
+
 .user-list ul {
   list-style: none;
+}
+
+.user-list li {
+  float: left;
+  list-style: none;
+}
+
+.user-list a:hover {
+  background-color: white;
+}
+
+.user-list:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.user-news {
+
 }
 
 .user-show {
@@ -204,10 +246,25 @@ section .user-about {
 }
 
 .user-about:after {
-	content: "";
-	display: table;
-	clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
+
+/*.user-show > .top:after {
+  content: "";
+  display: table;
+  clear: both;
+}*/
+
+/*.user-show > .bottom:before {
+  content: "";
+  display: table;
+  clear: both;
+}*/
+/*.user-show > .bottom {
+  background-color: red;
+}*/
 
 .user-show > .left {
 	width: 500px;
@@ -223,24 +280,24 @@ section .user-about {
   background-color: white;
 }
 
-.user-edit label {
+/*.user-edit label {
   font-size: 12px;
   line-height: 26px;
   text-transform: uppercase;
-}
+}*/
 
-.user-edit input {
+/*.user-edit input {
   margin-bottom: 15px;
   border-radius: 5px;
   padding: 5px;
-}
+}*/
 
-.user-edit textarea {
+/*.user-edit textarea {
   padding: 5px;
   margin-bottom: 15px;
   padding: 5px;
 }
-
+*/
 /* users list */
 
 .user-friends ul {
@@ -338,4 +395,48 @@ section .user-about {
   content: "";
   display: table;
   clear: both;
+}
+
+/* photos */
+
+figure {
+  float: left;
+}
+
+/* messages */
+
+.rec-messages {
+  margin: 20px 0px 50px 0px;
+}
+
+.rec-message {
+  border-top: 1px dotted #aaa;
+  padding: 10px 0px;
+}
+
+.rec-message-subject {
+  position: absolute;
+  left: 450px;
+}
+
+.rec-message-date {
+/*  position: absolute;
+  left: 1000px;*/
+  float: right;
+}
+
+.sent-message-subject {
+  position: absolute;
+  left: 450px;
+}
+
+.sent-message-date {
+/*  position: absolute;
+  left: 700px;*/
+  float: right;
+}
+
+.sent-message {
+  border-top: 1px dotted #aaa;
+  padding: 10px 0px;
 }

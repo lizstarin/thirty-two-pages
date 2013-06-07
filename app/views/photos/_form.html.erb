@@ -1,10 +1,14 @@
-<h3>Add a photo</h3>
+<h2>Add a photo</h2>
 
 <%= form_for photo, :url => user_photos_path, :html => { :multipart => true } do |form| %>
+<div>
   <%= form.file_field :file %>
-	
-	<%= form.label :caption %>
+</div>
+
+<div>
+	<%= form.label :caption %><br>
 	<%= form.text_field :caption %>
-	
+</div>
+
 	<%= form.submit "ADD PHOTO" %>
 <% end %>

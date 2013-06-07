@@ -9,31 +9,33 @@
     </section>
   </div>
 
-	<div class="left">
-    <section class="user-timeline">
-      <% if @user == current_user %>
-        <%= render :partial => "posts/form" %>
-      <% else %>
-        <h2>Timeline</h2>
-      <% end %>
-      <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
-    </section>
-	</div>
+  <!-- <div class="bottom"> -->
+  	<div class="left">
+      <section class="user-timeline">
+        <% if @user == current_user %>
+          <%= render :partial => "posts/form" %>
+        <% else %>
+          <h2>Timeline</h2>
+        <% end %>
+        <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
+      </section>
+  	</div>
 
-	<div class="right">
-    <section class="user-friend-request">
-      <% if @user != current_user %>
-        <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
-      <% end %>
-    </section>
-    <section class="user-friends">
-      <h2>friends</h2>
-      <%= render :partial => "list", :locals => {:users => @user.friends} %>
-    </section>
-    <section class="user-friend-requests">
-      <% if @user == current_user %>
-        <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
-      <% end %>
-    </section>
-	</div>
+  	<div class="right">
+      <section class="user-friend-request">
+        <% if @user != current_user %>
+          <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
+        <% end %>
+      </section>
+      <section class="user-friends">
+        <h2>friends</h2>
+        <%= render :partial => "list", :locals => {:users => @user.friends} %>
+      </section>
+      <section class="user-friend-requests">
+        <% if @user == current_user %>
+          <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
+        <% end %>
+      </section>
+  	</div>
+  <!-- </div> -->
 </div>
