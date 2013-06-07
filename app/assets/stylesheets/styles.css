@@ -1,0 +1,144 @@
+html, body, div, nav, a, h1, h2, h3, p, ul, li, form, button, input, textarea, span, small, header, label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+	font-family: Futura;
+	color: #333;
+/*	background-color: #eee;*/
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+a:hover {
+	background-color: yellow;
+}
+
+img {
+	border-radius: 10px;
+}
+
+h1 {
+	font-size: 40px;
+	font-family: Futura;
+}
+
+h2 {
+	font-size: 18px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	padding: 0px 0px 8px 0px;
+}
+
+.container {
+	background-color: white;
+	width: 900px;
+	margin: 50px auto;
+}
+
+/* nav */
+
+.nav {
+	background-color: white;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding: 5px 0px;
+	width: 900px;
+	margin: 0px auto;
+}
+
+.nav ul {
+	list-style: none;
+	float: right;
+/*	margin: 0px 30px 0px 0px;*/
+}
+
+.nav li {
+	float: left;
+	margin: 0px 0px 0px 30px;
+/*	padding: 5px 0px;*/
+}
+
+/* forms */
+
+input {
+	background-color: white;
+}
+
+textarea {
+	width: 500px;
+	height: 100px;
+	border: 1px solid #aaa;
+	border-radius: 10px;
+}
+
+/* user show */
+
+.user-avatar {
+	float: left;
+	margin: 0px 40px 20px 0px;
+}
+
+section .user-about {
+	border-bottom: 2px dashed #ccc;
+	padding: 0px 0px 20px 0px;
+}
+
+.user-about-location {
+	font-style: italic;
+	font-size: 14px;
+	line-height: 36px;
+}
+
+#user-city:after {
+	content: ", ";
+}
+
+#user-state:after {
+	content: ", ";
+}
+
+.user-name {
+	line-height: 30px;
+}
+
+/*.user-about-location {
+	margin: 0px 0px 0px 40px;
+}*/
+
+.user-about-bio:before {
+	content: '❝';
+	font-size: 50px;
+}
+
+.user-about-bio {
+	font-size: 20px;
+	margin: 20px 0px 0px 0px;
+	line-height: 30px;
+}
+
+.user-about:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.user-show > .left {
+	width: 500px;
+	float: left;
+	margin: 40px 50px 20px 0px;
+}
+
+.user-show > .right {
+	width: 200px;
+	float: left;
+	margin: 40px 0px 20px 0px;
+}

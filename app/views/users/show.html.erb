@@ -1,18 +1,29 @@
-<header>
-    <section class="user-avatar">
-      <%= image_tag @user.avatar.url(:medium) %>
+<div class="user-show">
+  <section class="user-avatar">
+    <%= image_tag @user.avatar.url(:medium) %>
+  </section>
+  <section class="user-about">
+    <h1 class="user-name"><%= @user.full_name %></h1>
+		<%= render :partial => "bio", :locals => {:profile => @user.profile} %>
+  </section>
+
+	<div class="left">
+    <section class="user-timeline">
+      <% if @user == current_user %>
+        <%= render :partial => "posts/form" %>
+      <% end %>
+      <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
     </section>
-    <section class="user-about">
-      <h2><%= @user.full_name %></h2>
-			<%= render :partial => "bio", :locals => {:profile => @user.profile} %>
-    </section>
+	</div>
+	
+	<div class="right">
     <section class="user-friend-request">
       <% if @user != current_user %>
         <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
       <% end %>
     </section>
     <section class="user-friends">
-      <h3>friends</h3>
+      <h2>friends</h2>
       <%= render :partial => "list", :locals => {:users => @user.friends} %>
     </section>
     <section class="user-friend-requests">
@@ -20,10 +31,5 @@
         <%= render :partial => "friend_requests/list", :locals => {:user => @user} %>
       <% end %>
     </section>
-    <section class="user-timeline">
-      <% if @user == current_user %>
-        <%= render :partial => "posts/form" %>
-      <% end %>
-      <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
-    </section>
-</header>
+	</div>
+</div>
