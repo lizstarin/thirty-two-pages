@@ -17,7 +17,13 @@ ThirtyTwoPages::Application.routes.draw do
     resources :messages
     resources :notifications
     resources :photos
+    resources :projects, :only => [:index, :show]
   end
+
+  resources :projects, :except => [:index, :show] do
+    resources :photos
+  end
+
 
   resources :posts do
     resources :comments
