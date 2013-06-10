@@ -1,7 +1,11 @@
 <div class="user-show">
   <div class="top">
     <section class="user-avatar">
-      <%= image_tag @user.avatar.url(:medium) %>
+      <% if @user.avatar.blank? %>
+        <div class="user-avatar-blank">?</div>
+      <% else %>
+        <%= image_tag @user.avatar.url(:medium) %>
+      <% end %>
     </section>
     <section class="user-about">
       <h1 class="user-name"><%= @user.full_name %></h1>

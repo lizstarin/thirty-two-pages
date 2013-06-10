@@ -138,14 +138,13 @@ input {
 }
 
 textarea {
-	width: 500px;
-	height: 100px;
+	width: 425px;
+	height: 90px;
 	border: 1px solid #aaa;
 	border-radius: 10px;
 
   padding: 5px;
   margin-bottom: 5px;
-  padding: 5px;
 }
 
 label {
@@ -177,6 +176,7 @@ input[type="submit"]:hover {
 .user-list li {
   float: left;
   list-style: none;
+/*  background-color: red;*/
 }
 
 .user-list a:hover {
@@ -202,9 +202,22 @@ input[type="submit"]:hover {
 	margin: 0px 40px 20px 0px;
 }
 
+.user-avatar-blank {
+  float: left;
+  margin: 0px 40px 20px 0px;
+  height: 300px;
+  width: 200px;
+  background-color: #ccc;
+  color: #ddd;
+  font-size: 200px;
+  border-radius: 10px;
+  border: 2px dotted #aaa;
+  text-align: center;
+}
+
 .user-thumb {
   float: left;
-  margin: 10px;
+  margin: 10px 10px 10px 0px;
 }
 
 section .user-about {
@@ -267,14 +280,14 @@ section .user-about {
 }*/
 
 .user-show > .left {
-	width: 500px;
+	width: 490px;
 	float: left;
-	margin: 40px 70px 20px 0px;
+	margin: 40px 40px 20px 0px;
   background-color: white;
 }
 
 .user-show > .right {
-	width: 200px;
+	width: 300px;
 	float: left;
 	margin: 40px 0px 20px 0px;
   background-color: white;
@@ -303,6 +316,11 @@ section .user-about {
 .user-friends ul {
   list-style: none;
 }
+
+/*.user-friends a {
+  background-color: red;
+  margin: 0;
+}*/
 
 .user-friends a:hover {
   background-color: white;
@@ -439,4 +457,28 @@ figure {
 .sent-message {
   border-top: 1px dotted #aaa;
   padding: 10px 0px;
+}
+
+/* projects */
+
+figure {
+  margin: 10px 10px 10px 0px;
+}
+
+.project-thumbnail-blank {
+  float: left;
+  width: 100px;
+  height: 75px;
+  background-color: #ccc;
+  color: #ddd;
+  font-size: 50px;
+  border-radius: 5px;
+  border: 2px dotted #aaa;
+  text-align: center;
+}
+
+.projects:after {
+  content: "";
+  display: table;
+  clear: both;
 }

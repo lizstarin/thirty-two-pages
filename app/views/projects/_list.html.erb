@@ -1,9 +1,13 @@
 <section class="projects">
   <h2>Projects</h2>
   <% projects.each do |p| %>
-    <article>
-      <%= image_tag p.thumbnail.url(:thumb) %>
-      <%= p.title %>
-    </article>
+    <figure>
+      <% if p.thumbnail.blank? %>
+        <div class="project-thumbnail-blank">?</div>
+      <% else%>
+        <%= image_tag p.thumbnail.url(:thumb) %>
+      <% end %>
+      <figcaption><%= p.title %></figcaption>
+    </figure>
   <% end %>
 </section>
