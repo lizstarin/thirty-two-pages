@@ -1,10 +1,12 @@
 <div class="project">
   <h2><%= @project.title %></h2>
+  <div>
+    <%= link_to "Edit this project", edit_project_url(@project) %>
+  </div>
   <div class="project-user">
     <a href="<%= user_url(@project.user) %>"><%= image_tag @project.user.avatar.url(:bitty) %></a>
     <span class="project-user-name"><%= @project.user.full_name %></span>
   </div>
-
   <div class="project-description">
     <%= @project.description %>
   </div>

@@ -22,6 +22,9 @@
   	</div>
 
   	<div class="right">
+      <section class="user-projects">
+        <%= render :partial => "projects/list", :locals => {:projects => @user.projects} %>
+      </section>
       <section class="user-friend-request">
         <% if @user != current_user %>
           <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>

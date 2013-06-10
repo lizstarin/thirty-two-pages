@@ -1,20 +1,16 @@
-<div class="project-new">
-  <%= form_for @project do  |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %><br>
 
-    <%= f.label :title %>
-    <%= f.text_field :title %><br>
+<%= f.label :description %><br>
+<%= f.text_area :description %><br>
 
-    <%= f.label :description %><br>
-    <%= f.text_area :description %><br>
+<!-- nested form here for manuscript, images -->
 
-    <!-- nested form here for manuscript, images -->
+<%= f.label :thumbnail, "Thumbnail image" %>
+<%= f.file_field :thumbnail %><br>
 
-    <%= f.label :public, "Keep my project private for now." %>
-    <%= f.radio_button :public, false %><br>
-    <%= f.label :public, "Show it to the world!" %>
-    <%= f.radio_button :public, true %><br>
+<%= f.label :public_false, "Keep my project private for now." %>
+<%= f.radio_button :public, false %><br>
+<%= f.label :public_true, "Show it to the world!" %>
+<%= f.radio_button :public, true %><br>
 
-    <%= f.submit "create new project" %>
-
-  <% end %>
-</div>

@@ -1,1 +1,7 @@
-<%= render :partial => "form" %>
+<div class="project-new">
+  <%= form_for @project do |f| %>
+    <%= render :partial => "form", :locals => {:f => f} %>
+
+    <%= f.submit "submit project" %>
+  <% end %>
+</div>

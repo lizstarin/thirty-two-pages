@@ -1,0 +1,7 @@
+<div class="projects-index">
+  <h2>Projects</h2>
+  <% if @user == current_user %>
+    <%= link_to "Make new project", new_project_url %>
+  <% end %>
+  <%= render :partial => "list", :locals => {:projects => @user.projects} %>
+</div>

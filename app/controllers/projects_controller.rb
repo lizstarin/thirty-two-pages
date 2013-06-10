@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.where(:user_id => params[:user_id])
+    @projects = current_user.projects
+    @user = User.find(params[:user_id])
   end
 
   def new
@@ -19,17 +20,17 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:id])
   end
 
   def edit
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:id])
 
-    if @project.update_attributes(params[:project_id])
+    if @project.update_attributes(params[:id])
       redirect_to user_project_url(current_user, @project)
     else
       render :edit
@@ -37,7 +38,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:id])
 
 
   end
