@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    if @project.update_attributes(params[:id])
+    if @project.update_attributes(params[:project])
       redirect_to user_project_url(current_user, @project)
     else
       render :edit
