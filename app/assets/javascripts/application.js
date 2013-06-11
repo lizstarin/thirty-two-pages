@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //
-//= require dummy_new
+//= require thirty_two_pages
 //
 //= require_tree .
 

@@ -1,25 +1,65 @@
 <h2>Your dummy</h2>
 
-<%#= dummy.make_template %>
-<% w = dummy.trim_width %>
-<% h = dummy.trim_height %>
+<!-- Sizes dummy to fit window -->
+<% w = 400 %> <!-- based on container size -->
+<% h = w * dummy.trim_height / dummy.trim_width %>
 
-<% temp = "<div id='dummy'>" %>
+<!-- Sets page content -->
+<% if dummy.self_ends == true %>
+  <!-- for self-ends -->
+  <% first_page = "pastedown" %>
+  <% last_page = "pastedown" %>
+  <% second_page = "endpaper" %>
+  <% third_page = "endpaper" %>
+  <% fourth_page = "copyright" %>
+  <% fifth_page = "title page" %>
+  <% last_spread_l = "endpaper" %>
+  <% last_spread_r = "endpaper" %>
+<% else %>
+  <!-- for colored ends -->
+  <% first_page = "copyright" %>
+  <% second_page = "title page" %>
+<% end %>
+
+<% temp = "<section id='dummy-viewport' style='width:#{w * 2 + 14}px; height:#{h + 4}px;'>" %>
+<% temp += "<div id='dummy' style='width:#{w * (dummy.page_count + 2)}px; height:#{h + 4}px;'>" %>
+
+<!-- Renders first page -->
 <% temp += "<div class='blank' style='width:#{w}px; height:#{h}px;'></div>" %>
-<% temp += "<div class='first-page' style='width:#{w}px; height:#{h}px;'><p>1<p>" %>
+<% temp += "<div class='first-page' style='width:#{w}px; height:#{h}px;'>" %>
+<% temp += "<p>1</p><p class='page-content'>#{first_page}</p>" %>
 <% temp += "</div>" %>
 
+<!-- Renders spreads -->
 <% num = ("#{dummy.page_count}".to_i - 2)/2 %>
 
 <% num.times do |i| %>
+  <!-- verso -->
   <% temp += "<div class='dummy-spread'>" %>
-  <% temp += "<div class='spread-page-l' style='width:#{w}px; height:#{h}px;'><p>#{i * 2 + 2}<p></div>" %>
-  <% temp += "<div class='spread-page-r' style='width:#{w}px; height:#{h}px;'><p>#{i * 2 + 3}<p></div>" %>
+  <% temp += "<div class='spread-page-l' style='width:#{w}px; height:#{h}px;'>" %>
+  <% temp += "<p>#{i * 2 + 2}</p>" %> <!-- page number -->
+  <% temp += "<p class='page-content'>#{second_page}</p>" if i == 0 %>
+  <% temp += "<p class='page-content'>#{fourth_page}</p>" if i == 1 %>
+  <% temp += "<p class='page-content'>#{last_spread_l}</p>" if i == num - 1 %>
   <% temp += "</div>" %>
+  <!-- recto -->
+  <% temp += "<div class='spread-page-r' style='width:#{w}px; height:#{h}px;'>" %>
+  <% temp += "<p>#{i * 2 + 3}</p>" %> <!-- page number -->
+  <% temp += "<p class='page-content'>#{third_page}</p>" if i == 0 %>
+  <% temp += "<p class='page-content'>#{fifth_page}</p>" if i == 1 %>
+  <% temp += "<p class='page-content'>#{last_spread_r}</p>" if i == num - 1 %>
+  <% temp += "</div>" %>
+  <% temp += "</div>" %>
+
 <% end %>
 
-<% temp +="<div class='last-page' style='width:#{w}px; height:#{h}px;'><p>#{dummy.page_count}<p>" %>
-<% temp += "</div>" %>
+<!-- Renders last page -->
+<% temp +="<div class='last-page' style='width:#{w}px; height:#{h}px;'>" %>
+<% temp += "<p>#{dummy.page_count}</p><p class='page-content'>#{last_page}</p>" %>
 <% temp += "</div>" %>
 
+<% temp += "</div>" %>
+<% temp += "</section>" %>
+
+<!-- Outputs html string -->
 <%= temp.html_safe %>
