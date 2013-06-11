@@ -516,12 +516,28 @@ figure {
   text-align: center;
 }
 
-.dummy-page-text textarea {
-  width: 90%;
-  margin: 0px auto;
-  position: relative;
-  left: 4px;
+.page-update-form {
+  float: left;
+  margin-right: 4px;
+/*  background-color: blue;*/
+  text-align: center;
 }
+
+.page-update-form textarea {
+  width: 90%;
+  position: relative;
+  margin-top: 20px;
+  left: 3px;
+/*  background-color: red;*/
+}
+
+.page-update-form.is-off, .dummy-page-text.is-off {
+  display: none;
+}
+
+/*.page-update-form.is-on, .dummy-page-text.is-on {
+  display: block;
+}*/
 
 #dummy {
   position: absolute;

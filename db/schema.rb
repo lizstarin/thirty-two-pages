@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611203233) do
+ActiveRecord::Schema.define(:version => 20130611204941) do
 
   create_table "captions", :force => true do |t|
     t.text     "content"
@@ -127,6 +127,10 @@ ActiveRecord::Schema.define(:version => 20130611203233) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+    t.integer  "page_count"
+    t.integer  "trim_width"
+    t.integer  "trim_height"
+    t.boolean  "self_ends"
   end
 
   create_table "user_searches", :force => true do |t|

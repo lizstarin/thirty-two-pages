@@ -1,12 +1,10 @@
 class Project < ActiveRecord::Base
-  attr_accessible :user_id, :title, :description, :public, :thumbnail
+  attr_accessible :user_id, :title, :description, :public, :thumbnail,
+                  :self_ends, :trim_height, :trim_width, :page_count
 
   belongs_to :user
   has_attached_file :thumbnail, :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  has_one :dummy
-
-  accepts_nested_attributes_for :dummy
-  attr_accessible :dummy_attributes
+  has_many :pages, :dependent => :destroy
 
   validates :user_id, :title, :presence => true
   validates :public, :inclusion => { :in => [true, false] }

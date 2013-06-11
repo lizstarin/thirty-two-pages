@@ -1,7 +1,7 @@
 <div class="project-new">
   <h2>Make new project</h2>
   <%= form_for @project do |f| %>
-    <%= render :partial => "form", :locals => {:f => f, :dummy => @project.dummy} %>
+    <%= render :partial => "form", :locals => {:f => f} %>
 
     <%= f.submit "submit project" %>
   <% end %>

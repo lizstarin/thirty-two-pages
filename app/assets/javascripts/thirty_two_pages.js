@@ -14,20 +14,58 @@
 
     $(".dummy-page-text").on("dblclick", function() {
       var that = this;
-      console.log("I double-clicked!");
+      $(that).addClass("is-off");
       var oldCaption = $(that).text();
-      $(that).html("<textarea name='caption\\[content\\]' id='caption_content'></textarea>");
-      $("#caption_content").val(oldCaption);
-      $("#caption_content").focus();
+      $(that).next("div").removeClass("is-off");
+      $(that).next("div").val(oldCaption);
+      $("textarea").focus();
     });
 
-    // $(".dummy-page-text").on("blur", function() {
- //      var that = this;
- //      console.log("I focused!");
- //      $("body").dblclick(function() {
- //        var newCaption = $("#caption_content").val();
- //
- //      });
- //    });
+    $("textarea").on("blur", function() {
+      var that = this;
+      $(".page-update-form").addClass("is-off");
+      $(".page-update-form").prev("div").removeClass("is-off");
+      var newCaption = $(that).val();
+      console.log(newCaption);
+      console.log(that);
+      var getPutUrl = $("form").attr("action");
+      console.log(getPutUrl);
+      $.ajax({
+        url: getPutUrl,
+        type: "PUT",
+        data: { content: newCaption },
+        success: function() {
+          console.log("I updated!");
+          $(that).html(newCaption);
+        }
+      });
+    });
+
+
+
+    // $(".dummy-page-text textarea").on("blur", function() {
+    //   var that = this;
+    //   console.log("I blurred!");
+      // $("body").click(function() {
+     //    var newCaption = $(that).val();
+     //    $(that).submit( {"content": newCaption} );
+     //  });
+    // });
+
+
+
+    // $(".dummy-page-text textarea").blur(function(){
+    //     console.log("I blurred!");
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "/controller/action",
+    //       data: $(this).val(),
+    //       dataType: "script",
+    //       callback: null
+    //     });
+    //   }
+    //   return false;
+    // });
+
   });
 // };

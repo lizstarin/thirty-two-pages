@@ -7,18 +7,16 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
-    @project.build_dummy
   end
 
   def create
     @project = current_user.projects.build(params[:project])
 
-    @dummy = @project.build_dummy(params[:dummy])
-    @dummy.save
-
-    @dummy.page_count.times do |i|
-      @caption = @dummy.captions.build(:content => "(page #{i} text)")
-      @caption.save
+    @project.page_count.times do |i|
+      page = @project.pages.build(:number => i + 1)
+      page.save
+      caption = page.build_caption(:content => "(page #{i + 1} text)")
+      caption.save
     end
 
     if @project.save
@@ -34,13 +32,10 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @dummy = @project.dummy
   end
 
   def update
     @project = Project.find(params[:id])
-    @dummy = @project.dummy
-    @dummy.update_attributes(params[:dummy])
 
     if @project.update_attributes(params[:project])
       redirect_to user_project_url(current_user, @project)

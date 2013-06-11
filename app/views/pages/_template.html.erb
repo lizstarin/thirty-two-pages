@@ -1,0 +1,91 @@
+<h2>Your dummy</h2>
+
+<!-- Sizes dummy to fit window -->
+<% w = 400 %> <!-- based on container size -->
+<% b = 2 %> <!-- border width, in css -->
+<% m = 10 %> <!-- margin size, in css -->
+<% h = w * project.trim_height / project.trim_width %>
+<% ch = 150 %> <!-- caption height -->
+
+<!-- Sets page content -->
+<% if project.self_ends == true %>
+  <!-- for self-ends -->
+  <% first_page = "pastedown" %>
+  <% last_page = "pastedown" %>
+  <% second_page = "endpaper" %>
+  <% third_page = "endpaper" %>
+  <% fourth_page = "copyright" %>
+  <% fifth_page = "title page" %>
+  <% last_spread_l = "endpaper" %>
+  <% last_spread_r = "endpaper" %>
+<% else %>
+  <!-- for colored ends -->
+  <% first_page = "copyright" %>
+  <% second_page = "title page" %>
+<% end %>
+
+<section id='dummy-with-text' style='width:<%= w * 2 + m %>px; height:<%= h + ch %>px;'>
+  <div id='dummy' style='width:<%= w * (project.page_count + b) %>px; height:<%= h + b * 2 %>px;'>
+
+    <!-- Renders first page -->
+    <div class='blank' style='width:<%= w %>px; height:<%= h %>px;'>
+    </div>
+
+    <div class='first-page recto' style='width:<%= w %>px; height:<%= h %>px;'>
+      <p>1</p>
+      <p class='page-content'><%= first_page %></p>
+    </div>
+
+  <!-- Renders spreads -->
+  <% num = ("#{project.page_count}".to_i - 2)/2 %>
+
+  <% num.times do |i| %>
+    <!-- verso -->
+    <div class='dummy-spread'>
+      <div class='spread-page-l verso' style='width:<%= w %>px; height:<%= h %>px;'>
+        <p><%= i * 2 + 2 %></p> <!-- page number -->
+        <% if i == 0 %><p class='page-content'><%= second_page %></p><% end %>
+        <% if i == 1 %><p class='page-content'><%= fourth_page %></p><% end %>
+        <% if i == num - 1 %><p class='page-content'><%= last_spread_l %></p><% end %>
+      </div>
+
+    <!-- recto -->
+      <div class='spread-page-r recto' style='width:<%= w %>px; height:<%= h %>px;'>
+        <p><%= i * 2 + 3 %></p> <!-- page number -->
+        <% if i == 0 %><p class='page-content'><%= third_page %></p><% end %>
+        <% if i == 1 %><p class='page-content'><%= fifth_page %></p><% end %>
+        <% if i == num - 1 %><p class='page-content'><%= last_spread_r %></p><% end %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <!-- Renders last page -->
+    <div class='last-page verso' style='width:<%= w %>px; height:<%= h %>px;'>
+      <p><%= project.page_count %></p>
+      <p class='page-content'><%= last_page %></p>
+    </div>
+
+  </div>
+
+
+  <!-- Renders text for each page -->
+  <div id="dummy-text" style='width:<%= w * (project.page_count + b) %>px; height:<%= ch %>px; top:<%= h %>px;'>
+    <div class="blank" style='width:<%= w %>px;'></div>
+    <% project.page_count.times do |i| %>
+      <div class="dummy-page-text" style='width:<%= w %>px; height:<%= ch %>px;'>
+        <%= project.pages[i].caption.content %>
+      </div>
+
+      <div class="page-update-form is-off" style='width:<%= w + 2 * b %>px;'>
+        <% caption = project.pages[i].caption %>
+        <%= form_for caption, :url => page_caption_url(caption), :method => :put do |f| %>
+          <%= f.text_area :content %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</section>
+
+

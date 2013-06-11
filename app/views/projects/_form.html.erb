@@ -4,21 +4,21 @@
 <%= f.label :description %><br>
 <%= f.text_area :description %><br>
 
-<%= fields_for(:dummy) do |df| %>
-  <%= df.label :page_count %>
-  <%= df.select(:page_count, options_for_select( [32, 40] )) %><br>
 
-  <%=df.label :trim_width, "width", :class => "number-field" %>
-  <%= df.text_field :trim_width %><br>
+<%= f.label :page_count %>
+<%= f.select(:page_count, options_for_select( [32, 40] )) %><br>
 
-  <%= df.label :trim_height, "height", :class => "number-field" %>
-  <%= df.text_field :trim_height %><br>
+<%= f.label :trim_width, "width", :class => "number-field" %>
+<%= f.text_field :trim_width %><br>
 
-  <%= df.label :self_ends_true, "Self-ends" %>
-  <%= df.radio_button :self_ends, true %>
-  <%= df.label :self_ends_false, "Colored ends" %>
-  <%= df.radio_button :self_ends, false %><br>
-<% end %>
+<%= f.label :trim_height, "height", :class => "number-field" %>
+<%= f.text_field :trim_height %><br>
+
+<%= f.label :self_ends_true, "Self-ends" %>
+<%= f.radio_button :self_ends, true %>
+<%= f.label :self_ends_false, "Colored ends" %>
+<%= f.radio_button :self_ends, false %><br>
+
 
 <!-- nested form here for manuscript, images -->
 
