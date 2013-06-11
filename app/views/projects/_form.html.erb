@@ -4,6 +4,22 @@
 <%= f.label :description %><br>
 <%= f.text_area :description %><br>
 
+<%= fields_for(:dummy) do |df| %>
+  <%= df.label :page_count %>
+  <%= df.select(:page_count, options_for_select( [32, 40] )) %><br>
+
+  <%=df.label :trim_width, "width", :class => "number-field" %>
+  <%= df.text_field :trim_width %><br>
+
+  <%= df.label :trim_height, "height", :class => "number-field" %>
+  <%= df.text_field :trim_height %><br>
+
+  <%= df.label :self_ends_true, "Self-ends" %>
+  <%= df.radio_button :self_ends, true %>
+  <%= df.label :self_ends_false, "Colored ends" %>
+  <%= df.radio_button :self_ends, false %><br>
+<% end %>
+
 <!-- nested form here for manuscript, images -->
 
 <%= f.label :thumbnail, "Thumbnail image" %>

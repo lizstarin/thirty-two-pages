@@ -1,4 +1,5 @@
 <div class="project-edit">
+  <h2>Edit your project</h2>
   <%= form_for @project, :url => project_path(@project), :method => :put do |f| %>
   <%= render :partial => "form", :locals => {:f => f} %>
 

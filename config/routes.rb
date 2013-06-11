@@ -22,6 +22,7 @@ ThirtyTwoPages::Application.routes.draw do
 
   resources :projects, :except => [:index, :show] do
     resources :photos
+    resource :dummy
   end
 
 

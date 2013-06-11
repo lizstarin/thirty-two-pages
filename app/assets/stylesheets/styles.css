@@ -482,3 +482,9 @@ figure {
   display: table;
   clear: both;
 }
+
+/* dummy */
+
+.dummy-page {
+  border: 2px solid #ccc;
+}
