@@ -5,19 +5,21 @@
 <% h = dummy.trim_height %>
 
 <% temp = "<div id='dummy'>" %>
-<% temp += "<div class='dummy-page first-page' width='#{w}' height='#{h}'>" %>
+<% temp += "<div class='blank' style='width:#{w}px; height:#{h}px;'></div>" %>
+<% temp += "<div class='first-page' style='width:#{w}px; height:#{h}px;'><p>1<p>" %>
 <% temp += "</div>" %>
 
 <% num = ("#{dummy.page_count}".to_i - 2)/2 %>
 
-<% num.times do |i|
-  temp += "<div class='dummy-spread'>"
-  2.times { temp += "<span class='dummy-page'></span>" }
-  temp += "</div>"
-end %>
+<% num.times do |i| %>
+  <% temp += "<div class='dummy-spread'>" %>
+  <% temp += "<div class='spread-page-l' style='width:#{w}px; height:#{h}px;'><p>#{i * 2 + 2}<p></div>" %>
+  <% temp += "<div class='spread-page-r' style='width:#{w}px; height:#{h}px;'><p>#{i * 2 + 3}<p></div>" %>
+  <% temp += "</div>" %>
+<% end %>
 
-<% temp +="<div class='dummy-page last-page' width='#{w}' height='#{h}'>"
-temp += "</div>"
-temp += "</div>" %>
+<% temp +="<div class='last-page' style='width:#{w}px; height:#{h}px;'><p>#{dummy.page_count}<p>" %>
+<% temp += "</div>" %>
+<% temp += "</div>" %>
 
-<%= temp %>
+<%= temp.html_safe %>

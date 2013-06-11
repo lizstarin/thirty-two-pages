@@ -13,8 +13,8 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(params[:project])
     # @project.build_dummy
-    @dummy = @project.build_dummy
-    @dummy.update_attributes(:trim_width => params[:trim_width], :trim_height => params[:trim_height], :page_count => params[:page_count])
+    @dummy = @project.build_dummy(params[:dummy])
+    @dummy.save
 
     if @project.save
       redirect_to user_project_url(current_user, @project)

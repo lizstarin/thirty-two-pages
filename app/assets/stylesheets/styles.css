@@ -485,6 +485,35 @@ figure {
 
 /* dummy */
 
-.dummy-page {
+.blank {
+  float: left;
+  border: 2px solid white;
+  border-right: 0;
+}
+
+.first-page {
+  float: left;
   border: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.spread-page-r, .last-page {
+  float: left;
+  border: 2px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.spread-page-l {
+  float: left;
+  border: 2px solid #ccc;
+  border-right: 0;
+  margin-bottom: 10px;
+}
+
+#dummy p {
+  padding: 10px;
+}
+
+#dummy .first-page, .spread-page-r p {
+  text-align: right;
 }
