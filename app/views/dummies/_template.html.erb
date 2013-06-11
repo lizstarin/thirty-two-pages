@@ -26,7 +26,7 @@
 
 <!-- Renders first page -->
 <% temp += "<div class='blank' style='width:#{w}px; height:#{h}px;'></div>" %>
-<% temp += "<div class='first-page' style='width:#{w}px; height:#{h}px;'>" %>
+<% temp += "<div class='first-page recto' style='width:#{w}px; height:#{h}px;'>" %>
 <% temp += "<p>1</p><p class='page-content'>#{first_page}</p>" %>
 <% temp += "</div>" %>
 
@@ -36,14 +36,14 @@
 <% num.times do |i| %>
   <!-- verso -->
   <% temp += "<div class='dummy-spread'>" %>
-  <% temp += "<div class='spread-page-l' style='width:#{w}px; height:#{h}px;'>" %>
+  <% temp += "<div class='spread-page-l verso' style='width:#{w}px; height:#{h}px;'>" %>
   <% temp += "<p>#{i * 2 + 2}</p>" %> <!-- page number -->
   <% temp += "<p class='page-content'>#{second_page}</p>" if i == 0 %>
   <% temp += "<p class='page-content'>#{fourth_page}</p>" if i == 1 %>
   <% temp += "<p class='page-content'>#{last_spread_l}</p>" if i == num - 1 %>
   <% temp += "</div>" %>
   <!-- recto -->
-  <% temp += "<div class='spread-page-r' style='width:#{w}px; height:#{h}px;'>" %>
+  <% temp += "<div class='spread-page-r recto' style='width:#{w}px; height:#{h}px;'>" %>
   <% temp += "<p>#{i * 2 + 3}</p>" %> <!-- page number -->
   <% temp += "<p class='page-content'>#{third_page}</p>" if i == 0 %>
   <% temp += "<p class='page-content'>#{fifth_page}</p>" if i == 1 %>
@@ -54,7 +54,7 @@
 <% end %>
 
 <!-- Renders last page -->
-<% temp +="<div class='last-page' style='width:#{w}px; height:#{h}px;'>" %>
+<% temp +="<div class='last-page verso' style='width:#{w}px; height:#{h}px;'>" %>
 <% temp += "<p>#{dummy.page_count}</p><p class='page-content'>#{last_page}</p>" %>
 <% temp += "</div>" %>
 

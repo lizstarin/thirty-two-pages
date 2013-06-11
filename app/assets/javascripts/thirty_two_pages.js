@@ -1,7 +1,12 @@
 // window.TTP = {
   $(document).ready(function(){
-    $("#dummy").on("click", function(){
-      $(this).css("left", "-=816");
+    $(".recto").on("click", function(){
+      $("#dummy").css("left", "-=816");
+      // console.log("clicked!");
+    });
+
+    $(".verso").on("click", function(){
+      $("#dummy").css("left", "+=816");
       // console.log("clicked!");
     });
   });
