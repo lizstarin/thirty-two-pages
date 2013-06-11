@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610195210) do
+ActiveRecord::Schema.define(:version => 20130611203233) do
+
+  create_table "captions", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "page_id"
+  end
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -67,6 +74,13 @@ ActiveRecord::Schema.define(:version => 20130610195210) do
     t.integer  "user_id"
     t.string   "content"
     t.boolean  "read"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "number"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

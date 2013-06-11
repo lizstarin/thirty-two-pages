@@ -508,13 +508,34 @@ figure {
   border: 2px solid #ccc;
   border-right: 0;
 }
+
+.dummy-page-text {
+  margin-top: 20px;
+  float: left;
+  margin-right: 8px;
+  text-align: center;
+}
+
+.dummy-page-text textarea {
+  width: 90%;
+  margin: 0px auto;
+  position: relative;
+  left: 4px;
+}
+
 #dummy {
   position: absolute;
   top: 0;
   left: 0px;
 }
 
-#dummy-viewport {
+#dummy-text {
+  position: absolute;
+/*  top: 500px;*/
+  left: 0px;
+}
+
+#dummy-with-text {
   overflow: hidden;
   position: relative;
 }
@@ -523,7 +544,15 @@ figure {
   padding: 10px;
 }
 
+#dummy-text p {
+  padding: 10px;
+}
+
 #dummy .first-page, .spread-page-r p {
   text-align: right;
 }
+
+
+
+
 

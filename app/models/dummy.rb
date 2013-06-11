@@ -3,6 +3,7 @@ class Dummy < ActiveRecord::Base
                   :trim_width, :trim_height
 
   belongs_to :project
+  has_many :captions
 
   # def make_template
   #   w = self.trim_width

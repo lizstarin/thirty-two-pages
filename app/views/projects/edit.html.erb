@@ -1,9 +1,9 @@
 <div class="project-edit">
   <h2>Edit your project</h2>
   <%= form_for @project, :url => project_path(@project), :method => :put do |f| %>
-  <%= render :partial => "form", :locals => {:f => f} %>
+  <%= render :partial => "form", :locals => {:f => f, :dummy => @project.dummy} %>
 
-  <%= f.submit "edit profile" %>
+  <%= f.submit "edit project" %>
   <% end %>
 </div>
 

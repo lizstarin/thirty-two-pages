@@ -25,6 +25,9 @@ ThirtyTwoPages::Application.routes.draw do
     resource :dummy
   end
 
+  resources :dummies do
+    resources :captions
+  end
 
   resources :posts do
     resources :comments
