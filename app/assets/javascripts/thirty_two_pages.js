@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+
   $(".recto").on("click", function(){
     $("#dummy").css("left", "-=816");
     $("#dummy-text").css("left", "-=816")
@@ -26,11 +26,9 @@ $(document).ready(function(){
     $(".page-update-form").addClass("is-off");
     $(".page-update-form").prev("div").removeClass("is-off");
     var newCaption = $(that).val();
-    console.log(newCaption);
-    console.log(that);
     var putUrl = $(that).closest("form").attr("action");
-    console.log(putUrl);
-		$(that).closest("form").submit( { content: newCaption} );
+		$(that).closest("form").submit();
+    $(that).closest("div").prev("div").html(newCaption);
     // $.ajax({
     //   url: putUrl,
     //   type: "PUT",
@@ -41,7 +39,7 @@ $(document).ready(function(){
     //   }
     // });
   });
-	
+
 });
 
 

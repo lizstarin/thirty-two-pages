@@ -79,7 +79,7 @@
 
       <div class="page-update-form is-off" style='width:<%= w + 2 * b %>px;'>
         <% caption = project.pages[i].caption %>
-        <%= form_for caption, :url => page_caption_url(caption), :method => :put do |f| %>
+        <%= form_for caption, :url => page_caption_url(caption.page), :method => :put do |f| %>
           <%= f.text_area :content %>
         <% end %>
       </div>
