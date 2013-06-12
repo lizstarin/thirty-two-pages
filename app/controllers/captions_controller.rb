@@ -8,7 +8,7 @@ class CaptionsController < ApplicationController
     # @caption = Page.find(params[:page_id]).caption
 		@caption = Page.find(params[:page_id]).caption
     @caption.update_attributes(:content => params[:content])
-		redirect_to :back # user_project_url(@caption.page.project)
+		render => :none # user_project_url(@caption.page.project)
   end
 
 end
