@@ -12,6 +12,11 @@
   </div>
 
   <div class="project-dummy">
+    <h2>Your dummy</h2>
+    <div class="sidebar">
+      <%= render :partial => "images/sidebar", :locals => { :images => @project.images, :image => @image } %>
+    </div>
+
     <%= render :partial => "pages/template", :locals => { :project => @project } %>
   </div>
 

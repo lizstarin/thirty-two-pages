@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_attached_file :thumbnail, :styles => { :medium => "300x300>", :thumb => "100x100>" }
   has_many :pages, :dependent => :destroy
+  has_many :images
 
   validates :user_id, :title, :presence => true
   validates :public, :inclusion => { :in => [true, false] }

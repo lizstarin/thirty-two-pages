@@ -16,10 +16,17 @@ body {
 
 .content {
   background-color: white;
-  width: 1000px;
+  width: 1100px;
   margin: auto;
   padding-bottom: 50px;
 /*  box-shadow: 0px 0px 30px #ccc;*/
+}
+
+.sidebar {
+  float: right;
+/*  background-color: green;*/
+  width: 120px;
+/*  height: 100%;*/
 }
 
 a {
@@ -49,7 +56,7 @@ h2 {
 
 .container {
 /*  background-color: white;*/
-	width: 900px;
+	width: 950px;
 	margin: 40px auto;
 }
 
@@ -61,7 +68,7 @@ h2 {
 	font-size: 12px;
 	text-transform: uppercase;
 	padding: 15px 0px 0px 0px;
-	width: 900px;
+	width: 950px;
 	margin: 0px auto;
 /*	border-top: 1px solid #999;
 	border-bottom: 1px solid #999;*/
@@ -568,7 +575,12 @@ figure {
   text-align: right;
 }
 
+/* project photo sidebar */
 
+.photo-thumb {
+  margin: 0px 0px 15px 0px;
+  float: right;
+}
 
 
 

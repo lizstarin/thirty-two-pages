@@ -21,8 +21,8 @@ ThirtyTwoPages::Application.routes.draw do
   end
 
   resources :projects, :except => [:index, :show] do
-    resources :photos
     resources :pages
+    resources :images
   end
 
   resources :pages do
