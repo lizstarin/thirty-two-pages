@@ -27,17 +27,17 @@ $(document).ready(function(){
     $(".page-update-form").prev("div").removeClass("is-off");
     var newCaption = $(that).val();
     var putUrl = $(that).closest("form").attr("action");
-		$(that).closest("form").submit();
+    // $(that).closest("form").submit();
     $(that).closest("div").prev("div").html(newCaption);
-    // $.ajax({
-    //   url: putUrl,
-    //   type: "PUT",
-    //   data: { content: newCaption },
-    //   success: function() {
-    //     console.log("I updated!");
-    //     $(that).html(newCaption);
-    //   }
-    // });
+    $.ajax({
+      url: putUrl,
+      type: "PUT",
+      data: { content: newCaption },
+      success: function() {
+        console.log("I updated!");
+        // $(that).html(newCaption);
+      }
+    });
   });
 
 });
