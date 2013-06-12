@@ -40,6 +40,62 @@ $(document).ready(function(){
     });
   });
 
+  $(function() {
+    $("input:file").change(function (){
+      var fileName = $(this).val();
+      $(".photo-file-name").html(fileName);
+      console.log(fileName);
+    });
+  });
+
+  $(function() {
+    $(".draggable").draggable( {cursor: "move"} );
+    $(".resizable").resizable( {cursor: "crosshair", ghost: true} );
+    $(".droppable").droppable({
+      // tolerance: "fit",
+      hoverClass: "highlight",
+      greedy: true,
+      drop: function (event, ui) {
+        console.log(ui);
+        $(ui.draggable).addClass("is-off");
+        var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
+        var bigImage = $("<img src='" + bigImageUrl + "'>");
+        bigImage.attr("data-url", bigImageUrl);
+        bigImage.addClass("stretched resizable");
+        $(this).append(bigImage);
+      }
+    });
+  });
+
+  // // $(this).droppable("disable");
+  // // bigImage.resizable({cursor: "crosshair", ghost: true});
+  // $(bigImage).draggable({cursor: "move", snap: this, snapMode: "inner"});
+
+
+  // $("img").on("mouseover", function () {
+  //   console.log("hovering");
+  //   $(this).resizable("enable");
+  // });
+  //
+  // $("img").on("mouseoff", function () {
+  //   console.log("not hovering");
+  //   $(this).resizable("disable");
+  // });
+
+  // $("recto").on("dblclick", function () {
+  //   $(this).addClass("cropped");
+  // });
+  //
+  // $("recto.cropped").on("dblclick", function () {
+  //   $(this).removeClass("cropped");
+  // });
+
+
+  // $(".sidebar-file-field").on("change", function() {
+  //   var that = this;
+  //   $(that).closest(".photo-attachment-container").addClass("is-off")
+  // });
+
 });
 
 

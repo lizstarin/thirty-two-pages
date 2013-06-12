@@ -22,8 +22,16 @@
 
 <!-- nested form here for manuscript, images -->
 
-<%= f.label :thumbnail, "Thumbnail image" %>
-<%= f.file_field :thumbnail %><br>
+<%= f.label :thumbnail, "Thumbnail image" %><br>
+<div id="photo-attachment-container">
+  choose file
+  <div class="wrapper">
+    <%= f.file_field :thumbnail %>
+  </div>
+</div>
+<span class="photo-file-name">
+</span>
+<br>
 
 <%= f.label :public_false, "Keep my project private for now." %>
 <%= f.radio_button :public, false %><br>

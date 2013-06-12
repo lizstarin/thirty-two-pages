@@ -22,7 +22,7 @@
   <% second_page = "title page" %>
 <% end %>
 
-<section id='dummy-with-text' style='width:<%= w * 2 + m %>px; height:<%= h + ch %>px;'>
+<section id='dummy-with-text' style='width:<%= w * 2 + m %>px; height:<%= h + 2 * b + ch %>px;'>
   <div id='dummy' style='width:<%= w * (project.page_count + b) %>px; height:<%= h + b * 2 %>px;'>
 
     <!-- Renders first page -->
@@ -30,7 +30,7 @@
 
     </div>
 
-    <div class='first-page recto' style='width:<%= w %>px; height:<%= h %>px;'>
+    <div class='first-page recto droppable cropped' style='width:<%= w %>px; height:<%= h %>px;'>
       <p>1</p>
       <p class='page-content'><%= first_page %></p>
     </div>
@@ -41,7 +41,7 @@
   <% num.times do |i| %>
     <!-- verso -->
     <div class='dummy-spread'>
-      <div class='spread-page-l verso' style='width:<%= w %>px; height:<%= h %>px;'>
+      <div class='spread-page-l verso droppable cropped' style='width:<%= w %>px; height:<%= h %>px;'>
         <p><%= i * 2 + 2 %></p> <!-- page number -->
         <% if i == 0 %><p class='page-content'><%= second_page %></p><% end %>
         <% if i == 1 %><p class='page-content'><%= fourth_page %></p><% end %>
@@ -49,7 +49,7 @@
       </div>
 
     <!-- recto -->
-      <div class='spread-page-r recto' style='width:<%= w %>px; height:<%= h %>px;'>
+      <div class='spread-page-r recto droppable cropped' style='width:<%= w %>px; height:<%= h %>px;'>
         <p><%= i * 2 + 3 %></p> <!-- page number -->
         <% if i == 0 %><p class='page-content'><%= third_page %></p><% end %>
         <% if i == 1 %><p class='page-content'><%= fifth_page %></p><% end %>
@@ -60,7 +60,7 @@
   <% end %>
 
   <!-- Renders last page -->
-    <div class='last-page verso' style='width:<%= w %>px; height:<%= h %>px;'>
+    <div class='last-page verso droppable cropped' style='width:<%= w %>px; height:<%= h %>px;'>
       <p><%= project.page_count %></p>
       <p class='page-content'><%= last_page %></p>
     </div>
@@ -72,7 +72,7 @@
   <div id="dummy-text" style='width:<%= w * (project.page_count + b) %>px; height:<%= ch %>px; top:<%= h %>px;'>
     <div class="blank" style='width:<%= w %>px;'></div>
     <% project.page_count.times do |i| %>
-      <div class="dummy-page-text" style='width:<%= w %>px; height:<%= ch %>px;'>
+      <div class="dummy-page-text draggable" style='width:<%= w %>px; height:<%= ch %>px;'>
         <%= project.pages[i].caption.content %>
       </div>
 

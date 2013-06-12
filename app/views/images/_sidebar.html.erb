@@ -1,14 +1,25 @@
 <section class="photo-thumbs-sidebar">
   <% images.each do |i| %>
-    <article class="photo-thumb">
-      <%= image_tag i.file.url(:thumb) %>
+    <article class="photo-thumb draggable">
+      <%= image_tag i.file.url(:thumb), :data => {:url => i.file.url} %>
     </article>
   <% end %>
 
   <%= form_for image, :url => project_images_url(image.project), :html => { :multipart => true } do |form| %>
-    <%= form.file_field :file %>
 
-  	<%= form.submit "ADD IMAGE TO PROJECT" %>
+    <!-- <%= form.label :file, "add image to project" %> -->
+    <div id="photo-attachment-container" class="sidebar-content">
+      choose file
+      <div class="wrapper">
+        <%= form.file_field :file, :class => "sidebar-file-field" %>
+      </div>
+    </div>
+    <span class="photo-file-name sidebar-file-name">
+    </span>
+    <br>
+    <span class="form-submit-button sidebar-content">
+      <%= form.submit "ADD IMAGE" %>
+    </span>
   <% end %>
 </section>
 

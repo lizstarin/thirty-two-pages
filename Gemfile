@@ -18,6 +18,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'pry-rails'
 gem 'devise'
 gem 'better_errors'
