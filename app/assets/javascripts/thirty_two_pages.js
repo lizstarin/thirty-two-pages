@@ -1,18 +1,18 @@
 $(document).ready(function(){
 
   $(".recto").on("click", function(){
-    $("#dummy").css("left", "-=816");
-    $("#dummy-text").css("left", "-=816")
+    $("#dummy").css("left", "-=800");
+    // $("#dummy-text").css("left", "-=800")
     // console.log("clicked!");
   });
 
   $(".verso").on("click", function(){
-    $("#dummy").css("left", "+=816");
-    $("#dummy-text").css("left", "+=816")
+    $("#dummy").css("left", "+=800");
+    // $("#dummy-text").css("left", "+=800")
     // console.log("clicked!");
   });
 
-  $(".dummy-page-text").on("dblclick", function() {
+  $(".text").on("dblclick", function() {
     var that = this;
     $(that).addClass("is-off");
     var oldCaption = $(that).text();
@@ -23,8 +23,8 @@ $(document).ready(function(){
 
   $("textarea").on("blur", function() {
     var that = this;
-    $(".page-update-form").addClass("is-off");
-    $(".page-update-form").prev("div").removeClass("is-off");
+    $(".text-update-form").addClass("is-off");
+    $(".text-update-form").prev("div").removeClass("is-off");
     var newCaption = $(that).val();
     var putUrl = $(that).closest("form").attr("action");
     // $(that).closest("form").submit();
