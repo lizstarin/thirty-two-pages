@@ -10,11 +10,11 @@
     </article>
   <% end %>
 
-  <% @already_used.each do |image| %>
-    <article class="photo-thumb draggable">
-      <%= image_tag image.file.url(:thumb), :data => {:url => image.file.url} %>
-    </article>
-  <% end %>
+  <%# @already_used.each do |image| %>
+    <!-- <article class="photo-thumb draggable"> -->
+      <%#= image_tag image.file.url(:thumb), :data => {:url => image.file.url} %>
+    <!-- </article> -->
+  <%# end %>
 
   <%= form_for image, :url => project_images_url(image.project), :html => { :multipart => true } do |form| %>
 
