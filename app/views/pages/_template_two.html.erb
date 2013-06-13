@@ -34,9 +34,9 @@
 
           <% page_image = project.pages[i - 1].image %>
 
-          <% unless page_image.file.url == "/images/missing.png" %>
-  				  <div><%= image_tag page_image.file.url %></div>
-          <% end %>
+          <%# unless page_image.file.url == "/images/missing.png" %>
+  				  <div><%= image_tag page_image.file.url, :class => "draggable" %></div>
+          <%# end %>
         </div>
 
 				<div class="page-text">

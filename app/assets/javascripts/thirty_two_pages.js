@@ -63,21 +63,25 @@ $(document).ready(function(){
     }
   };
 
-  $(".droppable").on("drop", function (event, ui) {
-    var that = this;
+  $(".page-image").on("drop", function (event, ui) {
     if (inView(this) == true) {
-      $(ui.draggable).addClass("is-off");
       var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
       var bigImage = $("<img src='" + bigImageUrl + "'>");
+
+      $(ui.draggable).addClass("is-off");
+
       bigImage.attr("data-url", bigImageUrl);
-      bigImage.addClass("stretched");
+      // bigImage.addClass("stretched");
+      // bigImage.addClass("draggable");
+
       $(this).append(bigImage);
-      $(this).find("input").focus();
-  		console.log($(this).find("input"));
-      var urlToParse = $(this).closest(".page").find("form").attr("action");
-      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];
-      // var re = bigImageUrl.match(/original\/.*/);
-      var imageFileName = bigImageUrl.split("/").pop().split("?")[0];
+      console.log(this);
+      console.log(ui);
+
+      var urlToParse = $(this).closest(".page").find("form").attr("action");  // Pulls page number
+      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                  // out of text submit form
+
+      var imageFileName = bigImageUrl.split("/").pop().split("?")[0];         // Gets image file name from url
 
       $.ajax({
         url: "/pages/" + pageNum + "/image",
@@ -88,10 +92,14 @@ $(document).ready(function(){
         }
       });
 
-
     } else {
       $(ui.draggable).draggable( {revert: true} );
     }
+  });
+
+  $("photo-thumbs-sidebar").on("drop", function (event, ui) {
+    console.log(ui.draggable);
+    var smallImageUrl = $(ui.draggable).attr("data-url");
   });
 
   // // $(this).droppable("disable");
