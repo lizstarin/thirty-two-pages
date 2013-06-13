@@ -14,7 +14,7 @@
   <div class="project-dummy">
     <h2>Your dummy</h2>
     <div class="sidebar">
-      <%= render :partial => "images/sidebar", :locals => { :images => @project.images, :image => @image } %>
+      <%= render :partial => "images/sidebar", :locals => { :images => @project.images.reverse, :image => @image } %>
     </div>
 
     <%= render :partial => "pages/template_two", :locals => { :project => @project, :image => @image } %>

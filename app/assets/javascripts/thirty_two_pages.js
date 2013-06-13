@@ -36,13 +36,13 @@ $(document).ready(function(){
     });
   });
 
-  $(function() {
-    $("input:file").change(function (){
-      var fileName = $(this).val();
-      $(".photo-file-name").html(fileName);
-      console.log(fileName);
-    });
-  });
+  // $(function() {
+  //   $("input:file").change(function (){
+  //     var fileName = $(this).val();
+  //     $(".photo-file-name").html(fileName);
+  //     console.log(fileName);
+  //   });
+  // });
 
   $(function() {
     $(".draggable").draggable( {cursor: "move", revert: "invalid"} );
@@ -100,6 +100,12 @@ $(document).ready(function(){
   $("photo-thumbs-sidebar").on("drop", function (event, ui) {
     console.log(ui.draggable);
     var smallImageUrl = $(ui.draggable).attr("data-url");
+  });
+
+  $("input:file").change(function () {
+    console.log("file selected");
+    console.log(this);
+    $(this).closest("form").submit();
   });
 
   // // $(this).droppable("disable");
