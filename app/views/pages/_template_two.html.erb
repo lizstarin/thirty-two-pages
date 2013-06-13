@@ -32,8 +32,10 @@
         	<p class="page-num"><%= i %></p>
   		  	<p class="page-content"><%= beg_page_content[i - 1] %><%= end_page_content[i - pc] %></p>
 
-          <% unless image.file.url == "/images/missing.png" %>
-  				  <div><%= image_tag image.file.url %></div>
+          <% page_image = project.pages[i - 1].image %>
+
+          <% unless page_image.file.url == "/images/missing.png" %>
+  				  <div><%= image_tag page_image.file.url %></div>
           <% end %>
         </div>
 

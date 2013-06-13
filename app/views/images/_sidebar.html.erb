@@ -1,7 +1,18 @@
 <section class="photo-thumbs-sidebar">
+  <% @already_used = [] %>
   <% images.each do |i| %>
     <article class="photo-thumb draggable">
-      <%= image_tag i.file.url(:thumb), :data => {:url => i.file.url} %>
+      <% if i.page_id.nil? %>
+        <%= image_tag i.file.url(:thumb), :data => {:url => i.file.url} %>
+      <% else %>
+        <% @already_used << i %>
+      <% end %>
+    </article>
+  <% end %>
+
+  <% @already_used.each do |image| %>
+    <article class="photo-thumb draggable">
+      <%= image_tag image.file.url(:thumb), :data => {:url => image.file.url} %>
     </article>
   <% end %>
 

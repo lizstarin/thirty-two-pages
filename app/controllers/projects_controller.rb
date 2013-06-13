@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
       page.save
       caption = page.build_caption(:content => "(page #{i + 1} text)")
       caption.save
+      image = page.build_image(:file => nil)
+      image.save
     end
 
     if @project.save

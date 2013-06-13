@@ -64,35 +64,35 @@ $(document).ready(function(){
   };
 
   $(".droppable").on("drop", function (event, ui) {
+    var that = this;
     if (inView(this) == true) {
       $(ui.draggable).addClass("is-off");
-
       var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
       var bigImage = $("<img src='" + bigImageUrl + "'>");
-
       bigImage.attr("data-url", bigImageUrl);
       bigImage.addClass("stretched");
-
       $(this).append(bigImage);
       $(this).find("input").focus();
-
   		console.log($(this).find("input"));
+      var urlToParse = $(this).closest(".page").find("form").attr("action");
+      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];
+      // var re = bigImageUrl.match(/original\/.*/);
+      var imageFileName = bigImageUrl.split("/").pop().split("?")[0];
+
+      $.ajax({
+        url: "/pages/" + pageNum + "/image",
+        type: "PUT",
+        data: { page_id: pageNum, file_file_name: imageFileName },
+        success: function() {
+          console.log("I updated!");
+        }
+      });
+
+
     } else {
-      $(ui.draggable).draggable({revert:true});
+      $(ui.draggable).draggable( {revert: true} );
     }
   });
-
-
-	// var actionUrl = $(that).closest("form").attr("action");
-	//   $.ajax({
-	//     url: actionUrl,
-	//     data: { file: ui.draggable },
-	//     success: function() {
-	//       console.log("I updated!");
-	//       // $(that).html(newCaption);
-	//     }
-	//   });
-
 
   // // $(this).droppable("disable");
   // // bigImage.resizable({cursor: "crosshair", ghost: true});

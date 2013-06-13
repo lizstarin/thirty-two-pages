@@ -11,4 +11,16 @@ class ImagesController < ApplicationController
     redirect_to :back
   end
 
+  def update
+    # page = Page.find(params[:page_id])
+    # @image = page.image
+    @page = Page.find(params[:page_id])
+    @image = Image.where(:project_id => @page.project.id, :file_file_name => params[:file_file_name])[0]
+    @image.update_attributes(:page_id => params[:page_id])
+
+    @page.update_attributes(:image => @image)
+    @page.save
+    render :nothing => true
+  end
+
 end
