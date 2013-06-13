@@ -3,4 +3,5 @@ class Page < ActiveRecord::Base
 
   belongs_to :project
   has_one :caption, :dependent => :destroy
+	has_one :image
 end

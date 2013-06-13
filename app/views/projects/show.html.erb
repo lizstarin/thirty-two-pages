@@ -17,7 +17,7 @@
       <%= render :partial => "images/sidebar", :locals => { :images => @project.images, :image => @image } %>
     </div>
 
-    <%= render :partial => "pages/template", :locals => { :project => @project } %>
+    <%= render :partial => "pages/template", :locals => { :project => @project, :image => @image } %>
   </div>
 
 </div>

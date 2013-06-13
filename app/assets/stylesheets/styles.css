@@ -204,6 +204,12 @@ input[type="submit"]:hover {
   font-size: 12px;
 }
 
+/*img[data-url="/images/missing.png"] {
+	float: left;
+	position: absolute;
+	left: 100;
+}*/
+
 /*#photo-attachment-container button {
   background-color: red;
   position: relative;

@@ -27,6 +27,7 @@ ThirtyTwoPages::Application.routes.draw do
 
   resources :pages do
     resource :caption
+		resource :image
   end
 
   resources :posts do

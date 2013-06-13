@@ -26,22 +26,15 @@
   <div id='dummy' style='width:<%= w * (project.page_count + b) %>px; height:<%= h + b * 2 %>px;'>
 
     <!-- Renders first page -->
-    <div class='blank' style='width:<%= w %>px; height:<%= h %>px;'>
-
-    </div>
-
-    <div class='first-page recto page cropped droppable' style='width:<%= w %>px; height:<%= h %>px;'>
-      <p>1</p>
-      <p class='page-content'><%= first_page %></p>
-					
-			<%= form_for image do |f| %>
-				<%= f.hidden :file %>
-			<% end %>
-			
-			<% unless image.blank? %>
-				<%= image_tag image.file.url %>
-			<% end %>
-    </div>
+		<%= render :partial => "page", 
+							 :locals => { 
+								 :i => i, 
+								 :page_content => page_content, 
+								 :image => image, 
+								 :page_class => page_class,
+								 :w => w,
+								 :h => h
+								 } %>
 
   <!-- Renders spreads -->
   <% num = ("#{project.page_count}".to_i - 2)/2 %>

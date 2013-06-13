@@ -56,26 +56,39 @@ $(document).ready(function(){
   });
   $(".droppable").on("drop", console.log(this) );
 
-  $(".droppable").on("drop", function (event, ui) {
-    console.log(ui);
-    $(ui.draggable).addClass("is-off");
-    var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
-    var bigImage = $("<img src='" + bigImageUrl + "'>");
-    bigImage.attr("data-url", bigImageUrl);
-    bigImage.addClass("stretched resizable");
-    $(this).find(".page").append(bigImage);
-  });
-
-  // $(".verso").on("drop", function (event, ui) {
+  // $(".droppable").on("drop", function (event, ui) {
   //   console.log(ui);
-  //   console.log(this);
   //   $(ui.draggable).addClass("is-off");
   //   var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
   //   var bigImage = $("<img src='" + bigImageUrl + "'>");
   //   bigImage.attr("data-url", bigImageUrl);
   //   bigImage.addClass("stretched resizable");
-  //   $(this).append(bigImage);
+  //   $(this).find(".page").append(bigImage);
   // });
+
+  $(".page").on("drop", function (event, ui) {
+    console.log(ui);
+    console.log(this);
+    $(ui.draggable).addClass("is-off");
+    var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
+    var bigImage = $("<img src='" + bigImageUrl + "'>");
+    bigImage.attr("data-url", bigImageUrl);
+    bigImage.addClass("stretched resizable");
+    $(this).append(bigImage);
+    $(this).find("input").focus();
+		console.log($(this).find("input"));
+  });
+
+
+	// var actionUrl = $(that).closest("form").attr("action");
+	//   $.ajax({
+	//     url: actionUrl,
+	//     data: { file: ui.draggable },
+	//     success: function() {
+	//       console.log("I updated!");
+	//       // $(that).html(newCaption);
+	//     }
+	//   });
 
 
   // // $(this).droppable("disable");

@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     @project = Project.find(params[:project_id])
     @image = @project.images.build(params[:image])
     @image.save
-    render :nothing => true
+    redirect_to :back
   end
 
 end

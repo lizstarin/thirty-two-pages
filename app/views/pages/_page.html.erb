@@ -1,0 +1,12 @@
+<div class='page cropped droppable' style='width:<%= w %>px; height:<%= h %>px;'>
+  <p><%= i %></p>
+  <p class='page-content'><%= page_content %></p>
+			
+	<!-- <%= form_for image do |f| %>
+		<%= f.hidden :file %>
+	<% end %> -->
+	
+	<% unless image.blank? %>
+		<%= image_tag image.file.url %>
+	<% end %>
+</div>
