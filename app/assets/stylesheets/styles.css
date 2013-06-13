@@ -634,6 +634,7 @@ figure {
 
 .highlight {
   background-color: yellow;
+  border-color: #666;
   opacity: 0.5;
 }
 

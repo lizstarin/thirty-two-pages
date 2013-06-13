@@ -2,14 +2,10 @@ $(document).ready(function(){
 
   $(".recto").on("click", function(){
     $("#dummy").css("left", "-=800");
-    // $("#dummy-text").css("left", "-=800")
-    // console.log("clicked!");
   });
 
   $(".verso").on("click", function(){
     $("#dummy").css("left", "+=800");
-    // $("#dummy-text").css("left", "+=800")
-    // console.log("clicked!");
   });
 
   $(".text").on("dblclick", function() {
@@ -52,9 +48,25 @@ $(document).ready(function(){
     $(".draggable").draggable( {cursor: "move", revert: "invalid"} );
     $(".resizable").resizable( {cursor: "crosshair", ghost: true} );
     $(".droppable").droppable({ hoverClass: "highlight", greedy: true });
-      // tolerance: "fit",
   });
-  $(".droppable").on("drop", console.log(this) );
+
+  function inView (droppableArea) {
+    var dummyPos = $(droppableArea).closest("#dummy").css("left");
+    var left = parseInt(dummyPos.substring(0, dummyPos.length - 2));
+    var pageNum = parseInt($(droppableArea).find("p.page-num").text());
+    console.log(pageNum);
+    var pagePos = left + 400 * pageNum
+    console.log(pagePos);
+    if (pagePos == 400 || pagePos == 800) {
+      return true;
+      // $(droppableArea).droppable({ hoverClass: "highlight", greedy: true });
+    } else {
+      return false;
+    }
+  };
+
+  $(".page-image").filter
+  // $("section").not("#dummy-with-text").droppable( {disabled: true} );
 
   // $(".droppable").on("drop", function (event, ui) {
   //   console.log(ui);
@@ -66,17 +78,19 @@ $(document).ready(function(){
   //   $(this).find(".page").append(bigImage);
   // });
 
-  $(".page").on("drop", function (event, ui) {
-    console.log(ui);
-    console.log(this);
-    $(ui.draggable).addClass("is-off");
-    var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
-    var bigImage = $("<img src='" + bigImageUrl + "'>");
-    bigImage.attr("data-url", bigImageUrl);
-    bigImage.addClass("stretched resizable");
-    $(this).append(bigImage);
-    $(this).find("input").focus();
-		console.log($(this).find("input"));
+  $(".droppable").on("drop", function (event, ui) {
+    if (inView(this) == true) {
+      console.log(ui);
+      console.log(this);
+      $(ui.draggable).addClass("is-off");
+      var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
+      var bigImage = $("<img src='" + bigImageUrl + "'>");
+      bigImage.attr("data-url", bigImageUrl);
+      bigImage.addClass("stretched resizable");
+      $(this).append(bigImage);
+      $(this).find("input").focus();
+  		console.log($(this).find("input"));
+    }
   });
 
 
