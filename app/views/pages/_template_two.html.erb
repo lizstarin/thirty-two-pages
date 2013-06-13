@@ -18,9 +18,10 @@
 <% end %>
 
 <section id='dummy-with-text' style='width:<%= w * 2 + m %>px; height:<%= h + 2 * b + ch %>px;'>
-  <div id='dummy' style='width:<%= w * (pc + b) %>px; height:<%= h + b * 2 %>px;'>
+  <div id='dummy' style='width:<%= w * (pc + b) %>px; height:<%= h + b * 2 + ch %>px;'>
 
-		<% project.page_count.times do |i| %>
+		<% (project.page_count + 1).times do |i| %>
+			
 			<% if i == 0 %>
 				<% page_class = "blank" %>
 			<% elsif i % 2 == 1 %>
@@ -29,7 +30,7 @@
 				<% page_class = "page verso cropped droppable" %>
 			<% end %>
 			
-			<div class="<%= page_class %>" style="width:<%= w %>px; height:<%= h %>px;">
+			<div class="<%= page_class %>" style="width:<%= w %>px; height:<%= h + ch %>px;">
 		  	<p><% unless i == 0 %><%= i %><% end %></p>
 		  	<p class="page-content"><%= beg_page_content[i] %><%= end_page_content[i-pc] %></p>
 			
@@ -39,21 +40,25 @@
 	
 				<% unless image.blank? %>
 					<%= image_tag image.file.url %>
-				<% end %>								
+				<% end %>	
+				
+				<% unless i == 0 %>
+					<div class="page-text">
+			      <div class="text draggable" style="width:<%= w %>px; height:<%= ch %>px; top:<%= h %>px;">
+			        <%= project.pages[i - 1].caption.content %>
+			      </div>
+
+			      <div class="text-update-form is-off" style="width:<%= w + 2 * b %>px; height:<%= ch %>px; top:<%= h %>px;">
+			        <% caption = project.pages[i - 1].caption %>
+			        <%= form_for caption, :url => page_caption_url(caption.page), :method => :put do |f| %>
+			          <%= f.text_area :content %>
+			        <% end %>
+			      </div>
+					</div>
+				<% end %>
+											
 			</div>
 			
-			<!-- <div class="page-text">
-	      <div class="text draggable" style="width:<%= w %>px; height:<%= ch %>px; top:<%= h %>px;">
-	        <%= project.pages[i].caption.content %>
-	      </div>
-
-	      <div class="text-update-form is-off" style="width:<%= w + 2 * b %>px; height:<%= ch %>px; top:<%= h %>px;">
-	        <% caption = project.pages[i].caption %>
-	        <%= form_for caption, :url => page_caption_url(caption.page), :method => :put do |f| %>
-	          <%= f.text_area :content %>
-	        <% end %>
-	      </div>
-			</div> -->
 		<% end %>
 
   </div>
