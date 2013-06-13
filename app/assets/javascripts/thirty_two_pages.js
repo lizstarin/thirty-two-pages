@@ -72,7 +72,9 @@ $(document).ready(function(){
 
       bigImage.attr("data-url", bigImageUrl);
       // bigImage.addClass("stretched");
-      // bigImage.addClass("draggable");
+      bigImage.addClass("draggable");
+      bigImage.draggable();
+      $(this).droppable( {disabled: true} );
 
       $(this).append(bigImage);
       console.log(this);
