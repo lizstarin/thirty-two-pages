@@ -32,11 +32,9 @@
         	<p class="page-num"><%= i %></p>
   		  	<p class="page-content"><%= beg_page_content[i - 1] %><%= end_page_content[i - pc] %></p>
 
-  				<%#= form_for image do |f| %>
-  					<%#= f.hidden :file %>
-  				<%# end %>
-
-  				<%= image_tag image.file.url %>
+          <% unless image.file.url == "/images/missing.png" %>
+  				  <div><%= image_tag image.file.url %></div>
+          <% end %>
         </div>
 
 				<div class="page-text">
