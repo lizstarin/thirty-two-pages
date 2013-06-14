@@ -8,7 +8,7 @@ $(document).ready(function(){
     $("#dummy").css("left", "+=800");
   });
 
-  $(".text").on("dblclick", function() {
+  $(".caption-text").on("dblclick", function() {
     var that = this;
     $(that).addClass("is-off");
     var oldCaption = $(that).text();
@@ -19,12 +19,14 @@ $(document).ready(function(){
 
   $("#caption_content").on("blur", function() {
     var that = this;
-    $(".text-update-form").addClass("is-off");
-    $(".text-update-form").prev("div").removeClass("is-off");
+    // var lr = $(that).closest("");
+    // console.log(lr);
+    $(that).closest(".text-update-form").addClass("is-off");
+    $(that).closest(".text-update-form").prev("div").removeClass("is-off");
     var newCaption = $(that).val();
-    var putUrl = $(that).closest("form").attr("action");
+    var putUrl = $(that).closest(".edit_caption").attr("action");
     // $(that).closest("form").submit();
-    $(that).closest("div").prev("div").html(newCaption);
+    $(that).closest(".text-update-form").prev("div").html(newCaption);
     $.ajax({
       url: putUrl,
       type: "PUT",

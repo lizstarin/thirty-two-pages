@@ -33,13 +33,13 @@ u.save
 
 
 
-Friendship.create(:user_id => 1, :friend_id => 2)
-Friendship.create(:user_id => 1, :friend_id => 4)
-Friendship.create(:user_id => 1, :friend_id => 5)
-Friendship.create(:user_id => 2, :friend_id => 3)
-Friendship.create(:user_id => 3, :friend_id => 4)
-Friendship.create(:user_id => 3, :friend_id => 5)
-Friendship.create(:user_id => 4, :friend_id => 5)
+# Friendship.create(:user_id => 1, :friend_id => 2)
+# Friendship.create(:user_id => 1, :friend_id => 4)
+# Friendship.create(:user_id => 1, :friend_id => 5)
+# Friendship.create(:user_id => 2, :friend_id => 3)
+# Friendship.create(:user_id => 3, :friend_id => 4)
+# Friendship.create(:user_id => 3, :friend_id => 5)
+# Friendship.create(:user_id => 4, :friend_id => 5)
 
 p = User.find(1).posts.build(:content => "I'm hungry. OM NOM NOM")
 p.save
