@@ -63,22 +63,25 @@ $(document).ready(function(){
     }
   };
 
+  $(".page-image").on("mouseover", function (event, ui) {
+    console.log("hovering");
+    $(this).find("img")
+  });
+
   $(".page-image").on("drop", function (event, ui) {
-
-    var currentImageUrl = $($(this).find("img")[0]).attr("src");
-    var newImageUrl = ui.draggable.attr("src");
-
     if (inView(this) == true) {
+      var smallImageUrl = $(ui.draggable).find("img").attr("src");
       var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
       var bigImage = $("<img src='" + bigImageUrl + "'>");
 
       $(ui.draggable).addClass("is-off");
 
       bigImage.attr("data-url", bigImageUrl);
-      bigImage.draggable();
-      // bigImage.addClass("stretched");
+      bigImage.attr("data-thumb-url", smallImageUrl);
+      // bigImage.draggable( "enable" );
+      bigImage.addClass("stretched");
 
-      $(this).append(bigImage);
+      $(this).prepend(bigImage);
 
       var urlToParse = $(this).closest(".page").find("form").attr("action");  // Pulls page number
       var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                  // out of text submit form
@@ -101,7 +104,15 @@ $(document).ready(function(){
 
   $("photo-thumbs-sidebar").on("drop", function (event, ui) {
     console.log(ui.draggable);
-    var smallImageUrl = $(ui.draggable).attr("data-url");
+    var smallImageUrl = $(ui.draggable).find("img").attr("data-thumb-url");
+    var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
+    var smallImage = $("<img src='" + smallImageUrl + "'>");
+
+    $(ui.draggable).addClass("is-off");
+
+    smallImage.draggable();
+
+    $(this).append(smallImage);
   });
 
   $("input:file").change(function () {
@@ -112,7 +123,7 @@ $(document).ready(function(){
   //   });
     // var imageFileName = $(this).closest("input").val();
     // var projectId = window.location.pathname.split("/").pop();
-    $(this).closest("form").submit();
+    $(this).closest("form").submit();                             // Soooooo slooooowwwwwww
     // $.ajax({
       // url: "/projects/" + projectId + "/images",
       // type: "POST",
