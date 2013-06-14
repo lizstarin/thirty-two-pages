@@ -1,18 +1,52 @@
-<h2>Sign in</h2>
+<style>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+body, .content, .container {
+	background-color: #f9efe2;
+	background-image: url("/images/ricepaper2.png");
+}
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+.nav {
+	width: 780px;
+	border-radius: 20px;
+	padding: 30px 50px 10px 50px;
+	box-shadow: 0px 0px 40px #bbb;
+	height: 30px;
+	position: relative;
+	top: -20px;
+	margin: auto;
+}
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+</style>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+<section id="sign-in-box">
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+	<div id="hero-logo">thirty-two pages</div>
+	<div id="sign-in">
+		<h2>Sign in</h2>
 
-<%= render "devise/shared/links" %>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+		  <div><%= f.label :email %><br />
+		  <%= f.email_field :email, :autofocus => true %></div>
+
+		  <div><%= f.label :password %><br />
+		  <%= f.password_field :password %></div>
+
+		  <% if devise_mapping.rememberable? -%>
+		    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+		  <% end -%>
+
+		  <div><%= f.submit "Sign in" %></div>
+		<% end %>
+
+		<div id="devise-shared-links">
+			<%= render "devise/shared/links" %>
+		</div>
+	</div>
+	<div id="hero-copy">
+		an app for creating & sharing picture books		
+	</div>
+	<div id="hero-image">
+		<img src="/images/piggie-001.jpg">
+	</div>
+</section>

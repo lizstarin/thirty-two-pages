@@ -14,7 +14,7 @@ $(document).ready(function(){
     var oldCaption = $(that).text();
     $(that).next("div").removeClass("is-off");
     $(that).next("div").val(oldCaption);
-    $("textarea").focus();
+    $(that).next("div").find("textarea").focus();
   });
 
   $("textarea").on("blur", function() {

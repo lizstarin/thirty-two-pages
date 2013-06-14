@@ -1,23 +1,27 @@
 <div class="project">
-  <h2><%= @project.title %></h2>
-  <div>
-    <%= link_to "Edit this project", edit_project_url(@project) %>
-  </div>
   <div class="project-user">
-    <a href="<%= user_url(@project.user) %>"><%= image_tag @project.user.avatar.url(:bitty) %></a>
-    <span class="project-user-name"><%= @project.user.full_name %></span>
+   <a href="<%= user_url(@project.user) %>"><%= image_tag @project.user.avatar.url(:bitty) %></a>
+   <span class="project-user-name"><%= @project.user.full_name %></span>
   </div>
+	<h1 class="project-title"><%= @project.title %></h1>
   <div class="project-description">
     <%= @project.description %>
   </div>
+  <div class="project-edit">
+    <h2><%= link_to "Edit this project", edit_project_url(@project) %><h2>
+  </div>
 
   <div class="project-dummy">
-    <h2>Your dummy</h2>
     <div class="sidebar">
       <%= render :partial => "images/sidebar", :locals => { :images => @project.images.reverse, :image => @image } %>
     </div>
-
     <%= render :partial => "pages/template_two", :locals => { :project => @project, :image => @image } %>
   </div>
 
 </div>
+
+<section class="user-timeline">
+	<h2>comment on this project</h2>
+  <%= render :partial => "posts/form", :locals => {:project_id => @project.id} %>
+  <%= render :partial => "posts/list", :locals => {:posts => @project.posts.order("id DESC")} %>
+</section>

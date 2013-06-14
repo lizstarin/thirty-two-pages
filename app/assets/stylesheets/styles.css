@@ -59,8 +59,15 @@ h2 {
 /*  background-color: white;*/
 	width: 950px;
 	margin: 40px auto;
+/*	background-color: yellow;*/
 }
 
+#logo {
+	font-family: "Rokkitt";
+	text-transform: none;
+	font-size: 20px;
+	color: #ed3f1c;
+}
 
 /* nav */
 
@@ -132,6 +139,79 @@ h2 {
 
 .drop-down > li:last-child {
   border-bottom: none;
+}
+
+
+/* sign in */
+
+#sign-in-box {
+/*	display: inline-block;*/
+/*	background-color: green;*/
+	margin: auto;
+	padding: 20px 50px;
+	border-radius: 20px;
+	width: 780px;
+	background-color: white;
+	box-shadow: 0px 0px 40px #bbb;
+	height: 620px;
+/*	background-image: url("/images/piggie-001.jpg");*/
+	background-repeat: no-repeat;
+}
+
+#sign-up-link {
+	float: right;
+/*	font-size: 20px;*/
+}
+
+#hero-logo {
+	font-family: "Rokkitt";
+	font-size: 110px;
+	color: #ed3f1c;
+	font-weight: bold;
+	z-index: 3;
+	position: relative;
+/*	letter-spacing: -4px;*/
+}
+
+#hero-copy {
+	font-family: "Rokkitt";
+	font-size: 50px;
+	color: #333;
+	padding: 100px 100px 0px 150px;
+/*	background-image: url("/images/piggie-parade.png");*/
+
+	background-repeat: no-repeat;
+/*	background-color: yellow;*/
+	width: 200px;
+	float: right;
+	z-index: 2;
+	position: relative;
+	text-align: right;
+	top: 0px;
+	left: 60px;
+}
+
+#hero-image {
+	z-index: 0;
+	position: relative;
+	top: -480px;
+	left: 110px;
+}
+
+#sign-in {
+	position: relative;
+	float: left;
+	display: inline-block;
+	margin: 50px 20px 0px 0px;
+	z-index: 1;
+}
+
+#devise-shared-links {
+	width: 100px;
+/*	padding-top: 50px;*/
+	position: relative;
+	top: 50px;
+	border-top: 2px dashed #ccc;
 }
 
 /* forms */
@@ -535,6 +615,21 @@ figure {
   content: "";
   display: table;
   clear: both;
+}
+
+.project-user {
+	float: right;
+	font-size: 20px;
+}
+
+.project-edit {
+	padding-top: 10px;
+}
+
+.project-title {
+/*	float: left;*/
+	margin-right: 20px;
+	margin-bottom: 5px;
 }
 
 /* dummy */

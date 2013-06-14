@@ -17,7 +17,8 @@
   	<div class="left">
       <section class="user-timeline">
         <% if @user == current_user %>
-          <%= render :partial => "posts/form" %>
+				  <h2>What's on your mind?</h2>
+          <%= render :partial => "posts/form", :locals => {:project_id => nil} %>
         <% else %>
           <h2>Timeline</h2>
         <% end %>
