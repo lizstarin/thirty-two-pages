@@ -7,6 +7,7 @@ class Project < ActiveRecord::Base
   has_many :pages, :dependent => :destroy
   has_many :images, :dependent => :destroy
 	has_many :posts, :dependent => :destroy
+	has_many :likes, :dependent => :destroy
 
   validates :user_id, :title, :presence => true
   validates :public, :inclusion => { :in => [true, false] }

@@ -23,6 +23,7 @@ ThirtyTwoPages::Application.routes.draw do
   resources :projects, :except => [:index, :show] do
     resources :pages
     resources :images
+		resources :likes
   end
 
   resources :pages do

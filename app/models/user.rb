@@ -38,8 +38,12 @@ class User < ActiveRecord::Base
     self.rec_requests.where(:status => "pending")
   end
 
-  def likes?(post)
+  def likes_post?(post)
     Like.where(:user_id => self.id, :post_id => post.id).length == 1
+  end
+	
+  def likes_project?(project)
+    Like.where(:user_id => self.id, :project_id => project.id).length == 1
   end
 
   def unread_messages

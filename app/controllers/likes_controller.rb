@@ -1,18 +1,31 @@
 class LikesController < ApplicationController
 
   def create
-    # @like = current_user.like.build(params[:like])
-    @like = current_user.likes.build(:post_id => params[:post_id])
+		if params[:project_id] == nil
+	    @like = current_user.likes.build(:post_id => params[:post_id])
 
-    if @like.save
-      notif = @like.post.user.notifications.build(
-                      :content => "#{current_user.full_name} likes your post #{@like.post.title}.",
-                      :read => false
-                      )
-                      notif.save
-    end
-    redirect_to :back
-  end
+	    if @like.save
+	      notif = @like.post.user.notifications.build(
+	                      :content => "#{current_user.full_name} likes your post #{@like.post.title}.",
+	                      :read => false
+	                      )
+	                      notif.save
+	    end
+	    redirect_to :back
+		elsif params[:post_id] == nil
+		
+	    @like = current_user.likes.build(:project_id => params[:project_id])
+
+	    if @like.save
+	      notif = @like.project.user.notifications.build(
+	                      :content => "#{current_user.full_name} likes your project #{@like.project.title}.",
+	                      :read => false
+	                      )
+	                      notif.save
+	    end
+	    redirect_to :back
+  	end
+	end
 
   def destroy
     @like = Like.find(params[:like])
