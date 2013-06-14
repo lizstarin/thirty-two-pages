@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130614073429) do
+ActiveRecord::Schema.define(:version => 20130614165544) do
 
   create_table "captions", :force => true do |t|
     t.text     "content"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20130614073429) do
     t.integer  "trim_height"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "emails", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "sender_email"
+    t.string   "sender_name"
+    t.string   "recipient_email"
+    t.string   "link"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "friend_requests", :force => true do |t|

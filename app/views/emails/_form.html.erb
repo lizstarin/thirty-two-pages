@@ -1,0 +1,20 @@
+<%= form_for Email.new do |f| %>
+  <% if signed_in? %>
+    <%= f.hidden_field :sender_name, :value => current_user.full_name %>
+    <%= f.hidden_field :sender_email, :value => current_user.email %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  <% else %>
+    <%= f.label :sender_name %><br>
+    <%= f.text_field :sender_name %><br>
+
+    <%= f.label :sender_email %><br>
+    <%= f.text_field :sender_email %><br>
+  <% end %>
+
+  <%= f.label :recipient_email %><br>
+  <%= f.text_field :recipient_email %><br>
+
+  <%= f.hidden_field :link, :value => "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>
+
+  <%= f.submit "share project!" %>
+<% end %>

@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :notifications
 	has_many :photos
   has_many :projects
+  has_many :emails
   #belongs_to :friend, :class_name => "User"
   accepts_nested_attributes_for :profile
   attr_accessible :profile_attributes
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
   def likes_post?(post)
     Like.where(:user_id => self.id, :post_id => post.id).length == 1
   end
-	
+
   def likes_project?(project)
     Like.where(:user_id => self.id, :project_id => project.id).length == 1
   end

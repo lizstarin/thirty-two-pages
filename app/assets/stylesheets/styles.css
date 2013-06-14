@@ -649,6 +649,14 @@ figure {
 	margin-bottom: 10px;
 }
 
+.project-timeline {
+  float: left;
+}
+
+.project-email {
+  float: right;
+}
+
 /* dummy */
 
 .blank {

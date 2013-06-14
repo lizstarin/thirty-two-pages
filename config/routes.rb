@@ -36,5 +36,7 @@ ThirtyTwoPages::Application.routes.draw do
     resources :likes
   end
 
+  resources :emails
+
 	resources :user_searches, :only => [:new, :create, :show]
 end
