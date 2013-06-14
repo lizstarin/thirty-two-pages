@@ -148,14 +148,15 @@ h2 {
 /*	display: inline-block;*/
 /*	background-color: green;*/
 	margin: auto;
-	padding: 20px 50px;
+	padding: 40px 50px 60px 50px;
 	border-radius: 20px;
-	width: 780px;
+	width: 722px;
 	background-color: white;
 	box-shadow: 0px 0px 40px #bbb;
-	height: 620px;
+/*  height: 620px;*/
 /*	background-image: url("/images/piggie-001.jpg");*/
 	background-repeat: no-repeat;
+  position: relative;
 }
 
 #sign-up-link {
@@ -177,7 +178,7 @@ h2 {
 	font-family: "Rokkitt";
 	font-size: 50px;
 	color: #333;
-	padding: 100px 100px 0px 150px;
+/*  padding: 100px 100px 0px 150px;*/
 /*	background-image: url("/images/piggie-parade.png");*/
 
 	background-repeat: no-repeat;
@@ -185,33 +186,45 @@ h2 {
 	width: 200px;
 	float: right;
 	z-index: 2;
-	position: relative;
+	position: absolute;
+  bottom: 60px;
+  right: 50px;
 	text-align: right;
-	top: 0px;
-	left: 60px;
+/*  top: 0px;*/
+/*  left: 60px;*/
 }
 
 #hero-image {
 	z-index: 0;
-	position: relative;
-	top: -480px;
-	left: 110px;
+	position: absolute;
+  right: 50px;
+  top: 0px;
+/*  top: -480px;*/
+/*  left: 110px;*/
+/*  float: right;*/
+
 }
 
 #sign-in {
 	position: relative;
 	float: left;
 	display: inline-block;
-	margin: 50px 20px 0px 0px;
+	margin: 0px 20px 0px 0px;
 	z-index: 1;
 }
 
+#sign-in-box:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 #devise-shared-links {
-	width: 100px;
+/*  width: 100px;*/
 /*	padding-top: 50px;*/
 	position: relative;
-	top: 50px;
-	border-top: 2px dashed #ccc;
+/*  top: 50px;*/
+/*  border-top: 2px dashed #ccc;*/
 }
 
 /* forms */

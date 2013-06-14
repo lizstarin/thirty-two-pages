@@ -25,6 +25,10 @@ gem 'devise'
 gem 'better_errors'
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.5.7'
+gem 'mail'
+gem "letter_opener", :group => :development
+gem 'sendgrid'
+
 # gem 'ujs'
 
 group :production do

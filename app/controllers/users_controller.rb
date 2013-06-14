@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       # redirect_to "/users/#{@user.id}/profile", :method => :post
       @profile = @user.build_profile(:user_id => params[:user_id])
       @profile.save
+      Notifier.signup_email(@user).deliver
       redirect_to new_user_session_url
     else
       render :new

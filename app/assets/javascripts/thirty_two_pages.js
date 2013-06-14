@@ -17,7 +17,7 @@ $(document).ready(function(){
     $(that).next("div").find("textarea").focus();
   });
 
-  $("textarea").on("blur", function() {
+  $("#caption_content").on("blur", function() {
     var that = this;
     $(".text-update-form").addClass("is-off");
     $(".text-update-form").prev("div").removeClass("is-off");

@@ -6,10 +6,10 @@
     <article>
     	<%= f.text_area :content %>
 		</article>
-		
-		<% unless project_id.nil? %>
+
+		<%# unless project_id.nil? %>
 			<%= f.hidden_field :project_id, :value => project_id %>
-		<% end %>
+		<%# end %>
 
     <article class="button">
     	<%= f.submit "BE HEARD" %>

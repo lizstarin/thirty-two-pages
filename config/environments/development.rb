@@ -49,4 +49,6 @@ ThirtyTwoPages::Application.configure do
     }# ,
 #     :s3_host_name => "s3-us-west-2.amazonaws.com"
   }
+
+#  config.action_mailer.delivery_method = :letter_opener
 end

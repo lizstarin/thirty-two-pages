@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <%= @user.full_name %> has shared a project with you! Check it out: <%= link_to "#{@user.profile.first_name}'s picture book project" @url %>
+  </body>
+</html>
