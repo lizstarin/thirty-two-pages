@@ -13,7 +13,9 @@ class ImagesController < ApplicationController
 
   def update
     @page = Page.find(params[:page_id])
-    @page.image.update_attributes(:page_id => nil)    # NB: @image and page.image are different objects
+    if @page.image
+      @page.image.update_attributes(:page_id => nil)    # NB: @image and page.image are different objects
+    end
 
     @image = Image.where(:project_id => @page.project.id, :file_file_name => params[:file_file_name])[0]
     @image.update_attributes(:page_id => params[:page_id])

@@ -19,6 +19,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
 gem 'pry-rails'
 gem 'devise'
 gem 'better_errors'

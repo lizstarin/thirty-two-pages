@@ -64,6 +64,10 @@ $(document).ready(function(){
   };
 
   $(".page-image").on("drop", function (event, ui) {
+
+    var currentImageUrl = $($(this).find("img")[0]).attr("src");
+    var newImageUrl = ui.draggable.attr("src");
+
     if (inView(this) == true) {
       var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
       var bigImage = $("<img src='" + bigImageUrl + "'>");
@@ -71,14 +75,10 @@ $(document).ready(function(){
       $(ui.draggable).addClass("is-off");
 
       bigImage.attr("data-url", bigImageUrl);
-      // bigImage.addClass("stretched");
-      bigImage.addClass("draggable");
       bigImage.draggable();
-      $(this).droppable( {disabled: true} );
+      // bigImage.addClass("stretched");
 
       $(this).append(bigImage);
-      console.log(this);
-      console.log(ui);
 
       var urlToParse = $(this).closest(".page").find("form").attr("action");  // Pulls page number
       var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                  // out of text submit form
@@ -106,8 +106,21 @@ $(document).ready(function(){
 
   $("input:file").change(function () {
     console.log("file selected");
-    console.log(this);
+    // $(this).closest("form").fileupload({
+  //     singleFileUploads: false,
+  //     sequentialUploads: true
+  //   });
+    // var imageFileName = $(this).closest("input").val();
+    // var projectId = window.location.pathname.split("/").pop();
     $(this).closest("form").submit();
+    // $.ajax({
+      // url: "/projects/" + projectId + "/images",
+      // type: "POST",
+      // data: { project_id: projectId, file_file_name: imageFileName },
+      // success: function() {
+        // console.log("I updated!");
+      // }
+    // });
   });
 
   // // $(this).droppable("disable");
