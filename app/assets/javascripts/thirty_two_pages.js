@@ -51,28 +51,6 @@ $(document).ready(function(){
     });
   });
 
-
-  // $("#caption_content").on("blur", function() {
-  //   var that = this;
-  //   // var lr = $(that).closest("");
-  //   // console.log(lr);
-  //   $(that).closest(".text-update-form").addClass("is-off");
-  //   $(that).closest(".text-update-form").prev("div").removeClass("is-off");
-  //   var newCaption = $(that).val();
-  //   var putUrl = $(that).closest(".edit_caption").attr("action");
-  //   // $(that).closest("form").submit();
-  //   $(that).closest(".text-update-form").prev("div").html(newCaption);
-  //   $.ajax({
-  //     url: putUrl,
-  //     type: "PUT",
-  //     data: { content: newCaption },
-  //     success: function() {
-  //       console.log("I updated!");
-  //       // $(that).html(newCaption);
-  //     }
-  //   });
-  // });
-
   // $(function() {
   //   $("input:file").change(function (){
   //     var fileName = $(this).val();
@@ -84,7 +62,7 @@ $(document).ready(function(){
   $(function() {
     $(".draggable").draggable( {cursor: "move", revert: "invalid"} );
     $(".resizable").resizable( {cursor: "crosshair", ghost: true, handles: "ne, se"} );
-    $(".droppable").droppable({ hoverClass: "highlight", greedy: true });
+    $(".page-image.droppable").droppable({ hoverClass: "highlight", greedy: true });
   });
 
   function inView (droppableArea) {
@@ -100,56 +78,102 @@ $(document).ready(function(){
     }
   };
 
-  $(".page-image").on("mouseover", function (event, ui) {
-    console.log("hovering");
-    $(this).find("img")
+  function linkSmallToBig (smallImage) {
+    var smallImageUrl = $(smallImage).find("img").attr("src");
+    var bigImageUrl = $(smallImage).find("img").attr("data-url");
+    var bigImage = $("<img src='" + bigImageUrl + "' data-thumb-url='" + smallImageUrl + "'>");
+    return bigImage;
+  };
+
+  function linkBigToSmall (bigImage) {
+    var bigImageUrl = $(bigImage).find("img").attr("src");
+    var smallImageUrl = $(bigImage).find("img").attr("data-thumb-url");
+    var smallImage = $("<img src='" + smallImageUrl + "' data-url='" + bigImageUrl + "'>");
+    return smallImage;
+  };
+
+  function getImageFileName (image) {
+    var imageFileName = image.attr("src").split("/").pop().split("?")[0];
+    return imageFileName;
+  };
+
+  function updatePageImage (pageNum, imageFileName) {
+    $.ajax({
+      url: "/pages/" + pageNum + "/image",
+      type: "PUT",
+      data: { page_id: pageNum, file_file_name: imageFileName },
+      success: function() {
+        console.log("I updated!");
+      }
+    });
+  };
+
+  $(".image-recto,img").on("mouseenter", function (event, ui) {
+    var that = this;
+    console.log(that);
+    setTimeout(function () {
+      console.log("I am resizable!");
+      $(that).triggerHandler("focus");
+      $(that).focus(function() {
+        console.log("focused!")
+      });
+      $(that).closest(".page-image.recto").removeClass("cropped");
+      $(that).resizable();
+    }, 1000);
+  });
+
+  $(".page-image-recto,.image-recto).on("blur", function (event, ui) {
+    console.log("I am not resizable!");
+    $(this).closest(".page-image").addClass("cropped");
+    $(this).resizable("destroy");
   });
 
   $(".page-image").on("drop", function (event, ui) {
     if (inView(this) == true) {
-      var smallImageUrl = $(ui.draggable).find("img").attr("src");
-      var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
-      var bigImage = $("<img src='" + bigImageUrl + "'>");
+      var bigImage = linkSmallToBig(ui.draggable);
 
       $(ui.draggable).addClass("is-off");
 
-      bigImage.attr("data-url", bigImageUrl);
-      bigImage.attr("data-thumb-url", smallImageUrl);
-      // bigImage.draggable( "enable" );
-      bigImage.addClass("stretched");
+      console.log(bigImage);
+      bigImage.draggable();
+      bigImage.addClass("draggable stretched page-image-object");
 
       $(this).prepend(bigImage);
+      $(this).droppable("destroy");
 
-      var urlToParse = $(this).closest(".page").find("form").attr("action");  // Pulls page number
-      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                  // out of text submit form
+      var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
+      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
+      var imageFileName = getImageFileName(bigImage);
 
-      var imageFileName = bigImageUrl.split("/").pop().split("?")[0];         // Gets image file name from url
-
-      $.ajax({
-        url: "/pages/" + pageNum + "/image",
-        type: "PUT",
-        data: { page_id: pageNum, file_file_name: imageFileName },
-        success: function() {
-          console.log("I updated!");
-        }
-      });
+      updatePageImage(pageNum, imageFileName);
 
     } else {
       $(ui.draggable).draggable( {revert: true} );
     }
   });
 
-  $("photo-thumbs-sidebar").on("drop", function (event, ui) {
-    console.log(ui.draggable);
-    var smallImageUrl = $(ui.draggable).find("img").attr("data-thumb-url");
-    var bigImageUrl = $(ui.draggable).find("img").attr("data-url");
-    var smallImage = $("<img src='" + smallImageUrl + "'>");
+  $(".page-image").on("out", function (event, ui) {
+    if (inView(this) == true) {
+      console.log("dragged out!");
+      var smallImage = linkBigToSmall(ui.draggable);
 
-    $(ui.draggable).addClass("is-off");
+      $(ui.draggable).addClass("is-off");
 
-    smallImage.draggable();
+      smallImage.draggable( {revert: true} );
+      smallImage.addClass("draggable");
 
-    $(this).append(smallImage);
+      $(this).empty();
+      $(this).droppable();
+
+      var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
+      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
+
+      updatePageImage(nil, nil);
+      $(".photo-thumbs-sidebar").prepend(smallImage);
+
+    } else {
+      $(ui.draggable).draggable( {revert: true} );
+    }
   });
 
   $("input:file").change(function () {
