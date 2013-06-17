@@ -32,7 +32,7 @@
           <% page_image = project.pages[i - 1].image %>
 
           <% unless page_image.nil? %>
-  				  <div class="image-<%= page_class %>"><%= image_tag page_image.file.url, :class => "draggable" %></div>
+  				  <div class="image-<%= page_class %>"><%= image_tag page_image.file.url, :class => "draggable stretched" %></div>
           <% end %>
 
         	<p class="page-num"><%= i %></p>

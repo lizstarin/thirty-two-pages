@@ -110,19 +110,19 @@ $(document).ready(function(){
 
   $(".image-recto,img").on("mouseenter", function (event, ui) {
     var that = this;
-    console.log(that);
+    // console.log(that);
     setTimeout(function () {
-      console.log("I am resizable!");
+      // console.log("I am resizable!");
       $(that).triggerHandler("focus");
       $(that).focus(function() {
         console.log("focused!")
       });
-      $(that).closest(".page-image.recto").removeClass("cropped");
-      $(that).resizable();
+      $("div.page-image.recto").removeClass("cropped");
+      // $(that).resizable();
     }, 1000);
   });
 
-  $(".page-image-recto,.image-recto).on("blur", function (event, ui) {
+  $(".page-image.recto,.image-recto").on("blur", function (event, ui) {
     console.log("I am not resizable!");
     $(this).closest(".page-image").addClass("cropped");
     $(this).resizable("destroy");
@@ -134,7 +134,6 @@ $(document).ready(function(){
 
       $(ui.draggable).addClass("is-off");
 
-      console.log(bigImage);
       bigImage.draggable();
       bigImage.addClass("draggable stretched page-image-object");
 
