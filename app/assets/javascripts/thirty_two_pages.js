@@ -17,26 +17,61 @@ $(document).ready(function(){
     $(that).next("div").find("textarea").focus();
   });
 
-  $("#caption_content").on("blur", function() {
+  $("div.text-update-form.recto,form,textarea").on("blur", function() {
     var that = this;
-    // var lr = $(that).closest("");
-    // console.log(lr);
-    $(that).closest(".text-update-form").addClass("is-off");
-    $(that).closest(".text-update-form").prev("div").removeClass("is-off");
+    $("div.text-update-form.caption-recto").addClass("is-off");
+    $("div.caption-text.caption-recto").removeClass("is-off");
     var newCaption = $(that).val();
     var putUrl = $(that).closest(".edit_caption").attr("action");
-    // $(that).closest("form").submit();
-    $(that).closest(".text-update-form").prev("div").html(newCaption);
+    $(that).closest("div").prev("div").html(newCaption);
     $.ajax({
       url: putUrl,
       type: "PUT",
       data: { content: newCaption },
       success: function() {
         console.log("I updated!");
-        // $(that).html(newCaption);
       }
     });
   });
+
+  $("div.text-update-form.verso,form,textarea").on("blur", function() {
+    var that = this;
+    $("div.text-update-form.caption-verso").addClass("is-off");
+    $("div.caption-text.caption-verso").removeClass("is-off");
+    var newCaption = $(that).val();
+    var putUrl = $(that).closest(".edit_caption").attr("action");
+    $(that).closest("div").prev("div").html(newCaption);
+    $.ajax({
+      url: putUrl,
+      type: "PUT",
+      data: { content: newCaption },
+      success: function() {
+        console.log("I updated!");
+      }
+    });
+  });
+
+
+  // $("#caption_content").on("blur", function() {
+  //   var that = this;
+  //   // var lr = $(that).closest("");
+  //   // console.log(lr);
+  //   $(that).closest(".text-update-form").addClass("is-off");
+  //   $(that).closest(".text-update-form").prev("div").removeClass("is-off");
+  //   var newCaption = $(that).val();
+  //   var putUrl = $(that).closest(".edit_caption").attr("action");
+  //   // $(that).closest("form").submit();
+  //   $(that).closest(".text-update-form").prev("div").html(newCaption);
+  //   $.ajax({
+  //     url: putUrl,
+  //     type: "PUT",
+  //     data: { content: newCaption },
+  //     success: function() {
+  //       console.log("I updated!");
+  //       // $(that).html(newCaption);
+  //     }
+  //   });
+  // });
 
   // $(function() {
   //   $("input:file").change(function (){
