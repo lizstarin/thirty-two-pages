@@ -51,6 +51,23 @@ $(document).ready(function(){
     });
   });
 
+  $("section.new-post-form > form > article.button").on("click", function() {
+    var that = this;
+    var projectId = window.location.pathname.split("/")[4];
+    var postContent = $("section.new-post-form > form > article > textarea").val();
+    $.ajax({
+      url: "/posts",
+      type: "POST",
+      data: { content: postContent, project_id: projectId },
+      success: function(data) {
+        var that = this;
+        console.log("post submitted via ajax");
+        var newPost = $("<article class='post'></article>").load("/posts/1 .post");
+        $(".posts").prepend(newPost);
+      }
+    });
+  });
+
   // $(function() {
   //   $("input:file").change(function (){
   //     var fileName = $(this).val();
@@ -193,35 +210,6 @@ $(document).ready(function(){
       // }
     // });
   });
-
-  // // $(this).droppable("disable");
-  // // bigImage.resizable({cursor: "crosshair", ghost: true});
-  // $(bigImage).draggable({cursor: "move", snap: this, snapMode: "inner"});
-
-
-  // $("img").on("mouseover", function () {
-  //   console.log("hovering");
-  //   $(this).resizable("enable");
-  // });
-  //
-  // $("img").on("mouseoff", function () {
-  //   console.log("not hovering");
-  //   $(this).resizable("disable");
-  // });
-
-  // $("recto").on("dblclick", function () {
-  //   $(this).addClass("cropped");
-  // });
-  //
-  // $("recto.cropped").on("dblclick", function () {
-  //   $(this).removeClass("cropped");
-  // });
-
-
-  // $(".sidebar-file-field").on("change", function() {
-  //   var that = this;
-  //   $(that).closest(".photo-attachment-container").addClass("is-off")
-  // });
 
 });
 

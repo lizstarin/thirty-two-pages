@@ -8,5 +8,5 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :allow_destroy => true
 
-  validates :content, :user_id, :presence => true
+  # validates :content, :user_id, :presence => true
 end

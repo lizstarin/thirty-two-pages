@@ -265,6 +265,23 @@ input[type="submit"]:hover {
   background-color: yellow;
 }
 
+.button {
+  background-color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 5px;
+  display: inline-block;
+  cursor: default;
+}
+
+.button:hover {
+  background-color: yellow;
+}
+
 #photo-attachment-container {
   position: relative;
   background-color: white;

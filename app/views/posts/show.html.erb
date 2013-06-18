@@ -1,0 +1,14 @@
+<article class="post">
+  <div class="post-main">
+    <div class="post-avatar"><a href="<%= user_url(@post.user) %>"><%= image_tag @post.user.avatar.url(:bitty) %></a></div>
+    <span class="post-user"><%= @post.user.full_name %></span>
+    <span class="post-date"><%= time_ago_in_words(@post.created_at) %> ago</span>
+    <div class="post-content"><%= @post.content %></div>
+  </div>
+  <div class="footer">
+    <span class="post-add-comment"><%= link_to "COMMENT", new_post_comment_url(@post) %></span>
+    <span class="post-add-like"><% unless current_user.likes_post?(@post) %><%= link_to "LIKE", post_likes_url(@post), :method => :post %><% end %></span>
+    <span class="post-likes"><% unless @post.likes.length == 0 %><%= @post.likes.length %> people like this post<% end %></span>
+  </div>
+  <article class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => @post.comments } %></article>
+</article>

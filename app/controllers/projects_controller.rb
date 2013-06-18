@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(:pages => [:caption, :image]).find(params[:id])
     @image = @project.images.build
   end
 

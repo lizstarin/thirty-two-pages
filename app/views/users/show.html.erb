@@ -22,7 +22,7 @@
         <% else %>
           <h2>Timeline</h2>
         <% end %>
-        <%= render :partial => "posts/list", :locals => {:posts => @user.posts.order("id DESC")} %>
+        <%= render :partial => "posts/list", :locals => {:posts => @user.posts.includes(:comments, :likes).order("id DESC")} %>
       </section>
   	</div>
 

@@ -1,19 +1,17 @@
 <section class="new-post-form">
-
-
-  <%= form_for Post.new do |f| %>
+  <%= form_for Post.new, :remote => true do |f| %>
 
     <article>
     	<%= f.text_area :content %>
 		</article>
 
-		<%# unless project_id.nil? %>
+    <article>
 			<%= f.hidden_field :project_id, :value => project_id %>
-		<%# end %>
+    </article>
 
     <article class="button">
-    	<%= f.submit "BE HEARD" %>
-		</article>
+		  be heard
+    </article>
 
   <% end %>
 </section>
