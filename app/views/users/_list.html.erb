@@ -1,8 +1,11 @@
 <ul class="user-list">
   <% users.each do |user| %>
     <li class="user-friend">
-			<span class="user-thumb"><a href="<%= user_url(user) %>"><%= image_tag user.avatar.url(:thumb) %></a></span>
-      <%#= link_to user.full_name, user_url(user) %>
+      <% if user.avatar.blank? %>
+			  <a href="<%= user_url(user) %>"><span class="user-avatar-thumb-blank">?</span></a>
+      <% else %>
+        <span class="user-thumb"><a href="<%= user_url(user) %>"><%= image_tag user.avatar.url(:thumb) %></a></span>
+      <% end %>
     </li>
   <% end %>
 </ul>

@@ -19,9 +19,20 @@
   <%= f.text_area :bio %></div>
 
   <%= f.fields_for(:user) do |avatar_form| %>
-    <div><%= avatar_form.file_field :avatar %></div>
-  <% end %>
 
+    <%= avatar_form.label :avatar %><br>
+    <div id="photo-attachment-container">
+      choose file sdgsdgsd
+      <div class="wrapper">
+        <%= avatar_form.file_field :avatar %>
+      </div>
+    </div>
+    <span class="photo-file-name">
+    </span>
+    <br>
+
+
+  <% end %>
 
   <div><%= f.submit "Update your profile" %></div>
 

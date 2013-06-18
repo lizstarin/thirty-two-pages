@@ -363,6 +363,23 @@ input[type="submit"]:hover {
   text-align: center;
 }
 
+.user-avatar-thumb-blank {
+  float: left;
+  margin: 0px 40px 20px 0px;
+  height: 100px;
+  width: 75px;
+  background-color: #ccc;
+  color: #ddd;
+  font-size: 60px;
+  border-radius: 5px;
+  border: 2px dotted #aaa;
+  text-align: center;
+}
+
+.line-break {
+  float: none;
+}
+
 .user-thumb {
   float: left;
   margin: 10px 10px 10px 0px;

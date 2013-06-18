@@ -24,9 +24,22 @@
   <% end %>
 
   <div><%= f.label :avatar %><br>
-  <%= image_tag @user.avatar.url(:thumb) %><br>
-  <%= f.file_field :avatar %></div>
 
+  <% if @user.avatar.blank? %>
+    <div class="user-avatar-thumb-blank line-break">?</div>
+  <% else %>
+    <%= image_tag @user.avatar.url(:thumb) %><br>
+  <% end %>
+
+  <div id="photo-attachment-container">
+    choose file
+    <div class="wrapper">
+      <%= f.file_field :avatar %>
+    </div>
+  </div>
+  <span class="photo-file-name">
+  </span>
+  <br>
 
   <div class="button"><%= f.submit "Update your profile" %></div>
 

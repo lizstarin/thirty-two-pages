@@ -17,7 +17,7 @@ $(document).ready(function(){
     $(that).next("div").find("textarea").focus();
   });
 
-  $("div.text-update-form.recto,form,textarea").on("blur", function() {
+  $("div.text-update-form.caption-recto > form > textarea").on("blur", function() {
     var that = this;
     $("div.text-update-form.caption-recto").addClass("is-off");
     $("div.caption-text.caption-recto").removeClass("is-off");
@@ -34,7 +34,7 @@ $(document).ready(function(){
     });
   });
 
-  $("div.text-update-form.verso,form,textarea").on("blur", function() {
+  $("div.text-update-form.caption-verso > form > textarea").on("blur", function() {
     var that = this;
     $("div.text-update-form.caption-verso").addClass("is-off");
     $("div.caption-text.caption-verso").removeClass("is-off");
@@ -108,7 +108,7 @@ $(document).ready(function(){
     });
   };
 
-  $(".image-recto,img").on("mouseenter", function (event, ui) {
+  $(".image-recto > img").on("mouseenter", function (event, ui) {
     var that = this;
     // console.log(that);
     setTimeout(function () {
@@ -122,7 +122,7 @@ $(document).ready(function(){
     }, 1000);
   });
 
-  $(".page-image.recto,.image-recto").on("blur", function (event, ui) {
+  $(".page-image.recto > .image-recto").on("blur", function (event, ui) {
     console.log("I am not resizable!");
     $(this).closest(".page-image").addClass("cropped");
     $(this).resizable("destroy");

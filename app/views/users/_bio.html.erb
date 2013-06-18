@@ -1,8 +1,6 @@
 <section class="user-about">
   <article class="user-about-location">
-  	<% if profile.city != "" || nil %><span id="user-city"><%= profile.city %>, </span><% end %>
-		<% if profile.state != "" || nil %><span id="user-state"><%= profile.state %>, </span><% end %>
-		<% if profile.country != "" || nil %><span id="user-country"><%= profile.country %></span><% end %>
+    <%= profile.full_location %>
   </article>
   <article class="user-about-bio">
   	<%= profile.bio %>
