@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(:content => params[:content])
+    @post = current_user.posts.build(:content => params[:content], :project_id => params[:project_id])
     @post.save
     render :nothing => true
   end

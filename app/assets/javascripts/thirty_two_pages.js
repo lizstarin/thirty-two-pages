@@ -60,8 +60,6 @@ $(document).ready(function(){
       type: "POST",
       data: { content: postContent, project_id: projectId },
       success: function(data) {
-        var that = this;
-        console.log("post submitted via ajax");
         var newPost = $("<article class='post'></article>").load("/posts/1 .post");
         $(".posts").prepend(newPost);
       }
