@@ -32,7 +32,11 @@ ThirtyTwoPages::Application.routes.draw do
   end
 
   resources :posts do
-    resources :comments
+    resources :comments do
+      collection do
+        get "refresh"
+      end
+    end
     resources :likes
   end
 
