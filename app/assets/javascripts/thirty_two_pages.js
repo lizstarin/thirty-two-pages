@@ -96,10 +96,8 @@ $(document).ready(function(){
       type: "POST",
       data: { content: newCommentContent },
       success: function () {
-        console.log("new comment added");
         $(that).closest("div.footer").find("form.new-comment-form").addClass("is-off");
         var newComment = $("<li class='comment'></li>").load(newCommentUrl + "/refresh");
-        console.log(newComment);
         $(that).closest("div.post-main-container").find("ul.comments").append(newComment);
         $(that).attr("disable","false");
         $(that).closest("div.new-content-form").prev("div").find("textarea").val("");
