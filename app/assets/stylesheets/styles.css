@@ -278,6 +278,10 @@ input[type="submit"]:hover {
   cursor: default;
 }
 
+.button-sm {
+  font-size: 10px;
+}
+
 .button:hover {
   background-color: yellow;
 }
@@ -543,9 +547,19 @@ section .user-about {
   margin: 0px 0px 25px 0px;
 }
 
+.post:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .post-avatar {
   float: left;
   margin: 4px 15px 0px 0px;
+}
+
+.post-main-container {
+  margin-left: 65px;
 }
 
 .post-user {
@@ -565,9 +579,25 @@ section .user-about {
   margin-left: 50px;
 }
 
-.post > .footer {
+span.post-likes {
+  padding: 5px;
+  display: inline-block;
+}
+
+form.new_comment {
+  margin-left: 15px;
+}
+
+.post-main-container > .footer {
   font-size: 12px;
-  line-height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+/*  line-height: 30px;*/
+}
+
+.post-add-comment {
+  float: left;
+  margin-right: 5px;
 }
 
 /* comments */

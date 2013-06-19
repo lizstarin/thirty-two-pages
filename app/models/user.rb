@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Paperclip stff
   attr_accessible :avatar
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :bitty => "50x50" }
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>", :bitty => "50x50#" }
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

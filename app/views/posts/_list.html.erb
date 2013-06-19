@@ -3,16 +3,40 @@
     <article class="post">
       <div class="post-main">
         <div class="post-avatar"><a href="<%= user_url(p.user) %>"><%= image_tag p.user.avatar.url(:bitty) %></a></div>
-        <span class="post-user"><%= p.user.full_name %></span>
-        <span class="post-date"><%= time_ago_in_words(p.created_at) %> ago</span>
-        <div class="post-content"><%= p.content %></div>
+        <div class="post-main-container">
+          <span class="post-user"><%= p.user.full_name %></span>
+          <span class="post-date"><%= time_ago_in_words(p.created_at) %> ago</span>
+          <div class="post-content"><%= p.content %></div>
+          <div class="footer">
+            <span class="post-add-comment"><button class="button button-sm">comment</button></span>
+            <span class="post-add-like"><% unless current_user.likes_post?(p) %><button class="button button-sm">like</button><% end %></span>
+            <span class="post-likes"><% unless p.likes.length == 0 %><%= p.likes.length %> people like this post<% end %></span>
+            <%= render :partial => "comments/form", :locals => { :post => p } %>
+          </div>
+          <article class="post-comments"><%= render :partial => "comments/list", :locals => { :post => p, :comments => p.comments } %></article>
+        </div>
       </div>
-      <div class="footer">
-        <span class="post-add-comment"><%= link_to "COMMENT", new_post_comment_url(p) %></span>
-        <span class="post-add-like"><% unless current_user.likes_post?(p) %><%= link_to "LIKE", post_likes_url(p), :method => :post %><% end %></span>
-        <span class="post-likes"><% unless p.likes.length == 0 %><%= p.likes.length %> people like this post<% end %></span>
-      </div>
-      <article class="post-comments"><%= render :partial => "comments/list", :locals => { :comments => p.comments } %></article>
     </article>
   <% end %>
+
+  <div class="post-update-container is-off">
+    <article class="post">
+      <div class="post-main">
+        <div class="post-avatar"><a href="<%= user_url(@post_last.user) %>"><%= image_tag @post_last.user.avatar.url(:bitty) %></a></div>
+        <div class="post-main-container">
+          <span class="post-user"><%= @post_last.user.full_name %></span>
+          <span class="post-date"><%= time_ago_in_words(@post_last.created_at) %> ago</span>
+          <div class="post-content"><%= @post_last.content %></div>
+          <div class="footer">
+            <span class="post-add-comment"><button class="button button-sm">comment</button></span>
+            <span class="post-add-like"><% unless current_user.likes_post?(@post_last) %><button class="button button-sm">like</button><% end %></span>
+            <span class="post-likes"><% unless @post_last.likes.length == 0 %><%= @post_last.likes.length %> people like this post<% end %></span>
+            <%= render :partial => "comments/form", :locals => { :post => @post_last } %>
+          </div>
+          <article class="post-comments"><%= render :partial => "comments/list", :locals => { :post => @post_last, :comments => @post_last.comments } %></article>
+        </div>
+      </div>
+    </article>
+  </div>
+
 </section>

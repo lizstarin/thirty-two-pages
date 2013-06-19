@@ -8,3 +8,12 @@
     </li>
   <% end %>
 </ul>
+
+<div class="comment-update-container is-off">
+  <li class="comment">
+    <div class="comment-avatar"><a href="<%= user_url(@comment_last.user) %>"><%= image_tag @comment_last.user.avatar.url(:bitty) %></a></div>
+    <span class="comment-user"><%= @comment_last.user.full_name %></span>
+    <span class="comment-date"><%= time_ago_in_words(@comment_last.created_at) %> ago</span>
+    <div class="comment-content"><%= @comment_last.content %></div>
+  </li>
+</div>

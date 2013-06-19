@@ -16,11 +16,15 @@ class CommentsController < ApplicationController
                       :read => false
                       )
                       notif.save
-      redirect_to user_url(@comment.post.user)
+ #     redirect_to user_url(@comment.post.user)
+      render :create
     else
       render :new
     end
   end
 
+  def show
+    @comment = Comment.last
+  end
 
 end

@@ -6,8 +6,8 @@
         <div class="friend-request-user">
          <a href="<%= user_url(req.sender) %>"><%= image_tag req.sender.avatar.url(:bitty) %><%= req.sender.full_name %></a>
         </div>
-        <%= button_to "Accept", user_friend_request_url(req.sender_id, req.id, :status => "accepted"), :method => :put, :remote => true %>
-        <%= button_to "Reject", user_friend_request_url(req.sender_id, req.id, :status => "rejected"), :method => :put, :remote => true %>
+        <%= button_to "Accept", user_friend_request_url(req.sender_id, req.id, :status => "accepted"), :remote => true %>
+        <%= button_to "Reject", user_friend_request_url(req.sender_id, req.id, :status => "rejected"), :remote => true %>
       </article>
     <% end %>
   </section>

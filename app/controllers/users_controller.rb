@@ -31,6 +31,8 @@ class UsersController < ApplicationController
 
     @users = User.all
     @profile = @user.profile
+    @post_last = Post.last
+    @comment_last = Comment.last
   end
 
   def edit

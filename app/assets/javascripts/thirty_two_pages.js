@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  // Handles dummy page turns
+
   $(".recto").on("click", function(){
     $("#dummy").css("left", "-=800");
   });
@@ -7,6 +9,8 @@ $(document).ready(function(){
   $(".verso").on("click", function(){
     $("#dummy").css("left", "+=800");
   });
+
+  // Updates dummy captions
 
   $(".caption-text").on("dblclick", function() {
     var that = this;
@@ -16,6 +20,8 @@ $(document).ready(function(){
     $(that).next("div").val(oldCaption);
     $(that).next("div").find("textarea").focus();
   });
+
+  // ...right page captions
 
   $("div.text-update-form.caption-recto > form > textarea").on("blur", function() {
     var that = this;
@@ -34,6 +40,8 @@ $(document).ready(function(){
     });
   });
 
+  // ...left page captions (should refactor)
+
   $("div.text-update-form.caption-verso > form > textarea").on("blur", function() {
     var that = this;
     $("div.text-update-form.caption-verso").addClass("is-off");
@@ -51,8 +59,11 @@ $(document).ready(function(){
     });
   });
 
+  // Adds new post
+
   $("section.new-post-form > form > article.button").on("click", function() {
     var that = this;
+    $(that).attr("disable","true");
     var projectId = window.location.pathname.split("/")[4];
     var postContent = $("section.new-post-form > form > article > textarea").val();
     $.ajax({
@@ -62,21 +73,48 @@ $(document).ready(function(){
       success: function(data) {
         var newPost = $("<article class='post'></article>").load("/posts/1 .post");
         $(".posts").prepend(newPost);
+        $("section.new-post-form > form > article > textarea").val("");
+        $(that).attr("disable","false");
       }
     });
   });
 
+  // Adds new comment
+
+  $("span.post-add-comment > button").on("click", function () {
+    var that = this;
+    $(that).closest("div.footer").find("form.new-comment-form").removeClass("is-off");
+  });
+
+  $("div.new-comment-button > input[type='submit']").on("click", function () {
+    var that = this;
+    $(that).attr("disable", "true");
+    var newCommentContent = $(that).closest("div.new-content-form").prev("div").find("textarea").val();
+    $.ajax({
+      url: $(that).closest("form").attr("action"),
+      type: "POST",
+      data: { content: newCommentContent },
+      success: function () {
+        console.log("new comment added");
+        $(that).closest("div.footer").find("form.new-comment-form").addClass("is-off");
+        var newComment = $("div.comment-update-container").html();
+        console.log(newComment);
+        $(that).closest("div.post-main-container").find("ul.comments").append(newComment);
+        $(that).attr("disable","false");
+      }
+    });
+  });
+
+  // Accepts / rejects friend request
+
   $("article.friend-request > form > div > input[type='submit']").on("click", function() {
     var that = this;
-    // var userUrl = $(that).find("div > a").attr("href");
-    // var userId = userUrl.split("/").pop();
-    // var requestStatus = $(that).find("form > div > input[type='submit']").attr("value");
+    $(that).attr("disabled","true");
     var actionUrl = $(that).closest("form").attr("action");
     $.ajax({
       url: actionUrl,
       type: "PUT",
       success: function() {
-        console.log("friend request updated");
         if (actionUrl.split("=")[1] == "accepted") {
           var userPicSrc = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replace("bitty","thumb");
           var userLink = $(that).closest("article.friend-request").find("div.friend-request-user > a").attr("href");
@@ -95,6 +133,10 @@ $(document).ready(function(){
   //     console.log(fileName);
   //   });
   // });
+
+
+
+  // Dummy image manipulation
 
   $(function() {
     $(".draggable").draggable( {cursor: "move", revert: "invalid"} );
