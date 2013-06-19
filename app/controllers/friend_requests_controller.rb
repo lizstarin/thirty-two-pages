@@ -40,7 +40,6 @@ class FriendRequestsController < ApplicationController
       make_friendship(params[:user_id])
     end
     render :nothing => true
-
   end
 
   def make_friendship(friend_id)
@@ -49,8 +48,6 @@ class FriendRequestsController < ApplicationController
 
     @friendship_recip = Friendship.new(:user_id => friend_id, :friend_id => current_user.id)
     @friendship_recip.save
-
-    redirect_to user_url(current_user)
   end
 
 end

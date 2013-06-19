@@ -73,14 +73,20 @@ $(document).ready(function(){
     // var requestStatus = $(that).find("form > div > input[type='submit']").attr("value");
     var actionUrl = $(that).closest("form").attr("action");
     console.log(actionUrl);
-    $.ajax({
-      url: actionUrl,
-      type: "PUT",
-      success: function() {
-        console.log("friend request updated");
-        $(".user-friends").prepend("hello");
-      }
-    });
+    // $.ajax({
+      // url: actionUrl,
+      // type: "PUT",
+      // success: function() {
+        // console.log("friend request updated");
+        // var lastUser = $()
+        // var userPic = $("<li class='user-listing'></user-listing>").load("/users
+        var userPicSrc = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replace("bitty","thumb");
+        console.log(userPicSrc);
+        var userPic = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replaceWith(userPicSrc);
+        $("section.user-friends > ul.user-list").append(userPic);
+        // $(that).closest("article.friend-request").remove();
+      // }
+    // });
   });
 
   // $(function() {
