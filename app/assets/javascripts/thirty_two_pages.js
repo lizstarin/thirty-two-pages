@@ -66,27 +66,26 @@ $(document).ready(function(){
     });
   });
 
-  $("article.friend-request > form > div > input[type='submit']").on("mouseover", function() {
+  $("article.friend-request > form > div > input[type='submit']").on("click", function() {
     var that = this;
     // var userUrl = $(that).find("div > a").attr("href");
     // var userId = userUrl.split("/").pop();
     // var requestStatus = $(that).find("form > div > input[type='submit']").attr("value");
     var actionUrl = $(that).closest("form").attr("action");
-    console.log(actionUrl);
-    // $.ajax({
-      // url: actionUrl,
-      // type: "PUT",
-      // success: function() {
-        // console.log("friend request updated");
-        // var lastUser = $()
-        // var userPic = $("<li class='user-listing'></user-listing>").load("/users
-        var userPicSrc = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replace("bitty","thumb");
-        console.log(userPicSrc);
-        var userPic = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replaceWith(userPicSrc);
-        $("section.user-friends > ul.user-list").append(userPic);
-        // $(that).closest("article.friend-request").remove();
-      // }
-    // });
+    $.ajax({
+      url: actionUrl,
+      type: "PUT",
+      success: function() {
+        console.log("friend request updated");
+        if (actionUrl.split("=")[1] == "accepted") {
+          var userPicSrc = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replace("bitty","thumb");
+          var userLink = $(that).closest("article.friend-request").find("div.friend-request-user > a").attr("href");
+          var userPicLi = $("<li class='user-listing''><span class='user-thumb'><a href='" + userLink + "'><img src='" + userPicSrc + "'></a></span></li>");
+          $("section.user-friends > ul.user-list").append(userPicLi);
+        }
+        $(that).closest("article.friend-request").remove();
+      }
+    });
   });
 
   // $(function() {
