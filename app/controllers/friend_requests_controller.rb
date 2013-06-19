@@ -38,11 +38,8 @@ class FriendRequestsController < ApplicationController
                                 )
                                 notif.save
       make_friendship(params[:user_id])
-    else
-      redirect_to user_url(current_user)
     end
-
-
+    render :nothing => true
 
   end
 

@@ -66,6 +66,23 @@ $(document).ready(function(){
     });
   });
 
+  $("article.friend-request > form > div > input[type='submit']").on("mouseover", function() {
+    var that = this;
+    // var userUrl = $(that).find("div > a").attr("href");
+    // var userId = userUrl.split("/").pop();
+    // var requestStatus = $(that).find("form > div > input[type='submit']").attr("value");
+    var actionUrl = $(that).closest("form").attr("action");
+    console.log(actionUrl);
+    $.ajax({
+      url: actionUrl,
+      type: "PUT",
+      success: function() {
+        console.log("friend request updated");
+        $(".user-friends").prepend("hello");
+      }
+    });
+  });
+
   // $(function() {
   //   $("input:file").change(function (){
   //     var fileName = $(this).val();
