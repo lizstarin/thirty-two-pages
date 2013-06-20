@@ -71,7 +71,7 @@ $(document).ready(function(){
       type: "POST",
       data: { content: postContent, project_id: projectId },
       success: function(data) {
-        var newPost = $("<article class='post'></article>").load("/posts/1 .post");
+        var newPost = $("<article class='post'></article>").load("/posts/refresh");
         $(".posts").prepend(newPost);
         $("section.new-post-form > form > article > textarea").val("");
         $(that).attr("disable","false");

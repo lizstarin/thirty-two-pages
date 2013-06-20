@@ -18,4 +18,9 @@ class PostsController < ApplicationController
     @post = Post.last
   end
 
+  def refresh
+    @post = Post.last
+    render :layout => false
+  end
+
 end

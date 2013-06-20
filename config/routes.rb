@@ -32,6 +32,9 @@ ThirtyTwoPages::Application.routes.draw do
   end
 
   resources :posts do
+    collection do
+      get "refresh"
+    end
     resources :comments do
       collection do
         get "refresh"
