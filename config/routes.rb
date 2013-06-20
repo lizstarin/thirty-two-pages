@@ -46,7 +46,11 @@ ThirtyTwoPages::Application.routes.draw do
         get "refresh"
       end
     end
-    resources :likes
+    resources :likes do
+      collection do
+        get "refresh"
+      end
+    end
   end
 
   resources :emails

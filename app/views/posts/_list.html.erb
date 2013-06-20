@@ -9,7 +9,7 @@
           <div class="post-content"><%= p.content %></div>
           <div class="footer">
             <span class="post-add-comment"><button class="button button-sm on-button">comment</button></span>
-            <span class="post-add-like"><% unless current_user.likes_post?(p) %><button class="button button-sm">like</button><% end %></span>
+            <span class="post-add-like"><% unless current_user.likes_post?(p) %><%= button_to "like", post_likes_url(p), :class => "button button-sm" %><% end %></span>
             <span class="post-likes"><% unless p.likes.length == 0 %><%= p.likes.length %> people like this post<% end %></span>
             <%= render :partial => "comments/form", :locals => { :post => p } %>
           </div>

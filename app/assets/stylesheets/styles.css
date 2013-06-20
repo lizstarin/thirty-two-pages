@@ -282,6 +282,10 @@ input[type="submit"]:hover {
   font-size: 10px;
 }
 
+input[type="submit"].button-sm {
+  font-size: 10px;
+}
+
 .button:hover {
   background-color: yellow;
 }
@@ -357,6 +361,7 @@ input[type="submit"]:hover {
 .user-list li {
   float: left;
   list-style: none;
+  margin: 0;
 /*  background-color: red;*/
 }
 
@@ -398,15 +403,16 @@ input[type="submit"]:hover {
 
 .user-avatar-thumb-blank {
   float: left;
-  margin: 0px 40px 20px 0px;
+  margin: 5px;
   height: 100px;
-  width: 75px;
+  width: 100px;
   background-color: #ccc;
   color: #ddd;
   font-size: 60px;
   border-radius: 5px;
   border: 2px dotted #aaa;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .line-break {
@@ -415,7 +421,11 @@ input[type="submit"]:hover {
 
 .user-thumb {
   float: left;
-  margin: 10px 10px 10px 0px;
+  margin: 5px;
+}
+
+.user-thumb > a {
+
 }
 
 section .user-about {

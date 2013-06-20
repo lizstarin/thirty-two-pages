@@ -131,6 +131,23 @@ $(document).ready(function(){
     });
   });
 
+  // Likes / unlikes
+
+  $(".posts").on("click", "span.post-add-like input.button", function() {
+    var that = this;
+    $(that).attr("disabled","true");
+    var actionUrl = $(that).closest("form").attr("action");
+    console.log(actionUrl);
+    $.ajax({
+      url: actionUrl,
+      type: "POST",
+      success: function() {
+        console.log("liked");
+        $("span.post-likes").load(actionUrl + "/refresh");
+      }
+    });
+  });
+
   // Dummy image manipulation
 
   $(function() {
