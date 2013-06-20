@@ -36,7 +36,7 @@ class LikesController < ApplicationController
 
   def refresh
     @post = Like.last.post
-    render :template => false
+    render :layout => false
   end
 
 end

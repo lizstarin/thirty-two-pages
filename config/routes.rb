@@ -12,18 +12,16 @@ ThirtyTwoPages::Application.routes.draw do
 
   resources :users do
     resource :profile
-    resources :friend_requests, :only => [:index, :new, :create, :update]
+    resources :friend_requests, :only => [:index, :new, :create, :update] do
+      collection do
+        get "refresh"
+      end
+    end
     resources :friendships, :only => [:new, :create, :destroy]
     resources :messages
     resources :notifications
     resources :photos
     resources :projects, :only => [:index, :show]
-  end
-
-  resources :friendships do
-    collection do
-      get "refresh"
-    end
   end
 
   resources :projects, :except => [:index, :show] do

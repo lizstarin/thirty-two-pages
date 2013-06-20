@@ -116,14 +116,13 @@ $(document).ready(function(){
     var that = this;
     $(that).attr("disabled","true");
     var actionUrl = $(that).closest("form").attr("action");
-    // var refreshUrl = actionUrl.split("friend_requests")[0] + "friend_requests/refresh";
-    // console.log(refreshUrl);
+    var refreshUrl = actionUrl.split("friend_requests")[0] + "friend_requests/refresh";
     $.ajax({
       url: actionUrl,
       type: "PUT",
       success: function() {
         if (actionUrl.split("=")[1] == "accepted") {
-          var newFriend = $("<li class='user-listing'></li>").load("/friendships/refresh");
+          var newFriend = $("<li class='user-listing'></li>").load(refreshUrl);
           $("section.user-friends > ul.user-list").append(newFriend);
         }
         $(that).closest("article.friend-request").remove();

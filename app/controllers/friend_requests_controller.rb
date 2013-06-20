@@ -53,7 +53,7 @@ class FriendRequestsController < ApplicationController
 
   def refresh
     @user = Friendship.last.user
-    render :template => false
+    render :layout => false
   end
 
 end
