@@ -1,0 +1,5 @@
+<% if @user.avatar.blank? %>
+  <a href="<%= user_url(@user) %>"><span class="user-avatar-thumb-blank">?</span></a>
+<% else %>
+  <span class="user-thumb"><a href="<%= user_url(@user) %>"><%= image_tag @user.avatar.url(:thumb) %></a></span>
+<% end %>

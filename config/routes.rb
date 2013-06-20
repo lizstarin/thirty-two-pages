@@ -20,6 +20,12 @@ ThirtyTwoPages::Application.routes.draw do
     resources :projects, :only => [:index, :show]
   end
 
+  resources :friendships do
+    collection do
+      get "refresh"
+    end
+  end
+
   resources :projects, :except => [:index, :show] do
     resources :pages
     resources :images

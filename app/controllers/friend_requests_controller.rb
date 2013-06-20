@@ -3,6 +3,7 @@ class FriendRequestsController < ApplicationController
   def index
     @requests_rec = FriendRequest.where(:recipient_id => current_user.id, :status => "pending")
     @requests_sent = FriendRequest.where(:sender_id => current_user.id, :status => "pending")
+    @friend_requests = FriendRequest.all
   end
 
   def create
@@ -48,6 +49,11 @@ class FriendRequestsController < ApplicationController
 
     @friendship_recip = Friendship.new(:user_id => friend_id, :friend_id => current_user.id)
     @friendship_recip.save
+  end
+
+  def refresh
+    @user = Friendship.last.user
+    render :template => false
   end
 
 end

@@ -14,8 +14,9 @@ class FriendshipsController < ApplicationController
   #   redirect_to user_url(current_user)
   # end
 
-  def destroy
-
+  def refresh
+    @user = Friendship.last.user
+    render :template => false
   end
 
 end

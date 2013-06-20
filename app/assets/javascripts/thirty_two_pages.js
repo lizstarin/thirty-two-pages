@@ -81,7 +81,7 @@ $(document).ready(function(){
 
   // Adds new comment
 
-  $("span.post-add-comment > button").on("click", function () {
+  $(".posts").on("click", "span.post-add-comment > button", function () {
     var that = this;
     var commentForm = $(that).closest("div.footer").find("form.new-comment-form");
     if (commentForm.is(":hidden")) {
@@ -91,7 +91,7 @@ $(document).ready(function(){
     }
   });
 
-  $("div.new-comment-button > input[type='submit']").on("click", function () {
+  $(".posts").on("click", "div.new-comment-button > input[type='submit']", function () {
     var that = this;
     $(that).attr("disable", "true");
     var newCommentUrl = $(that).closest("form").attr("action");
@@ -116,15 +116,15 @@ $(document).ready(function(){
     var that = this;
     $(that).attr("disabled","true");
     var actionUrl = $(that).closest("form").attr("action");
+    // var refreshUrl = actionUrl.split("friend_requests")[0] + "friend_requests/refresh";
+    // console.log(refreshUrl);
     $.ajax({
       url: actionUrl,
       type: "PUT",
       success: function() {
         if (actionUrl.split("=")[1] == "accepted") {
-          var userPicSrc = $(that).closest("article.friend-request").find("div.friend-request-user > a > img").attr("src").replace("bitty","thumb");
-          var userLink = $(that).closest("article.friend-request").find("div.friend-request-user > a").attr("href");
-          var userPicLi = $("<li class='user-listing''><span class='user-thumb'><a href='" + userLink + "'><img src='" + userPicSrc + "'></a></span></li>");
-          $("section.user-friends > ul.user-list").append(userPicLi);
+          var newFriend = $("<li class='user-listing'></li>").load("/friendships/refresh");
+          $("section.user-friends > ul.user-list").append(newFriend);
         }
         $(that).closest("article.friend-request").remove();
       }
