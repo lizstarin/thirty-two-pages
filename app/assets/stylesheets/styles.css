@@ -615,6 +615,10 @@ form.new-comment-form {
   margin-right: 5px;
 }
 
+.post-likes {
+  font-size: 12px;
+}
+
 /* comments */
 
 /*.comment {
