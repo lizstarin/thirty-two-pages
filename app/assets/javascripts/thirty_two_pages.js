@@ -145,6 +145,7 @@ $(document).ready(function(){
         $("span.post-likes").load(actionUrl + "/refresh");
       }
     });
+    $(that).closest("span").remove();
   });
 
   // Dummy image manipulation
