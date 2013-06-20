@@ -83,7 +83,12 @@ $(document).ready(function(){
 
   $("span.post-add-comment > button").on("click", function () {
     var that = this;
-    $(that).closest("div.footer").find("form.new-comment-form").removeClass("is-off");
+    var commentForm = $(that).closest("div.footer").find("form.new-comment-form");
+    if (commentForm.is(":hidden")) {
+      commentForm.removeClass("is-off");
+    } else {
+      commentForm.addClass("is-off");
+    }
   });
 
   $("div.new-comment-button > input[type='submit']").on("click", function () {

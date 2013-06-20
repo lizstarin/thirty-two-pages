@@ -540,11 +540,11 @@ section .user-about {
 */
 .posts {
 
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .post {
-  margin: 0px 0px 25px 0px;
+  margin: 0px 0px 20px 0px;
 }
 
 .post:after {
@@ -555,11 +555,15 @@ section .user-about {
 
 .post-avatar {
   float: left;
-  margin: 4px 15px 0px 0px;
+  margin: 4px 10px 0px 0px;
+}
+
+.post .button-sm {
+  margin-bottom: 0px;
 }
 
 .post-main-container {
-  margin-left: 65px;
+  margin-left: 60px;
 }
 
 .post-user {
@@ -576,7 +580,7 @@ section .user-about {
 }
 
 .post-comments {
-  margin-left: 50px;
+  margin-left: 0px;
 }
 
 span.post-likes {
@@ -584,14 +588,15 @@ span.post-likes {
   display: inline-block;
 }
 
-form.new_comment {
-  margin-left: 15px;
+form.new-comment-form {
+  margin-left: 0px;
+  margin-top: 10px;
 }
 
 .post-main-container > .footer {
-  font-size: 12px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 0px;
 /*  line-height: 30px;*/
 }
 
@@ -608,16 +613,16 @@ form.new_comment {
 
 .comments {
   list-style: none;
-  margin: 0px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
 }
 
 .comment {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 .comment-avatar {
   float: left;
-  margin: 4px 15px 0px 0px;
+  margin: 4px 10px 0px 0px;
 }
 
 .comment-user {
