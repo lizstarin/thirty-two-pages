@@ -95,7 +95,7 @@ $(document).ready(function(){
     var that = this;
     $(that).attr("disable", "true");
     var newCommentUrl = $(that).closest("form").attr("action");
-    var newCommentContent = $(that).closest("div.new-content-form").prev("div").find("textarea").val();
+    var newCommentContent = $(that).closest("form.new-comment-form").find("textarea").val();
     $.ajax({
       url: newCommentUrl,
       type: "POST",
@@ -105,7 +105,7 @@ $(document).ready(function(){
         var newComment = $("<li class='comment'></li>").load(newCommentUrl + "/refresh");
         $(that).closest("div.post-main-container").find("ul.comments").append(newComment);
         $(that).attr("disable","false");
-        $(that).closest("div.new-content-form").prev("div").find("textarea").val("");
+        $(that).closest("form.new-comment-form").find("textarea").val("");
       }
     });
   });
@@ -130,16 +130,6 @@ $(document).ready(function(){
       }
     });
   });
-
-  // $(function() {
-  //   $("input:file").change(function (){
-  //     var fileName = $(this).val();
-  //     $(".photo-file-name").html(fileName);
-  //     console.log(fileName);
-  //   });
-  // });
-
-
 
   // Dummy image manipulation
 
