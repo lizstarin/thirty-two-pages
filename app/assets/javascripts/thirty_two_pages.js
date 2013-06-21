@@ -71,6 +71,7 @@ $(document).ready(function(){
       type: "POST",
       data: { content: postContent, project_id: projectId },
       success: function(data) {
+        console.log("posted");
         var newPost = $("<article class='post'></article>").load("/posts/refresh");
         $(".posts").prepend(newPost);
         $("section.new-post-form > form > article > textarea").val("");
@@ -95,15 +96,12 @@ $(document).ready(function(){
     var that = this;
     $(that).attr("disabled", "true");
     var actionUrl = $(that).closest("div.footer").find("form.new-comment-form").attr("action");
-    console.log(actionUrl);
     var newComment = $(that).closest("div.footer").find("textarea").val();
-    console.log(newComment);
     $.ajax({
       url: actionUrl,
       type: "POST",
       data: { content: newComment },
       success: function () {
-        console.log("commented");
         $(that).closest("div.footer").find("form.new-comment-form").addClass("is-off");
         var newComment = $("<li class='comment'></li>").load(actionUrl + "/refresh");
         $(that).closest("div.post-main-container").find("ul.comments").append(newComment);
@@ -125,10 +123,11 @@ $(document).ready(function(){
       type: "POST",
       success: function() {
         console.log("liked");
-        $("span.post-likes").load(actionUrl + "/refresh");
+        console.log($(that).closest(".post"));
+        $(that).closest("div.footer").find(".post-likes").load(actionUrl + "/refresh");
+        $(that).closest("span").remove();
       }
     });
-    $(that).closest("span").remove();
   });
 
   // Accepts / rejects friend request
@@ -202,19 +201,23 @@ $(document).ready(function(){
     });
   };
 
-  $(".image-recto > img").on("mouseenter", function (event, ui) {
-    var that = this;
-    // console.log(that);
-    setTimeout(function () {
-      // console.log("I am resizable!");
-      $(that).triggerHandler("focus");
-      $(that).focus(function() {
-        console.log("focused!")
-      });
-      $("div.page-image.recto").removeClass("cropped");
-      // $(that).resizable();
-    }, 1000);
+  $(".image-recto > img").on("drag", function (event, ui) {
+    $("div.page-image.recto").removeClass("cropped");
   });
+
+  // $(".image-recto > img").on("mouseenter", function (event, ui) {
+  //   var that = this;
+  //   // console.log(that);
+  //   setTimeout(function () {
+  //     // console.log("I am resizable!");
+  //     $(that).triggerHandler("focus");
+  //     $(that).focus(function() {
+  //       console.log("focused!")
+  //     });
+  //     $("div.page-image.recto").removeClass("cropped");
+  //     // $(that).resizable();
+  //   }, 1000);
+  // });
 
   $(".page-image.recto > .image-recto").on("blur", function (event, ui) {
     console.log("I am not resizable!");

@@ -284,6 +284,7 @@ input[type="submit"]:hover {
 
 input[type="submit"].button-sm {
   font-size: 10px;
+  float: left;
 }
 
 .button:hover {
@@ -425,7 +426,8 @@ input[type="submit"].button-sm {
 }
 
 .user-thumb > a {
-
+  display: block;
+  height: 100px;
 }
 
 section .user-about {
@@ -783,6 +785,10 @@ figure {
   float: left;
   text-align: center;
   word-wrap: break-word;
+}
+
+.caption-text:hover {
+/*  background-color: yellow;*/
 }
 
 .text-update-form {
