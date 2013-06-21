@@ -147,7 +147,7 @@ $(document).ready(function(){
   // Dummy image manipulation
 
   $(function() {
-    $(".draggable").draggable( {cursor: "move", revert: "invalid"} );
+    $(".draggable").draggable( {cursor: "move", revert: "invalid", zIndex: 100} );
   });
 
   function inView (droppableArea) {
@@ -164,16 +164,17 @@ $(document).ready(function(){
   };
 
   function linkSmallToBig (smallImage) {
-    var smallImageUrl = $(smallImage).find("img").attr("src");
-    var bigImageUrl = $(smallImage).find("img").attr("data-url");
+    var smallImageUrl = $(smallImage).attr("src");
+    var bigImageUrl = $(smallImage).attr("data-url");
     var bigImage = $("<img src='" + bigImageUrl + "' data-thumb-url='" + smallImageUrl + "'>");
     return bigImage;
   };
 
   function linkBigToSmall (bigImage) {
-    var bigImageUrl = $(bigImage).find("img").attr("src");
-    var smallImageUrl = $(bigImage).find("img").attr("data-thumb-url");
+    var bigImageUrl = $(bigImage).attr("src");
+    var smallImageUrl = $(bigImage).attr("data-thumb-url");
     var smallImage = $("<img src='" + smallImageUrl + "' data-url='" + bigImageUrl + "'>");
+        console.log(bigImage);
     return smallImage;
   };
 
@@ -193,14 +194,16 @@ $(document).ready(function(){
     });
   };
 
-  $(".photo-thumbs-sidebar").on("dragstart", "article.photo-thumb", function (event, ui) {
+  $(".photo-thumbs-sidebar").on("dragstart", ".photo-thumb", function (event, ui) {
     console.log("dragging");
     $(".page-image").droppable({ hoverClass: "highlight", greedy: true });
   });
 
   $(".page-image").on("drop", function (event, ui) {
     if (inView(this) == true) {
-      var bigImage = linkSmallToBig(ui.draggable);
+      // var bigImage = linkSmallToBig(ui.draggable);
+      console.log(ui.draggable);
+      var bigImage = '<img src=' + $(ui.draggable).attr("src").replace("thumb", "original") + '>';
 
       $(ui.draggable).addClass("is-off");
 
@@ -221,46 +224,39 @@ $(document).ready(function(){
     }
   });
 
-  $("div.page-image.recto").on("drag", ".image-recto > img", function (event, ui) {
+  $("div.page-image").on("dragstart", "img", function (event, ui) {
     console.log("dragged");
     var that = this;
-    var page = $(that).closest("div.page-image.recto")
+    var page = $(that).closest("div.page-image")
 
     page.removeClass("cropped");
-    // page.addClass("droppable");
-    // page.droppable();
-
-    page.on("dropout", function () {
-      $(this).empty();
-      console.log("dragged out");
-    });
-
-
+    page.droppable({ hoverClass: "highlight", greedy: true });
   });
 
-  // $(".page-image").on("out", function (event, ui) {
-  //   // if (inView(this) == true) {
-  //     console.log("dragged out!");
-  //     var smallImage = linkBigToSmall(ui.draggable);
-  //
-  //     $(ui.draggable).addClass("is-off");
-  //
-  //     smallImage.draggable( {revert: true} );
-  //     smallImage.addClass("draggable");
-  //
-  //     $(this).empty();
-  //     $(this).droppable();
-  //
-  //     var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
-  //     var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
-  //
-  //     updatePageImage(nil, nil);
-  //     $(".photo-thumbs-sidebar").prepend(smallImage);
-  //
-  //   // } else {
-  //     // $(ui.draggable).draggable( {revert: true} );
-  //   // }
-  // });
+  $(".page-image").on("dropout", function (event, ui) {
+    // if (inView(this) == true) {
+      console.log("dragged out!");
+
+      $(this).empty();
+      var smallImage = linkBigToSmall(ui.draggable);
+
+      $(ui.draggable).addClass("is-off");
+
+      smallImage.draggable( {revert: true} );
+      smallImage.addClass("draggable");
+
+      $(this).droppable({ hoverClass: "highlight", greedy: true });
+
+      var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
+      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
+
+      updatePageImage(null, null);
+      $(".photo-thumbs-sidebar").append(smallImage);
+
+    // } else {
+      // $(ui.draggable).draggable( {revert: true} );
+    // }
+  });
 
   $("input:file").change(function () {
     console.log("file selected");
