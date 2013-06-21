@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   // Updates dummy captions
 
-  $(".caption-text").on("dblclick", function() {
+  $(".caption-text.editable").on("dblclick", function() {
     var that = this;
     $(that).addClass("is-off");
     var oldCaption = $(that).text();
@@ -33,10 +33,7 @@ $(document).ready(function(){
     $.ajax({
       url: putUrl,
       type: "PUT",
-      data: { content: newCaption },
-      success: function() {
-        console.log("I updated!");
-      }
+      data: { content: newCaption }
     });
   });
 
@@ -52,10 +49,7 @@ $(document).ready(function(){
     $.ajax({
       url: putUrl,
       type: "PUT",
-      data: { content: newCaption },
-      success: function() {
-        console.log("I updated!");
-      }
+      data: { content: newCaption }
     });
   });
 

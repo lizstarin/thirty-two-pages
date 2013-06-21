@@ -5,30 +5,39 @@
   </div>
 	<h1 class="project-title"><%= @project.title %></h1>
 	<section class="project-likes-list">
-		<span class="project-add-like"><% unless current_user.likes_project?(@project) %><%= link_to "LIKE", project_likes_url(@project), :method => :post %><% end %></span>
-		<span class="project-likes"><% unless @project.likes.length == 0 %><%= @project.likes.length %> people like this project<% end %></span>
+    <% if signed_in? %>
+		  <span class="project-add-like"><% unless current_user.likes_project?(@project) %><%= link_to "LIKE", project_likes_url(@project), :method => :post %><% end %></span>
+		  <span class="project-likes"><% unless @project.likes.length == 0 %><%= @project.likes.length %> people like this project<% end %></span>
+    <% end %>
 	</section>
   <div class="project-description">
     <%= @project.description %>
   </div>
-  <div class="project-edit">
-    <h2><%= link_to "Edit this project", edit_project_url(@project) %><h2>
-  </div>
+
+  <% if signed_in? && current_user == @project.user %>
+    <div class="project-edit">
+      <h2><%= link_to "Edit this project", edit_project_url(@project) %><h2>
+    </div>
+  <% end %>
 
   <div class="project-dummy">
     <div class="sidebar droppable">
-      <%= render :partial => "images/sidebar", :locals => { :images => @project.images.reverse, :image => @image } %>
+      <% if @project.user == current_user %>
+        <%= render :partial => "images/sidebar", :locals => { :images => @project.images.reverse, :image => @image } %>
+      <% end %>
     </div>
     <%= render :partial => "pages/template_two", :locals => { :project => @project, :image => @image } %>
   </div>
 
 </div>
 
-<section class="project-timeline">
-	<h2>comment on this project</h2>
-  <%= render :partial => "posts/form", :locals => {:project_id => @project.id} %>
-  <%= render :partial => "posts/list", :locals => {:posts => @project.posts.order("id DESC")} %>
-</section>
+<% if signed_in? %>
+  <section class="project-timeline">
+  	<h2>comment on this project</h2>
+    <%= render :partial => "posts/form", :locals => {:project_id => @project.id} %>
+    <%= render :partial => "posts/list", :locals => {:posts => @project.posts.order("id DESC")} %>
+  </section>
+<% end %>
 
 
 <section class="project-email">
