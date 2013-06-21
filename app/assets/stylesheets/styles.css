@@ -409,7 +409,7 @@ input[type="submit"].button-sm {
   background-color: #ccc;
   color: #ddd;
   font-size: 60px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 2px dotted #aaa;
   text-align: center;
   box-sizing: border-box;

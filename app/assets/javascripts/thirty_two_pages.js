@@ -63,7 +63,7 @@ $(document).ready(function(){
 
   $("section.new-post-form > form > article.button").on("click", function() {
     var that = this;
-    $(that).attr("disable","true");
+    $(that).attr("disabled","true");
     var projectId = window.location.pathname.split("/")[4];
     var postContent = $("section.new-post-form > form > article > textarea").val();
     $.ajax({
@@ -93,21 +93,42 @@ $(document).ready(function(){
 
   $(".posts").on("click", "div.new-comment-button > input[type='submit']", function () {
     var that = this;
-    $(that).attr("disable", "true");
-    var newCommentUrl = $(that).closest("form").attr("action");
-    var newCommentContent = $(that).closest("form.new-comment-form").find("textarea").val();
+    $(that).attr("disabled", "true");
+    var actionUrl = $(that).closest("div.footer").find("form.new-comment-form").attr("action");
+    console.log(actionUrl);
+    var newComment = $(that).closest("div.footer").find("textarea").val();
+    console.log(newComment);
     $.ajax({
-      url: newCommentUrl,
+      url: actionUrl,
       type: "POST",
-      data: { content: newCommentContent },
+      data: { content: newComment },
       success: function () {
+        console.log("commented");
         $(that).closest("div.footer").find("form.new-comment-form").addClass("is-off");
-        var newComment = $("<li class='comment'></li>").load(newCommentUrl + "/refresh");
+        var newComment = $("<li class='comment'></li>").load(actionUrl + "/refresh");
         $(that).closest("div.post-main-container").find("ul.comments").append(newComment);
-        $(that).attr("disable","false");
-        $(that).closest("form.new-comment-form").find("textarea").val("");
+        $(that).attr("disabled","false");
+        $(that).closest("div.footer").find("textarea").val("");
       }
     });
+  });
+
+  // Likes / unlikes
+
+  $(".posts").on("click", "span.post-add-like input[type='submit']", function() {
+    var that = this;
+    $(that).attr("disabled","true");
+    var actionUrl = $(that).closest("form").attr("action");
+    console.log(actionUrl);
+    $.ajax({
+      url: actionUrl,
+      type: "POST",
+      success: function() {
+        console.log("liked");
+        $("span.post-likes").load(actionUrl + "/refresh");
+      }
+    });
+    $(that).closest("span").remove();
   });
 
   // Accepts / rejects friend request
@@ -128,24 +149,6 @@ $(document).ready(function(){
         $(that).closest("article.friend-request").remove();
       }
     });
-  });
-
-  // Likes / unlikes
-
-  $(".posts").on("click", "span.post-add-like input.button", function() {
-    var that = this;
-    $(that).attr("disabled","true");
-    var actionUrl = $(that).closest("form").attr("action");
-    console.log(actionUrl);
-    $.ajax({
-      url: actionUrl,
-      type: "POST",
-      success: function() {
-        console.log("liked");
-        $("span.post-likes").load(actionUrl + "/refresh");
-      }
-    });
-    $(that).closest("span").remove();
   });
 
   // Dummy image manipulation

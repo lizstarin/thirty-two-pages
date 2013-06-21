@@ -6,6 +6,12 @@
       <% else %>
         <%= image_tag @user.avatar.url(:medium) %>
       <% end %>
+
+      <section class="user-friend-request">
+        <% if @user != current_user %>
+          <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
+        <% end %>
+      </section>
     </section>
     <section class="user-about">
       <h1 class="user-name"><%= @user.full_name %></h1>
@@ -30,14 +36,11 @@
       <section class="user-projects">
         <%= render :partial => "projects/list", :locals => {:projects => @user.projects} %>
       </section>
-      <section class="user-friend-request">
-        <% if @user != current_user %>
-          <%= render :partial => "friend_requests/form", :locals => {:user => @user} %>
-        <% end %>
-      </section>
       <section class="user-friends">
-        <h2>friends</h2>
-        <%= render :partial => "list", :locals => {:users => @user.friends} %>
+        <% unless @user.friends.empty? %>
+          <h2>friends</h2>
+          <%= render :partial => "list", :locals => {:users => @user.friends} %>
+        <% end %>
       </section>
       <section class="user-friend-requests">
         <% if @user == current_user %>

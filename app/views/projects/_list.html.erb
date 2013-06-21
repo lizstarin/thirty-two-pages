@@ -1,19 +1,21 @@
 <section class="projects">
-  <h2>Projects</h2>
-  <% projects.each do |p| %>
-		<div class="project-thumb">
-		  <a href="<%= user_project_url(p.user, p) %>">
-				<figure>
-		      <% if p.thumbnail.blank? %>
-		        <div class="project-thumbnail-blank">?</div>
-		      <% else%>
-		        <%= image_tag p.thumbnail.url(:thumb) %>
-		      <% end %>
-		      <figcaption><%= p.title %></figcaption>
-		    </figure>
-			</a>
-		</div>
-	<% end %>
+  <% unless projects.empty? %>
+    <h2>Projects</h2>
+    <% projects.each do |p| %>
+  		<div class="project-thumb">
+  		  <a href="<%= user_project_url(p.user, p) %>">
+  				<figure>
+  		      <% if p.thumbnail.blank? %>
+  		        <div class="project-thumbnail-blank">?</div>
+  		      <% else%>
+  		        <%= image_tag p.thumbnail.url(:thumb) %>
+  		      <% end %>
+  		      <figcaption><%= p.title %></figcaption>
+  		    </figure>
+  			</a>
+  		</div>
+  	<% end %>
+  <% end %>
 </section>
 
 

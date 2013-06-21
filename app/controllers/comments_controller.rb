@@ -6,13 +6,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(params[:comment])
-    @comment.update_attributes(:user_id => current_user.id)
-
+    @comment = Comment.new(:content => params[:content],
+                           :post_id => params[:post_id],
+                           :user_id => current_user.id)
     if @comment.save
-      notif = @post.user.notifications.build(
-                      :content => "#{current_user.full_name} has commented on your post #{@post.title}.",
+      notif = @comment.post.user.notifications.build(
+                      :content => "#{current_user.full_name} has commented on your post.",
                       :read => false
                       )
                       notif.save
