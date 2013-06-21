@@ -148,8 +148,6 @@ $(document).ready(function(){
 
   $(function() {
     $(".draggable").draggable( {cursor: "move", revert: "invalid"} );
-    $(".resizable").resizable( {cursor: "crosshair", ghost: true, handles: "ne, se"} );
-    $(".page-image.droppable").droppable({ hoverClass: "highlight", greedy: true });
   });
 
   function inView (droppableArea) {
@@ -195,28 +193,9 @@ $(document).ready(function(){
     });
   };
 
-  $(".image-recto > img").on("drag", function (event, ui) {
-    $("div.page-image.recto").removeClass("cropped");
-  });
-
-  // $(".image-recto > img").on("mouseenter", function (event, ui) {
-  //   var that = this;
-  //   // console.log(that);
-  //   setTimeout(function () {
-  //     // console.log("I am resizable!");
-  //     $(that).triggerHandler("focus");
-  //     $(that).focus(function() {
-  //       console.log("focused!")
-  //     });
-  //     $("div.page-image.recto").removeClass("cropped");
-  //     // $(that).resizable();
-  //   }, 1000);
-  // });
-
-  $(".page-image.recto > .image-recto").on("blur", function (event, ui) {
-    console.log("I am not resizable!");
-    $(this).closest(".page-image").addClass("cropped");
-    $(this).resizable("destroy");
+  $(".photo-thumbs-sidebar").on("dragstart", "article.photo-thumb", function (event, ui) {
+    console.log("dragging");
+    $(".page-image").droppable({ hoverClass: "highlight", greedy: true });
   });
 
   $(".page-image").on("drop", function (event, ui) {
@@ -242,29 +221,46 @@ $(document).ready(function(){
     }
   });
 
-  $(".page-image").on("out", function (event, ui) {
-    if (inView(this) == true) {
-      console.log("dragged out!");
-      var smallImage = linkBigToSmall(ui.draggable);
+  $("div.page-image.recto").on("drag", ".image-recto > img", function (event, ui) {
+    console.log("dragged");
+    var that = this;
+    var page = $(that).closest("div.page-image.recto")
 
-      $(ui.draggable).addClass("is-off");
+    page.removeClass("cropped");
+    // page.addClass("droppable");
+    // page.droppable();
 
-      smallImage.draggable( {revert: true} );
-      smallImage.addClass("draggable");
-
+    page.on("dropout", function () {
       $(this).empty();
-      $(this).droppable();
+      console.log("dragged out");
+    });
 
-      var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
-      var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
 
-      updatePageImage(nil, nil);
-      $(".photo-thumbs-sidebar").prepend(smallImage);
-
-    } else {
-      $(ui.draggable).draggable( {revert: true} );
-    }
   });
+
+  // $(".page-image").on("out", function (event, ui) {
+  //   // if (inView(this) == true) {
+  //     console.log("dragged out!");
+  //     var smallImage = linkBigToSmall(ui.draggable);
+  //
+  //     $(ui.draggable).addClass("is-off");
+  //
+  //     smallImage.draggable( {revert: true} );
+  //     smallImage.addClass("draggable");
+  //
+  //     $(this).empty();
+  //     $(this).droppable();
+  //
+  //     var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
+  //     var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
+  //
+  //     updatePageImage(nil, nil);
+  //     $(".photo-thumbs-sidebar").prepend(smallImage);
+  //
+  //   // } else {
+  //     // $(ui.draggable).draggable( {revert: true} );
+  //   // }
+  // });
 
   $("input:file").change(function () {
     console.log("file selected");
