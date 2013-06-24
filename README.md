@@ -5,3 +5,10 @@ A tool for picture book illustrators to build and share works-in-progress. Proje
 
 ## Todo
 
+- Create public/private mode for projects
+-
+
+
+Liz Starin
+lizstarin.com
+
