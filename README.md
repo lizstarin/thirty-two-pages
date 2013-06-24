@@ -5,9 +5,11 @@ A social tool for picture book illustrators to build and share works-in-progress
 ## Technologies
 
 - Ruby on Rails on the backend
+- JS on the frontend
 - jQuery UI
 - Devise for User authentication
 - SendGrid for email 
+- Most view update requests done in AJAX
 
 ## Todo
 
