@@ -9,7 +9,7 @@ html, body, div, nav, a, h1, h2, h3, p, ul, li, form, button, input, textarea, s
 }
 
 body {
-	font-family: Futura;
+	font-family: Futura, "Gill Sans", "Century Gothic", AppleGothic, sans-serif;
 	color: #333;
 /*  background-image: url("ricepaper2.png");*/
 /*  background-color: #eee;*/
@@ -46,7 +46,7 @@ img {
 
 h1 {
 	font-size: 40px;
-	font-family: Futura;
+	font-family: Futura, "Gill Sans", "Century Gothic", AppleGothic, sans-serif;
 }
 
 h2 {
@@ -65,10 +65,15 @@ h2 {
 
 #logo {
 	font-family: "Rokkitt";
+  font-weight: 400;
 	text-transform: none;
 	font-size: 20px;
 	color: #ed3f1c;
 }
+
+/* sign-in */
+
+
 
 /* nav */
 
@@ -86,6 +91,7 @@ h2 {
 .nav #logo {
 /*	font-size: 102px;
 	font-family: Rokkitt;
+  font-weight: 400;
 	color: #ccc;
 	margin: auto;
 	overflow: visible;
@@ -93,7 +99,7 @@ h2 {
 	float: right;
 	line-height: 110px;*/
 	float: left;
-	font-weight: bold;
+	font-weight: 400;
 }
 
 .nav #logo:hover {
@@ -169,7 +175,7 @@ h2 {
 	font-family: "Rokkitt";
 	font-size: 110px;
 	color: #ed3f1c;
-	font-weight: bold;
+	font-weight: 400;
 	z-index: 3;
 	position: relative;
 /*	letter-spacing: -4px;*/
@@ -179,6 +185,7 @@ h2 {
 	font-family: "Rokkitt";
 	font-size: 50px;
 	color: #333;
+  font-weight: 400;
 /*  padding: 100px 100px 0px 150px;*/
 /*	background-image: url("/images/piggie-parade.png");*/
 
