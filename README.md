@@ -1,7 +1,6 @@
 # 32 Pages
 
-A social tool for picture book illustrators to build and share works-in-progress. Project show page is a book dummy that viewers can click through. Users can update the project's text with a click, and can drag and drop images into the dummy.
-
+A social tool for picture book illustrators to build and share works-in-progress. Project show page is a book dummy that viewers can click through. Users can update the project's text with a doubleclick/blur, and can drag and drop images into the dummy. Also has many social features including friends, messages, likes, and posts/comments.
 ## Heroku
 
 http://intense-fortress-4629.herokuapp.com/
