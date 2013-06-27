@@ -23,7 +23,7 @@ A social tool for picture book illustrators to build and share works-in-progress
 
 ## Heroku
 
-intense-fortress-4629.herokuapp.com/
+http://intense-fortress-4629.herokuapp.com/
 
 
 Liz Starin
