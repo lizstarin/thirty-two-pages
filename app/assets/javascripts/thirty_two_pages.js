@@ -147,7 +147,9 @@ $(document).ready(function(){
   // Dummy image manipulation
 
   $(function() {
+    console.log("initializing");
     $(".draggable").draggable( {cursor: "move", revert: "invalid", zIndex: 100} );
+    $(".droppable").droppable( {hoverClass: "highlight", greedy: true, disabled: true} );
   });
 
   function inView (droppableArea) {
@@ -194,9 +196,9 @@ $(document).ready(function(){
     });
   };
 
-  $(".photo-thumbs-sidebar").on("dragstart", ".photo-thumb", function (event, ui) {
+  $(".photo-thumbs-sidebar").on("dragstart", "img.photo-thumb", function (event, ui) {
     console.log("dragging");
-    $(".page-image").droppable({ hoverClass: "highlight", greedy: true });
+    $(".page-image").droppable("enable");
   });
 
   $(".page-image").on("drop", function (event, ui) {
