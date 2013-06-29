@@ -21,13 +21,12 @@ $(document).ready(function(){
     }
   };
 	
-  $(".photo-thumbs-sidebar").on("dragstart", "img.photo-thumb", function (event, ui) {
-    console.log("dragging");
-  });
+  // $(".photo-thumbs-sidebar").on("dragstart", "img.photo-thumb", function (event, ui) {
+  //   console.log("dragging");
+  // });
 	
   $(".page-image").on("drop", function (event, ui) {
     if (inView(this) == true) {
-			console.log("dropped");
       var bigImage = $('<img src=' + $(ui.draggable).attr("src").replace("thumb", "original") + '>');
 
       $(ui.draggable).addClass("is-off");
@@ -37,10 +36,10 @@ $(document).ready(function(){
 
       $(this).prepend(bigImage);
 
-      var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
+      var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page id
       var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
       var imageFileName = bigImage.attr("src").split("/").pop().split("?")[0];
-
+			console.log(pageNum);
       updatePageImage(pageNum, imageFileName);
 
     } else {
@@ -58,6 +57,51 @@ $(document).ready(function(){
       }
     });
   };
+	
+  $("div.page-image").on("dragstart", "img", function (event, ui) {
+    var urlToParse = $(this).closest(".page").find("form").attr("action");	  // Pulls page id
+    var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
+		
+    var page = $(this).closest("div.page-image")
+    page.removeClass("cropped");
+		
+    console.log("dragged out!");
+
+    $(this).closest("div.page-image").empty();
+    var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
+		console.log(smallImage);
+
+    $(this).addClass("is-off");
+		
+		smallImage.addClass("photo-thumb");
+    smallImage.draggable( {cursor: "move", revert: "invalid"} );
+
+    updatePageImage(pageNum, null);
+    $(".photo-thumbs-sidebar").append(smallImage);
+  });
+	
+  // $("div.page-image").on("dragstop", "img", function (event, ui) {
+ //    var page = $(this).closest("div.page-image")
+ //    page.addClass("cropped");
+ //  });
+ // 	
+ //  $("div.page-image").on("dropout", "img", function (event, ui) {
+ //    console.log("dragged out!");
+ // 
+ //    $(this).closest("div.page-image").empty();
+ //    var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
+ // 
+ //    $(this).addClass("is-off");
+ // 		
+ // 		smallImage.addClass("photo-thumb");
+ //    smallImage.draggable( {cursor: "move", revert: "invalid"} );
+ // 
+ //    var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
+ //    var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
+ // 
+ //    updatePageImage(pageNum, null);
+ //    $(".photo-thumbs-sidebar").append(smallImage);
+ //  });
 	
   $("input:file").change(function () {
     $(this).closest("form").submit();                             // Soooooo slooooowwwwwww

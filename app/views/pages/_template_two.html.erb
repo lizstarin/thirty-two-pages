@@ -29,7 +29,7 @@
 
       <% text_status = project.user == current_user ? "editable" : nil %>
 
-			<div class="page" style="width:<%= w %>px; height:<%= h + ch %>px;">
+			<div class="page" id="<%= i %>" style="width:<%= w %>px; height:<%= h + ch %>px;">
         <div class="page-image cropped droppable <%= page_class %>" style="width:<%= w %>px; height:<%= h %>px;">
           <% page_image = project.pages[i - 1].image %>
 

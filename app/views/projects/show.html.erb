@@ -21,7 +21,7 @@
   <% end %>
 
   <div class="project-dummy">
-    <div class="sidebar droppable">
+    <div class="sidebar">
       <% if @project.user == current_user %>
         <%= render :partial => "images/sidebar", :locals => { :images => @project.images.reverse, :image => @image } %>
       <% end %>
