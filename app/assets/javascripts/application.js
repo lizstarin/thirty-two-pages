@@ -16,6 +16,7 @@
 //= require jquery-fileupload/basic
 //
 //= require thirty_two_pages
+//= require dummy_2
 //
 //= require_tree .
 

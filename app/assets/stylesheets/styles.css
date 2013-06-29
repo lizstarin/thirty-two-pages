@@ -25,8 +25,9 @@ body {
 
 .sidebar {
   float: right;
-/*  background-color: green;*/
+  background-color: green;
   width: 120px;
+/*	height: 500px;*/
 /*  overflow: auto;*/
 /*  height: 100%;*/
 }
