@@ -13,7 +13,7 @@
   <% images.each do |i| %>
     <article>
       <% if i.page_id.nil? %>
-        <%= image_tag i.file.url(:thumb), :class => "photo-thumb draggable", :data => {:url => i.file.url} unless i.file.url == "/images/missing.png" %>
+        <%= image_tag i.file.url(:thumb), :class => "photo-thumb draggable" unless i.file.url == "/images/missing.png" %>
       <% else %>
         <% @already_used << i %>
       <% end %>
