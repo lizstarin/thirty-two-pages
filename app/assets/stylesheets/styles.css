@@ -763,6 +763,10 @@ figure {
   float: right;
 }
 
+.project-description {
+	margin-bottom: 25px;
+}
+
 /* dummy */
 
 .blank {
