@@ -21,16 +21,16 @@ $(document).ready(function(){
     }
   };
 	
-  $(".page-image").on("drop", "img.photo-thumb", function (event, ui) {
-    if (inView(this).closest(".page-image") == true) {
-      var bigImage = $('<img src=' + $(this).attr("src").replace("thumb", "original") + '>');
+  $(".page-image").on("drop", function (event, ui) {
+    if (inView(this) == true) {
+      var bigImage = $('<img src=' + $(ui.draggable).attr("src").replace("thumb", "original") + '>');
 
-      $(this).addClass("is-off");
+      $(ui.draggable).addClass("is-off");
 
       bigImage.addClass("stretched big-image");
 	    bigImage.draggable( {cursor: "move", revert: "invalid"} );
 
-      $(this).closest(".page-image").prepend(bigImage);
+      $(this).prepend(bigImage);
 
       var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page id
       var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
@@ -58,12 +58,14 @@ $(document).ready(function(){
     var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
 		
     var page = $(this).closest("div.page-image")
-    page.removeClass("cropped");
+    // page.removeClass("cropped");
 		
     console.log("dragged out!");
 
-    $(this).closest("div.page-image").empty();
+    // $(this).closest("div.page-image").empty();
     var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
+
+    $(this).addClass("is-off");
 		
 		smallImage.addClass("photo-thumb");
     smallImage.draggable( {cursor: "move", revert: "invalid"} );
