@@ -13,6 +13,7 @@ http://intense-fortress-4629.herokuapp.com/
 - Devise for User authentication
 - SendGrid for email 
 - Most view update requests done in AJAX
+- Paperclip for image attachments
 
 ## Todo
 
