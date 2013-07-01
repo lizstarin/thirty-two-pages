@@ -57,45 +57,29 @@ $(document).ready(function(){
     var urlToParse = $(this).closest(".page").find("form").attr("action");	  // Pulls page id
     var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
 		
-    var page = $(this).closest("div.page-image")
-    // page.removeClass("cropped");
+		$(this).closest("div.page-image").removeClass("cropped");
+		$(this).addClass("photo-thumb");
 		
     console.log("dragged out!");
-
-    // $(this).closest("div.page-image").empty();
-    var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
-
-    $(this).addClass("is-off");
 		
-		smallImage.addClass("photo-thumb");
-    smallImage.draggable( {cursor: "move", revert: "invalid"} );
+		$(this).closest("div.page-image").on("dropout", "img", function (event, ui) {
+			console.log("dropped out");
+	    var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
 
-    updatePageImage(pageNum, null);
-    $(".photo-thumbs-sidebar").append(smallImage);
+	    $(this).addClass("is-off");
+		
+			smallImage.addClass("photo-thumb");
+	    smallImage.draggable( {cursor: "move", revert: "invalid"} );
+
+	    updatePageImage(pageNum, null);
+	    $(".photo-thumbs-sidebar").append(smallImage);
+		});
   });
 	
-  // $("div.page-image").on("dragstop", "img", function (event, ui) {
- //    var page = $(this).closest("div.page-image")
- //    page.addClass("cropped");
- //  });
- // 	
- //  $("div.page-image").on("dropout", "img", function (event, ui) {
- //    console.log("dragged out!");
- // 
- //    $(this).closest("div.page-image").empty();
- //    var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
- // 
- //    $(this).addClass("is-off");
- // 		
- // 		smallImage.addClass("photo-thumb");
- //    smallImage.draggable( {cursor: "move", revert: "invalid"} );
- // 
- //    var urlToParse = $(this).closest(".page").find("form").attr("action");    // Pulls page number
- //    var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
- // 
- //    updatePageImage(pageNum, null);
- //    $(".photo-thumbs-sidebar").append(smallImage);
- //  });
+  $("div.page-image").on("dragstop", "img", function (event, ui) {		
+		$(this).closest("div.page-image").addClass("cropped");
+		$(this).removeClass("photo-thumb");
+  });
 	
   $("input:file").change(function () {
     $(this).closest("form").submit();                             // Soooooo slooooowwwwwww
