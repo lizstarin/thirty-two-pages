@@ -1,7 +1,15 @@
 <article class="post">
   <div class="post-main">
-    <div class="post-avatar"><a href="<%= user_url(@post.user) %>"><%= image_tag @post.user.avatar.url(:bitty) %></a></div>
-    <span class="post-user"><%= @post.user.full_name %></span>
+	  <div class="post-avatar">
+			<a href="<%= user_url(@post.user) %>">
+				<% if !@post.user.avatar_file_name.blank? %>
+					<%= image_tag @post.user.avatar.url(:bitty) %>
+				<% else %>
+					<div class="user-avatar-bitty-blank">?</div>
+				<% end %>
+			</a>
+	  </div>
+		<span class="post-user"><%= @post.user.full_name %></span>
     <span class="post-date"><%= time_ago_in_words(@post.created_at) %> ago</span>
     <div class="post-content"><%= @post.content %></div>
   </div>

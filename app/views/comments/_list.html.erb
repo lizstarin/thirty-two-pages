@@ -1,7 +1,15 @@
 <ul class="comments">
   <% comments.each do |c| %>
     <li class="comment">
-      <div class="comment-avatar"><a href="<%= user_url(c.user) %>"><%= image_tag c.user.avatar.url(:bitty) %></a></div>
+		  <div class="comment-avatar">
+				<a href="<%= user_url(c.user) %>">
+					<% if !c.user.avatar_file_name.blank? %>
+						<%= image_tag c.user.avatar.url(:bitty) %>
+					<% else %>
+						<div class="user-avatar-bitty-blank">?</div>
+					<% end %>
+				</a>
+		  </div>      
       <span class="comment-user"><%= c.user.full_name %></span>
       <span class="comment-date"><%= time_ago_in_words(c.created_at) %> ago</span>
       <div class="comment-content"><%= c.content %></div>

@@ -2,7 +2,15 @@
   <% posts.each do |p| %>
     <article class="post">
       <div class="post-main">
-        <div class="post-avatar"><a href="<%= user_url(p.user) %>"><%= image_tag p.user.avatar.url(:bitty) %></a></div>
+        <div class="post-avatar">
+					<a href="<%= user_url(p.user) %>">
+						<% if !p.user.avatar_file_name.blank? %>
+							<%= image_tag p.user.avatar.url(:bitty) %>
+						<% else %>
+							<div class="user-avatar-bitty-blank">?</div>
+						<% end %>
+					</a>
+			  </div>
         <div class="post-main-container">
           <span class="post-user"><%= p.user.full_name %></span>
           <span class="post-date"><%= time_ago_in_words(p.created_at) %> ago</span>

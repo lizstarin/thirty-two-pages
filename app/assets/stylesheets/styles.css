@@ -424,6 +424,17 @@ input[type="submit"].button-sm {
   box-sizing: border-box;
 }
 
+.user-avatar-bitty-blank {
+  height: 50px;
+  width: 50px;
+  background-color: #ccc;
+  color: #ddd;
+  font-size: 40px;
+  border-radius: 5px;
+  border: 1px dotted #aaa;
+  text-align: center;
+}
+
 .line-break {
   float: none;
 }
