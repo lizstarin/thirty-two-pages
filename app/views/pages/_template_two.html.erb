@@ -34,7 +34,8 @@
           <% page_image = project.pages[i - 1].image %>
 
           <% unless page_image.nil? || page_image.file.url == "/images/missing.png" %>
-  				  <div class="image-<%= page_class %>"><%= image_tag page_image.file.url, :class => "draggable stretched big-image" %></div>
+						<% can_drag = signed_in? && current_user == @project.user ? "draggable " : "" %>
+  				  <div class="image-<%= page_class %>"><%= image_tag page_image.file.url, :class => "#{can_drag}stretched big-image" %></div>
           <% end %>
 
         	<p class="page-num"><%= i %></p>

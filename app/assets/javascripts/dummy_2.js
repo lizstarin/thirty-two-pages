@@ -27,7 +27,7 @@ $(document).ready(function(){
 
       $(ui.draggable).remove();
 
-      bigImage.addClass("stretched big-image");
+      bigImage.addClass("draggable stretched big-image");
 	    bigImage.draggable( {cursor: "move", revert: "invalid"} );
 
       $(this).prepend(bigImage);
@@ -54,7 +54,7 @@ $(document).ready(function(){
     });
   };
 	
-  $("div.page-image").on("dragstart", "img", function (event, ui) {
+  $("div.page-image").on("dragstart", "img.draggable", function (event, ui) {
     var urlToParse = $(this).closest(".page").find("form").attr("action");	  // Pulls page id
     var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
     var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
