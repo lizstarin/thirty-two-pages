@@ -16,10 +16,10 @@ http://intense-fortress-4629.herokuapp.com/
 
 ## Todo
 
+- Improve UI of project editing--drag in/drag out could be smoother
 - Create public/private mode for projects
 - Allow users to form groups
-- Improve UI of project show page
-- Enable SendGrid
+- Fix SendGrid on project show page
 - Make "popular projects" view, based on Likes
 - Enable AJAX file loading with jQuery File Upload plugin
 - Clean up JS and CSS files
