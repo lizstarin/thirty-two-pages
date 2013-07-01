@@ -17,8 +17,10 @@ class ImagesController < ApplicationController
       @page.image.update_attributes(:page_id => nil)    # NB: @image and page.image are different objects
     end
 
-    @image = Image.where(:project_id => @page.project.id, :file_file_name => params[:file_file_name])[0]
-    @image.update_attributes(:page_id => params[:page_id])
+		unless params[:file_file_name].blank?
+			@image = Image.where(:project_id => @page.project.id, :file_file_name => params[:file_file_name])[0]
+    	@image.update_attributes(:page_id => params[:page_id])
+		end
 
     @page.update_attributes(:image => @image)
     @page.save

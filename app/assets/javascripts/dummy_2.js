@@ -58,10 +58,11 @@ $(document).ready(function(){
     var urlToParse = $(this).closest(".page").find("form").attr("action");	  // Pulls page id
     var pageNum = urlToParse.match(/\d*(?=\/caption)/)[0];                    // out of text submit form
     var smallImage = $('<img src=' + $(this).attr("src").replace("original", "thumb") + '>');
+		
+    updatePageImage(pageNum, null);
 			
 		$(this).closest("div.page-image").removeClass("cropped");
-		updatePageImage(pageNum, null);
-    console.log("dragged out!");
+		$(this).remove();
 		
 		smallImage.addClass("photo-thumb");
     smallImage.draggable( {cursor: "move", revert: "invalid"} );
