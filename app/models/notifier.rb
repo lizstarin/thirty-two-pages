@@ -6,11 +6,11 @@ class Notifier < ActionMailer::Base
     mail( :to => user.email, :subject => "Thanks for signing up!" )
   end
 
-  def project_share_email(link, recipient_email, sender_email, sender_name)
-    @link = link
-    @sender_name = sender_name
+  def project_share_email(email)
+    @link = email.link
+    @sender_name = email.sender_name
 
-    mail( :from => sender_email, :to => recipient_email, :subject => "check out this project on 32 pages!")
+    mail( :from => email.sender_email, :to => email.recipient_email, :subject => "check out this project on 32 pages!")
   end
 end
 

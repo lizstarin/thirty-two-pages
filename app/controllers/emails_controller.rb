@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
     @email = Email.new(params[:email])
 
     if @email.save
-      Notifier.project_share_email(@email.link, @email.recipient_email, @email.sender_email, @email.sender_name).deliver
+      Notifier.project_share_email(@email).deliver
       redirect_to :back
     else
       render :new
