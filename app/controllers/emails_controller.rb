@@ -11,7 +11,7 @@ class EmailsController < ApplicationController
 
     if @email.save
       Notifier.project_share_email(@email).deliver
-      redirect_to :back
+      redirect_to @email.link
     else
       render :new
     end
