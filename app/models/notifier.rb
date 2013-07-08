@@ -7,8 +7,8 @@ class Notifier < ActionMailer::Base
   end
 
   def project_share_email(email)
-    # @link = email.link
-    # @sender_name = email.sender_name
+    @link = email.link
+    @sender_name = email.sender_name
 
     mail( :from => email.sender_email, :to => email.recipient_email, :subject => "check out this project on 32 pages!")
   end
